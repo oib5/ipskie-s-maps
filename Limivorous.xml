@@ -38,9 +38,8 @@
    </kit>
    <!--    kit given to both teams    -->
    <kit name="team" parents="all">
-       <!--    Damage="-3000" to make them unbreakable    -->
-        <item slot="0" damage="-3000">stone sword</item>
-        <item slot="1" damage="-3000">bow</item>
+        <item slot="0">stone sword</item>
+        <item slot="1">bow</item>
         <item slot="2" enchantment="dig speed:2">diamond pickaxe</item>
         <item slot="28" amount="64">arrow</item>
         <item slot="3">iron axe</item>
@@ -66,12 +65,12 @@
     <item>diamond pickaxe</item>
     <item>wood</item>
     <item>log</item>
-    <item>bow</item>
-    <item>stone sword</item>
 </itemremove>
 <toolrepair>
     <tool>diamond pickaxe</tool>
     <tool>iron axe</tool>
+    <tool>bow</tool>
+    <tool>stone sword</tool>
 </toolrepair>
 <filters>
     <filter name="deny-unbreakable-blocks">
