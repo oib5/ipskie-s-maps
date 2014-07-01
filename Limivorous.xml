@@ -65,6 +65,10 @@
     <item>diamond pickaxe</item>
     <item>wood</item>
     <item>log</item>
+    <item>leather chesplate</item>
+    <item>leather boots</item>
+    <item>chainmail helmet</item>
+    <item>chainmail leggings</item>
 </itemremove>
 <toolrepair>
     <tool>diamond pickaxe</tool>
