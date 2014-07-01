@@ -34,6 +34,7 @@
     <kit name="all" potion-particles="false">
        <potion duration="oo" ambient="true">night vision</potion>
        <potion duration="oo" ambient="true">saturation</potion>
+       <potion duration="3" amplifier="3">damage resistance</potion>
    </kit>
    <!--    kit given to both teams    -->
    <kit name="team" parents="all">
