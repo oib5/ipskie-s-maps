@@ -1,0 +1,89 @@
+<map proto="1.3.3" internal="true">
+<name>Aer</name>
+<version>1.0.0</version>
+<objective>Be the team with the most number of kills after 10 minutes!</objective>
+<score><time>600</time></score>
+<authors><author>elijahyap</author></authors>
+<rules>
+	<rule>No shooting at spawn</rule>
+	<rule>Spawn platforms give you full resistance</rule>
+</rules>
+<teams>
+	<team color="dark red" max="12" max-overfill="16">Red</team>
+	<team color="blue" max="12" max-overfill="16">Blue</team>
+</teams>
+<spawns>
+	<default yaw="180" kit="all"><cuboid min="-1,12,50" max="2,12,53"/></default>
+	<spawn team="Red" kit="RedKit" yaw="90"><cuboid min="45,65,50" max="48,65,53"/></spawn>
+	<spawn team="Blue" kit="BlueKit" yaw="270"><cuboid min="-47,65,50" max="-44,65,53"/></spawn>
+</spawns>
+<kits>
+<!--  kit given to everyone, including observers  -->
+<kit name="all" potion-particles="false">
+	<potion duration="oo" ambient="true">night vision</potion>
+	<potion duration="oo" ambient="true">saturation</potion>
+</kit>
+<!--  kit given to both teams  -->
+<kit name="team" parents="all">
+	<item slot="0">stone sword</item>
+    <item slot="1">bow</item>
+    <item slot="28" amount="12">arrow</item>
+	<potion duration="3" amplifier="5" ambient="true">damage resistance</potion>
+</kit>
+<kit name="RedKit" parents="team">
+	<helmet color="cd0000">leather helmet</helmet>
+	<chestplate color="cd0000">leather chestplate</chestplate>
+	<leggings color="cd0000">leather leggings</leggings>
+	<boots color="cd0000">leather boots</boots>
+</kit>
+<kit name="BlueKit" parents="team">
+	<helmet color="0066cc">leather helmet</helmet>
+	<chestplate color="0066cc">leather chestplate</chestplate>
+	<leggings color="0066cc">leather leggings</leggings>
+	<boots color="0066cc">leather boots</boots>
+</kit>
+</kits>
+<itemremove>
+	<item>arrow</item>
+	<item></item>
+</itemremove>
+
+<regions>
+	<!--  the map  -->
+	<apply block="deny-all">
+		<rectangle name="map" min="-oo,-oo" max="oo,oo"/>
+	</apply>
+	<apply velocity="@0,2,1.5">
+		<cuboid min="0,4,2" max="1,6,3"/>
+	</apply>
+	<apply velocity="@0,2,-1.5">
+		<cuboid min="0,4,100" max="1,6,101"/>
+	</apply>
+		<rectangle min="-oo,-oo" max="oo,oo"/>
+	</apply>
+</regions>
+
+<disabledamage><damage>FALL</damage></disabledamage>
+
+<portals>
+	<!-- portal's to spawn -->
+	<!-- Red upper -->
+    <portal x="-1" y="52"><cuboid min="46,13,51" max="47,16,52"/></portal>
+	<!-- Red lower -->
+    <portal x="24" y="61"><cuboid min="21,4,51" max="22,7,52"/></portal>
+	<!-- Blue upper -->
+    <portal x="1" y="52"><cuboid min="-46,13,51" max="-45,16,-52"/></portal>
+	<!-- Blue lower -->
+    <portal x="-24" y="61"><cuboid min="-21,4,51" max="-20,7,52"/></portal>
+
+	<!-- portal's form spawn -->
+	<!-- Red upper -->
+    <portal x="9" y="-54"><cuboid min="36,67,51" max="37,70,52"/></portal>
+	<!-- Red lower -->
+    <portal x="-16" y="-58"><cuboid min="36,62,51" max="37,65,52"/></portal>
+	<!-- Blue upper -->
+    <portal x="-9" y="-54"><cuboid min="-36,67,51" max="-35,70,52"/></portal>
+	<!-- Blue lower -->
+    <portal x="16" y="-58"><cuboid min="-36,62,51" max="-35,67,52"/></portal>
+</portals>
+</map>

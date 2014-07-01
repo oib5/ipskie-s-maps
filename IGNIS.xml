@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<map proto="1.3.2">
+<name>Ignis</name>
+<version>1.0.0</version>
+<objective>Capture both wools from the enemy side and bring them back!</objective>
+<!-- Authors: -->
+<authors>
+	<author>elijahyap/mrsensiblle/IpsKie</author>
+	<author contribution="Built the thing">elijahyap</author>
+</authors>
+
+<contributors>
+	<contributor contribution="Aesthetic feedback">Tau42</contributor>
+</contributors>
+
+<teams>
+   <team color="dark red" max="12" max-overfill="16">red</team>
+   <team color="yellow" max="12" max-overfill="16">yellow</team>
+</teams>
+
+<kits>
+    <kit name="spawn" force="true">
+        <item slot="0">stone sword</item>
+        <item slot="1">bow</item>
+		<item slot="2" enchantment="durability:3">iron pickaxe</item>
+		<item slot="3" enchantment="durability:3">stone axe</item>
+		<item slot="5" amount="64" damage="0">wood planks</item>
+		<item slot="8" amount="64">cooked chicken</item>
+		<item slot="28" amount="16">arrow</item>
+        <potion duration="5" amplifier="1">heal</potion>
+    </kit>
+    <kit name="red" parents="spawn">
+		<item slot="4" amount="64" damage="14">hardened clay</item>
+        <helmet color="cd0000">leather helmet</helmet>
+		<chestplate color="cd0000">leather chestplate</chestplate>
+		<leggings color="cd0000">leather leggings</leggings>
+		<boots color="cd0000">leather boots</boots>
+    </kit>
+    <kit name="yellow" parents="spawn">
+		<item slot="4" amount="64" damage="4">hardened clay</item>
+        <helmet color="E5E533">leather helmet</helmet>
+		<chestplate color="E5E533">leather chestplate</chestplate>
+		<leggings color="E5E533">leather leggings</leggings>
+		<boots color="E5E533">leather boots</boots>
+    </kit>
+</kits>
+
+<spawns>
+    <spawns safe="true">
+        <spawn team="red" kit="red" yaw="180">
+            <cuboid min="-210,30,-385" max="-206,30,-382"/>
+        </spawn>
+        <spawn team="yellow" kit="yellow" yaw="0">
+            <cuboid min="-210,30,-492" max="-206,30,-489"/>
+        </spawn>
+    </spawns>
+    <default yaw="90"><cuboid min="-143.5.5,50.5,-437.5" max="-142.5,50.5,-436.5"/></default>
+</spawns>
+
+<playable>
+    <region name="playable"/>
+    <cuboid min="-238,-oo,-511" max="-176,20,-363"/>
+</playable>
+
+<filters>
+    <filter name="only-yellow" parents="deny-players deny-world">
+        <allow><team>yellow</team></allow>
+    </filter>
+    <filter name="only-red" parents="deny-players deny-world">
+        <allow><team>red</team></allow>
+    </filter>
+</filters>
+
+<regions>
+    <!--wools yellow team has to get-->
+    <rectangle name="yellow-rooms" min="-238,-377" max="-175,-363"/>
+    <!--wools red team has to get-->
+    <rectangle name="red-rooms" min="-238,-497" max="-175,-511"/>
+    <!--gap between wool rooms-->
+    <union name="woolgap">
+        <rectangle name="yellowroomgap" min="-230,-377" max="-184,-363"/>
+        <rectangle name="redroomgap" min="-230,-497" max="-184,-511"/>
+    </union>
+    <!-- wool room rules -->
+    <apply block="only-yellow" use="only-yellow">
+        <region name="yellow-rooms"/>
+    </apply>
+    <apply enter="only-yellow" message="You may not enter your own wool room.">
+        <region name="yellow-rooms"/>
+    </apply>
+    <apply block="only-red" use="only-red">
+        <region name="red-rooms"/>
+    </apply>
+    <apply enter="only-red" message="You may not enter your own wool room.">
+        <region name="red-rooms"/>
+    </apply>
+    <!-- no block placement between wool rooms -->
+    <apply block="deny-all">
+        <region name="woolgap"/>
+    </apply>
+</regions>
+
+
+<disabledamage>
+    <damage>fall</damage>
+</disabledamage>
+
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>iron pickaxe</tool>
+    <tool>stone axe</tool>
+    <tool>bow</tool>
+</toolrepair>
+
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>leather leggings</item>
+    <item>leather boots</item>
+    <item>wood planks</item>
+    <item>hardened clay</item>
+	<item>cooked chicken</item>
+	<item>string</item>
+</itemremove>
+
+<killreward>
+    <item amount="3">fire</item>
+</killreward>
+
+<timelock>on</timelock>
+<!--Should be set to evening-->
+
+<maxbuildheight>20</maxbuildheight>
+
+<wools>
+	<wool team="red" color="yellow" craftable="false">
+		<block>-208.5,10,-380.5</block>
+	</wool>
+	<wool team="red" color="orange" craftable="false">
+		<block>-207.5,10,-380.5</block>
+	</wool>
+	<wool team="yellow" color="white" craftable="false">
+		<block>-208.5,10,-493.5</block>
+	</wool>
+	<wool team="yellow" color="red" craftable="false">
+		<block>-207.5,10,-493.5</block>
+	</wool>
+</wools>
+
+</map>

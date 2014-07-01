@@ -1,0 +1,213 @@
+<map proto="1.3.3" internal="true">
+<name>Sea Dogs</name>
+<version>1.0.0</version>
+<objective>Destroy all 3 enemy flags and protect your own!</objective>
+<authors><author>elijahyap</author></authors>
+<contributors>
+</contributors>
+<rules>
+	<rule>You cannot place TNT on the enemy ship</rule>
+	<rule>You cannot blow up the enemy flags with TNT</rule>
+	<rule>You cannot break any of the vine ladders or certain parts of your ship</rule>
+	<rule>Boarding launch pads will throw you to the enemy ship to fight</rule>
+	<rule>No bridging to the enemy ship</rule>
+</rules>
+<teams>
+	<team color="dark red" max="16" max-overfill="20">Pirates</team>
+	<team color="blue" max="16" max-overfill="20">Navy</team>
+</teams>
+<spawns>
+	<default yaw="0" pitch="0">
+		<cuboid min="56,58,-2" max="61,58,3"/>
+	</default>
+	<spawn team="Pirates" kit="Red" yaw="180" pitch="0">
+		<cuboid min="25,15,36" max="30,15,40"/>
+	</spawn>
+	<spawn team="Navy" kit="Blue" yaw="0" pitch="0">
+		<cuboid min="87,15,-39" max="92,15,-35"/>
+	</spawn>
+</spawns>
+<kits>
+<!--   kit given to both teams   -->
+<kit name="Team">
+		<item slot="0" name="Battleaxe">iron axe</item>
+	    <item slot="1">bow</item>
+	    <item slot="2">shears</item>
+	    <item slot="3" damage="0" amount="64">wood</item>
+	    <item slot="5" amount="16">stone button</item>
+	    <item slot="6"> water bucket</item>
+	    <item slot="7" amount="64">TNT</item>
+	    <item slot="8" amount="64">cooked fish</item>
+	    <item slot="27">wood sword</item>
+	    <item slot="28" amount="16">arrow</item>
+	    <item slot="33">water bucket</item>
+	    <item slot="34" amount="64">TNT</item>
+</kit>
+<kit name="Blue" parents="Team">
+	<helmet color="dd5566" enchantment="protection explosions:3">leather helmet</helmet>
+	<chestplate>iron chestplate</chestplate>
+	<leggings color="dd5566">leather leggings</leggings>
+	<boots>iron boots</boots>
+</kit>
+<kit name="Red" parents="Team">
+	<helmet color="5e55dd" enchantment="protection explosions:3">leather helmet</helmet>
+	<chestplate>iron chestplate</chestplate>
+	<leggings color="5e55dd">leather leggings</leggings>
+	<boots>iron boots</boots>
+</kits>
+<itemremove>
+	<item>iron axe</item>
+	<item>shears</item>
+	<item>wood sword</item>
+	<item>bow</item>
+	<item>arrow</item>
+	<item>water bucket</item>
+	<item>bucket</item>
+	<item>tnt</item>
+	<item>leather helmet</item>
+	<item>iron chestplate</item>
+	<item>leather leggings</item>
+	<item>iron boots</item>
+	<potion duration="2" amplifier="1">heal</potion>
+	<potion duration="5">damage resistance</potion>
+</itemremove>
+<filters>
+	<filter name="Navy-only">
+		<team>Navy</team>
+	</filter>
+	<filter name="Pirates-only">
+		<team>Pirates</team>
+	</filter>
+	<filter name="deny-ship">
+		<deny>
+			<any>
+				<block>double step</block>
+				<block>wood stairs</block>
+				<block>wood</block>
+				<block>wood stairs</block>
+				<block>wooden door</block>
+				<block>vine</block>
+				<block>chest</block>
+				<block>piston base</block>
+				<block>sign</block>
+			</any>
+		</deny>
+	</filter>
+	<filter name="deny-TNT">
+		<deny>
+			<block>TNT</block>
+		</deny>
+	</filter>
+	<filter name="deny-water">
+		<deny>
+				<any>
+					<block>water</block>
+					<block>stationary water</block>
+				</any>
+			</deny>
+		</filter>
+		<filter name="deny-wool-world">
+			<not>
+				<all>
+					<any>
+						<block>wool:0</block>
+						<block>wool:11</block>
+						<block>wool:14</block>
+						<block>wool:15</block>
+					</any>
+					<any>
+						<filter name="allow-world"/>
+						<filter name="deny-all"/>
+					</any>
+				</all>
+			</not>
+		</filter>
+	</filters>
+	<regions>
+	<!--   the ships   -->
+	<union name="ships" min="-44,0,-183" max="45,40,1"/>
+		<cuboid min="82,0,-40" max="97,46,40"/>
+		<cuboid min="20,0,-39" max="35,46,41"/>
+	</union>
+	<!--   the 2 spawn rooms  -->
+	<cuboid name="navy-spawn" min="85,15,-33" max="94,19,-40"/>
+	<cuboid name="pirate-spawn" min="23,15,34" max="32,19,41"/>
+	<!--   water exclusion region   -->
+	<cuboid name="water-free-zone" min="20,22,-40" max="97,oo,41"/>
+	<!--   no-build/no-destroy zones   -->
+	<apply block="deny-all" message="You may not bridge to the enemy ship">
+		<negative>
+			<region name="ships"/>
+		</negative>
+	</apply>
+	<apply block="deny-all" message="You may not modify the spawn area">
+		<union>
+			<region name="navy-spawn"/>
+			<region name="pirate-spawn"/>
+		</union>
+	</apply>
+	<apply block="deny-ship" message="You can't break this part of your ship">
+		<rectangle min="-oo,-oo" max="oo,oo"/>
+	</apply>
+	<!--   don't allow water above a certain height   -->
+	<apply block="deny-water" message="You may not place `9water`c here">
+		<region name="water-free-zone"/>
+	</apply>
+	<!--   don't allow TNT above a certain height   -->
+	<apply block="deny-tnt" message="You may not place TNT here">
+		<region name="water-free-zone"/>
+	</apply>
+
+	<!--   keep the teams out of each other's spawns   -->
+	<apply enter="Pirates-only" message="You may not enter the pirate spawn">
+		<region name="pirate-spawn"/>
+	</apply>
+	<apply enter="Navy-only" message="You may not enter the Navy spawn">
+		<region name="navy-spawn"/>
+	</apply>
+
+<!-- Jump Pads -->
+<apply velocity="-6,1,0">
+	<cuboid min="86,15,16" max="87,17,17"/>
+</apply>
+<apply velocity="-6,1,0">
+	<cuboid min="84,15,-7" max="85,17,-6"/>
+</apply>
+<apply velocity="-6,1,0">
+	<cuboid min="85,15,-25" max="86,17,-24"/>
+</apply>
+<apply velocity="6,1,0">
+	<cuboid min="30,15,-16" max="31,17,-15"/>
+</apply>
+<apply velocity="6,1,0">
+	<cuboid min="32,15,7" max="33,17,8"/>
+</apply>
+<apply velocity="6,1,0">
+	<cuboid min="31,15,25" max="32,17,26"/>
+</apply>
+</regions>
+
+<destroyables>
+	<destroyable name="Front Flag" owner="Pirates" show-progress="true" materials="wool:0;wool:11;wool:14;wool:15">
+		<cuboid min="84,26,-15" max="95,39,-18"/>
+	</destroyable>
+	<destroyable name="Middle Flag" owner="Pirates" show-progress="true" materials="wool:0;wool:11;wool:14;wool:15">
+		<cuboid min="84,31,5" max="95,44,8"/>
+	</destroyable>
+	<destroyable name="Back Flag" owner="Pirates" show-progress="true" materials="wool:0;wool:11;wool:14;wool:15">
+		<cuboid min="84,27,26" max="95,40,29"/>
+	</destroyable>
+	<destroyable name="Front Flag" owner="Navy" show-progress="true" materials="wool:0;wool:11;wool:14;wool:15">
+		<cuboid min="22,26,16" max="33,39,19"/>
+	</destroyable>
+	<destroyable name="Middle Flag" owner="Navy" show-progress="true" materials="wool:0;wool:11;wool:14;wool:15">
+		<cuboid min="22,31,-7" max="33,44,-4"/>
+	</destroyable>
+	<destroyable name="Back Flag" owner="Navy" show-progress="true" materials="wool:0;wool:11;wool:14;wool:15">
+		<cuboid min="22,27,-28" max="33,40,-25"/>
+	</destroyable>
+</destroyables>
+<disabledamage>
+	<damage self="false" ally="true" enemy="false" other="false">block explosion</damage>
+</disabledamage>
+</map>
