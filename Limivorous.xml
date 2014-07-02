@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.3.3">
 <name>Limivorous</name>
-<version>1.0.0</version>
+<version>1.0.2</version>
 <objective>Destroy both of the enemy's monuments to win!</objective>
 <authors>
     <author>Qixit</author>
@@ -9,6 +9,7 @@
 </authors>
 <contributors>
     <contributor contribution="Did the XML">Elijahyap</contributor>
+    <contributor contribution="Help with the XML">lord_creeper01</contributor>
 </contributors>
 <rules>
     <rule>Kill reward is an XP bottle and 9 nuggets</rule>
@@ -143,8 +144,8 @@
     </destroyable>
 </destroyables>
 <modes>
-<mode after="20m" material="beacon"/>
-<mode after="45m" material="gold block"/>
-<mode after="1h" material="glass"/>
+    <mode after="20m" material="beacon"/>
+    <mode after="45m" material="gold block"/>
+    <mode after="1h" material="glass"/>
 </modes>
 </map>
