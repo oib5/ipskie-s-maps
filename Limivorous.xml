@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.3.3">
 <name>Limivorous</name>
-<version>1.0.2</version>
+<version>1.0.3</version>
 <objective>Destroy both of the enemy's monuments to win!</objective>
 <authors>
     <author>Qixit</author>
@@ -63,14 +63,24 @@
     <item amount="1">exp bottle</item>
 </killreward>
 <itemremove>
-    <item>diamond pickaxe</item>
     <item>wood</item>
     <item>log</item>
-    <item>leather chesplate</item>
-    <item>leather boots</item>
+    <item>diamond pickaxe</item>
+</itemremove>
+<itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
+    <item>iron axe</item>
+</itemkeep>
+<armorkeep>
     <item>chainmail helmet</item>
     <item>chainmail leggings</item>
-</itemremove>
+    <item>leather boots</item>
+    <item>leather chestplate</item>
+    <item>gold helmet</item>
+    <item>gold helmet</item>
+    <item>gold helmet</item>
+</armorkeep>
 <toolrepair>
     <tool>diamond pickaxe</tool>
     <tool>iron axe</tool>
