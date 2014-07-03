@@ -78,8 +78,9 @@
     <item>leather boots</item>
     <item>leather chestplate</item>
     <item>gold helmet</item>
-    <item>gold helmet</item>
-    <item>gold helmet</item>
+    <item>gold chestplate</item>
+    <item>gold leggings</item>
+    <item>gold boots</item>
 </armorkeep>
 <toolrepair>
     <tool>diamond pickaxe</tool>
