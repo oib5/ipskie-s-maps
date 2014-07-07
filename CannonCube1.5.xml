@@ -15,6 +15,7 @@
     <rule>Attacker pickaxes do double damage</rule>
     <rule>Smooth quartz blocks are fully blast resistant (and can be mined)</rule>
     <rule>Spawn platforms refill your health and give you full resistance</rule>
+    <rule>Defenders are allowed to blow up th</rule>
 </rules>
 <teams>
     <team color="dark red" max="32" max-overfill="40">Attackers</team>
@@ -210,11 +211,21 @@
 <regions>
     <!--    the map cuboid    -->
     <cuboid name="cuboid" min="-44,0,-222" max="45,40,1"/>
+    <!--    primary platform   -->
+    <cuboid name="platform" min="x,y,x" max="x,y,z"/>
     <!--    the 3 attacker spawn platform areas   -->
     <union name="attacker-spawn-platforms">
-        <cuboid min="-4,9,-222" max="5,13,-213"/>
-        <cuboid min="36,31,-212" max="45,35,-203"/>
-        <cuboid min="-44,31,-212" max="-35,35,-203"/>
+        <translate offset="x,y,z"><region name="platform"/></translate>
+        <translate offset="x,y,z"><region name="platform"/></translate>
+        <translate offset="x,y,z"><region name="platform"/></translate>
+    </union>
+    <!--    primary monument   -->
+    <cuboid name="holding area" min="x,y,x" max="x,y,z"/>
+    <!--    the 3 iron door holding cells   -->
+    <union name="holding areas">
+        <translate offset="x,y,z"><region name="holding area"/></translate>
+        <translate offset="x,y,z"><region name="holding area"/></translate>
+        <translate offset="x,y,z"><region name="holding area"/></translate>
     </union>
     <!--    attacker spawn room    -->
     <cuboid name="attacker-spawn-room" min="-11,48,-233" max="12,52,-200"/>
@@ -224,13 +235,15 @@
     <cuboid name="defender-spawn" min="-4,2,-14" max="5,5,-5"/>
     <!--    water exclusion region inside the fortress    -->
     <cuboid name="water-free-zone" min="-7,0,-17" max="8,oo,-2"/>
-    <!--    forward drop shafts    -->
+    <!--    forward drop chutes    -->
+    <!--   primary chute   -->
+    <cuboid name="chute" min="x,y,z" max="x,y,z"/>
     <union name="forward-drop-chutes">
-        <cuboid min="36,43,-73" max="45,64,-64"/>
-        <cuboid min="-44,43,-73" max="-55,64,-64"/>
-        <cuboid min="-4,43,-113" max="5,64,-104"/>
-        <cuboid min="-16,43,-152" max="25,64,-143"/>
-        <cuboid min="-24,43,-152" max="-15,64,-143"/>
+        <translate offset="x,y,z"><region name="chute"/></translate>
+        <translate offset="x,y,z"><region name="chute"/></translate>
+        <translate offset="x,y,z"><region name="chute"/></translate>
+        <translate offset="x,y,z"><region name="chute"/></translate>
+        <translate offset="x,y,z"><region name="chute"/></translate>
     </union>
     <!--    no-build/no-destroy zones    -->
     <apply block="deny-all" message="You may not place or break blocks outside of the map">
@@ -239,9 +252,7 @@
         </negative>
     </apply>
     <apply block="deny-all" message="You may not modify the drop chute area">
-        <union>
-            <region name="forward-drop-chutes"/>
-        </union>
+        <region name="forward-drop-chutes"/>
     </apply>
     <apply block="deny-all" message="You may not modify the spawn area">
         <union>
@@ -308,13 +319,7 @@
     </apply>
     </regions>
     <destroyables>
-        <destroyable name="Cobwebs A" owner="Attackers" completion="0%" materials="web" mode-changes="true" show="false">
-            <cuboid min="-5,10,-222" max="6,11,-213"/>
-        </destroyable>
-		<destroyable name="Cobwebs B" owner="Attackers" completion="0%" materials="web" mode-changes="true" show="false">
-            <cuboid min="35,32,-212" max="46,33,-203"/>
-        </destroyable>
-		<destroyable name="Cobwebs C" owner="Attackers" completion="0%" materials="web" mode-changes="true" show="false">
+        <destroyable name="Holding Cells" owner="Attackers" completion="0%" materials="web" mode-changes="true" show="false">
             <cuboid min="-45,32,-212" max="-34,33,-203"/>
         </destroyable>
         <destroyable name="Endstone Pillar" owner="Defenders" show-progress="true" materials="ender stone" sparks="true" mode-changes="false" completion="100%">
