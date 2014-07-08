@@ -256,6 +256,11 @@
     <translate name="portal-f" offset="5,50,-224"><region name="portal"/></translate>
     <translate name="portal-g" offset="-1,50,-225"><region name="portal"/></translate>
     <translate name="portal-h" offset="-7,50,-224"><region name="portal"/></translate>
+    <translate name="return-portal-a" offset="29,65,-73"><region name="portal"/></translate>
+    <translate name="return-portal-b" offset="-31,65,-73"><region name="portal"/></translate>
+    <translate name="return-portal-c" offset="-1,65,-113"><region name="portal"/></translate>
+    <translate name="return-portal-d" offset="19,65,-152"><region name="portal"/></translate>
+    <translate name="return-portal-e" offset="-21,65,-152"><region name="portal"/></translate>
     <!--    the endstone pillar    -->
     <cuboid name="pillar" min="-2,5,-12" max="3,34,-7"/>
     <!--    the defender spawn structure    -->
@@ -383,57 +388,57 @@
     <!--   portals to the chutes   -->
     <!--   chute A   -->
     <portal x="34" y="15" z="133">
-        <cuboid min="5,50,-206" max="8,52,-203"/>
+        <region name="portal-a"/>
     </portal>
     <!--  chute B   -->
     <portal x="-34" y="15" z="133">
-        <cuboid min="-7,50,-206" max="-4,52,-203"/>
+        <region name="portal-b"/>
     </portal>
 	<!--  chute C   -->
     <portal x="0" y="15" z="99">
-        <cuboid min="-1,50,-212" max="2,52,-209"/>
+        <region name="portal-c"/>
     </portal>
     <!--  chute D   -->
     <portal x="16" y="15" z="66">
-        <cuboid min="3,50,-218" max="6,52,-215"/>
+        <region name="portal-d"/>
     </portal>
     <!--  chute E   -->
     <portal x="-16" y="15" z="66">
-        <cuboid min="-5,50,-218" max="-2,52,-215"/>
+        <region name="portal-e"/>
     </portal>
     <!--   portals to the platforms   -->
     <!--   platform A   -->
     <portal x="34" y="-17" z="15">
-        <cuboid min="5,50,-224" max="8,52,-221"/>
+        <region name="portal-f"/>
     </portal>
     <!--   platform B   -->
     <portal x="0" y="-36" z="6">
-        <cuboid min="-1,50,-225" max="2,52,-222"/>
+        <region name="portal-g"/>
     </portal>
     <!--   platform C   -->
     <portal x="-34" y="-17" z="15">
-        <cuboid min="-7,50,-224" max="-4,52,-221"/>
+        <region name="portal-h"/>
     </portal>
     <!--   portals from the chutes   -->
     <!--   chute A   -->
     <portal x="-40" y="-15" z="-158">
-        <cuboid min="39,65,-74" max="42,67,-71"/>
+        <region name="return-portal-a"/>
     </portal>
     <!--  chute B   -->
     <portal x="40" y="-15" z="-158">
-        <cuboid min="-41,65,-74" max="-38,67,-71"/>
+        <region name="return-portal-b"/>
     </portal>
 	<!--  chute C   -->
     <portal x="0" y="-15" z="-118">
-        <cuboid min="-1,65,-113" max="2,67,-110"/>
+        <region name="return-portal-c"/>
     </portal>
     <!--  chute D   -->
     <portal x="-20" y="-15" z="-79">
-        <cuboid min="19,65,-152" max="22,67,-149"/>
+        <region name="return-portal-d"/>
     </portal>
     <!--  chute E   -->
     <portal x="20" y="-15" z="-79">
-        <cuboid min="-21,65,-152" max="-18,67,-149"/>
+        <region name="return-portal-e"/>
     </portal>
 </portals>
 </map>
