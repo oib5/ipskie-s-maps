@@ -102,6 +102,9 @@
     <kit name="drop-buff-apply" force="true">
         <potion amplifier="5" duration="7" ambient="true">damage resistance</potion>
     </kit>
+    <kit name="launch-buff-apply" force="true">
+        <potion amplifier="5" duration="3" ambient="true">damage resistance</potion>
+    </kit>
     <kit name="spawn-buff-remove" force="true">
         <potion amplifier="0" duration="0" ambient="true">damage resistance</potion>
     </kit>
@@ -143,7 +146,13 @@
     <item>snow ball</item>
 </itemremove>
 <killreward>
+    <filter><team>defenders</team></filter>
     <item amount="8">arrow</item>
+</killreward>
+<killreward>
+    <filter><team>attackers</team></filter>
+    <item amount="32">snow ball</item>
+</killreward>
 <filters>
     <filter name="attackers-only">
         <team>attackers</team>
@@ -175,13 +184,20 @@
         </any>
         </deny>
     </filter>
-    <filter name="deny-non-explosives">
-        <block>TNT</block>
-        <block>stone plate</block>
-        <block>redstone torch on</block>
-        <block>lever</block>
-        <block>redstone block</block>
-        <block>stone button</block>
+    <filter name="defender-only-explosives">
+        <not>
+        <all>
+            <team>defenders</team>
+            <any>
+                <block>TNT</block>
+                <block>stone plate</block>
+                <block>redstone torch on</block>
+                <block>lever</block>
+                <block>redstone block</block>
+                <block>stone button</block>
+            </any>
+        </all>
+        </not>
     </filter>
     <filter name="deny-manual-endstone">
         <not>
@@ -212,44 +228,70 @@
     <!--    the map cuboid    -->
     <cuboid name="cuboid" min="-44,0,-222" max="45,40,1"/>
     <!--    primary platform   -->
-    <cuboid name="platform" min="x,y,x" max="x,y,z"/>
+    <cuboid name="platform" min="0,0,0" max="9,5,9"/>
     <!--    the 3 attacker spawn platform areas   -->
     <union name="attacker-spawn-platforms">
-        <translate offset="x,y,z"><region name="platform"/></translate>
-        <translate offset="x,y,z"><region name="platform"/></translate>
-        <translate offset="x,y,z"><region name="platform"/></translate>
+        <translate offset="36,31,-212"><region name="platform"/></translate>
+        <translate offset="-44,31,-212"><region name="platform"/></translate>
+        <translate offset="-4,9,-222"><region name="platform"/></translate>
     </union>
     <!--    primary monument   -->
-    <cuboid name="holding area" min="x,y,x" max="x,y,z"/>
+    <cuboid name="holding-area" min="0,0,0" max="11,4,11"/>
     <!--    the 3 iron door holding cells   -->
-    <union name="holding areas">
-        <translate offset="x,y,z"><region name="holding area"/></translate>
-        <translate offset="x,y,z"><region name="holding area"/></translate>
-        <translate offset="x,y,z"><region name="holding area"/></translate>
+    <union name="holding-areas">
+        <translate offset="35,32,-213"><region name="holding-area"/></translate>
+        <translate offset="-45,32,-213"><region name="holding-area"/></translate>
+        <translate offset="-5,10,-223"><region name="holding-area"/></translate>
     </union>
     <!--    attacker spawn room    -->
     <cuboid name="attacker-spawn-room" min="-11,48,-233" max="12,52,-200"/>
+    <!--    primary portal   -->
+    <cuboid name="portal" min="0,0,0" max="3,1,3"/>
+    <!--    the 5 portals   -->
+    <translate name="portal-a" offset="4,50,-206"><region name="portal"/></translate>
+    <translate name="portal-b" offset="-6,50,-206"><region name="portal"/></translate>
+    <translate name="portal-c" offset="-1,50,-212"><region name="portal"/></translate>
+    <translate name="portal-d" offset="3,50,-218"><region name="portal"/></translate>
+    <translate name="portal-e" offset="-5,50,-218"><region name="portal"/></translate>
+    <translate name="portal-f" offset="5,50,-224"><region name="portal"/></translate>
+    <translate name="portal-g" offset="-1,50,-225"><region name="portal"/></translate>
+    <translate name="portal-h" offset="-7,50,-224"><region name="portal"/></translate>
     <!--    the endstone pillar    -->
     <cuboid name="pillar" min="-2,5,-12" max="3,34,-7"/>
     <!--    the defender spawn structure    -->
     <cuboid name="defender-spawn" min="-4,2,-14" max="5,5,-5"/>
     <!--    water exclusion region inside the fortress    -->
-    <cuboid name="water-free-zone" min="-7,0,-17" max="8,oo,-2"/>
-    <!--    forward drop chutes    -->
+    <cuboid name="water-free-zone" min="-11,0,-21" max="12,35,2"/>
+    <!--    no build region inside the fortress    -->
+    <cuboid name="above-monument" min="-11,35,-21" max="12,40,2"/>
     <!--   primary chute   -->
-    <cuboid name="chute" min="x,y,z" max="x,y,z"/>
+    <cuboid name="chute" min="0,0,0" max="9,43,9"/>
+    <!--    forward drop chutes    -->
     <union name="forward-drop-chutes">
-        <translate offset="x,y,z"><region name="chute"/></translate>
-        <translate offset="x,y,z"><region name="chute"/></translate>
-        <translate offset="x,y,z"><region name="chute"/></translate>
-        <translate offset="x,y,z"><region name="chute"/></translate>
-        <translate offset="x,y,z"><region name="chute"/></translate>
+        <translate offset="-34,43,-73"><region name="chute"/></translate>
+        <translate offset="26,43,-73"><region name="chute"/></translate>
+        <translate offset="-4,43,-113"><region name="chute"/></translate>
+        <translate offset="-24,43,-152"><region name="chute"/></translate>
+        <translate offset="16,43,-152"><region name="chute"/></translate>
+    </union>
+    <!--   primary drop region   -->
+    <cuboid name="drop" min="0,0,0" max="9,21,9"/>
+    <!--    drop regions    -->
+    <union name="below-drop-chutes">
+        <translate offset="-34,0,-73"><region name="drop"/></translate>
+        <translate offset="26,0,-73"><region name="drop"/></translate>
+        <translate offset="-4,0,-113"><region name="drop"/></translate>
+        <translate offset="-24,0,-152"><region name="drop"/></translate>
+        <translate offset="16,0,-152"><region name="drop"/></translate>
     </union>
     <!--    no-build/no-destroy zones    -->
     <apply block="deny-all" message="You may not place or break blocks outside of the map">
         <negative>
             <region name="cuboid"/>
         </negative>
+    </apply>
+    <apply block="deny-all" message="You may not place or break blocks above the monument area">
+        <region name="above-monument"/>
     </apply>
     <apply block="deny-all" message="You may not modify the drop chute area">
         <region name="forward-drop-chutes"/>
@@ -268,11 +310,15 @@
     <apply block="deny-water" message="You may not place `9water`c inside the fortress walls">
         <region name="water-free-zone"/>
     </apply>
+    <!--    defenders only allowed to place explosives and related blocks below the drop chutes    -->
+    <apply block="defender-only-explosives" message="You may only place and ignite `4TNT`c beneath drop chutes">
+    	<region name="below-drop-chutes"/>
+    </apply>
     <!--    keep the teams out of each other's spawns    -->
-    <apply enter="defenders-only" message="You may not enter the Defender spawn">
+    <apply enter="defenders-only" message="You may not enter the `9Defender`c spawn">
         <region name="defender-spawn"/>
     </apply>
-    <apply enter="attackers-only" message="You may not enter the Attacker spawn">
+    <apply enter="attackers-only" message="You may not enter the `4Attacker`c spawn">
         <region name="attacker-spawn-platforms"/>
     </apply>
     <!--    apply spawn buffs    -->
@@ -319,7 +365,7 @@
     </apply>
     </regions>
     <destroyables>
-        <destroyable name="Holding Cells" owner="Attackers" completion="0%" materials="web" mode-changes="true" show="false">
+        <destroyable name="holding-areas" owner="Attackers" completion="0%" materials="iron door block" mode-changes="true" show="false">
             <cuboid min="-45,32,-212" max="-34,33,-203"/>
         </destroyable>
         <destroyable name="Endstone Pillar" owner="Defenders" show-progress="true" materials="ender stone" sparks="true" mode-changes="false" completion="100%">
@@ -329,7 +375,7 @@
     <modes>
         <mode after="30s" material="air" name="ATTACKERS RELEASED!"/>
     </modes>
-    <time result="defenders">20m</time>
+    <time result="defenders">1230s</time>
     <disabledamage>
         <damage self="false" ally="true" enemy="false" other="false">block explosion</damage>
     </disabledamage>
