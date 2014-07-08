@@ -167,6 +167,7 @@
             <block>quartz stairs</block>
             <!--    pillar quartz and stairs    -->
             <block>stained glass:15</block>
+            <block>wall sign</block>
             <!--    black stained glass    -->
         </any>
         </deny>
