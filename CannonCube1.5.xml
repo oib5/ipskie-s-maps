@@ -319,6 +319,10 @@
     <apply block="defender-only-explosives" message="You may only place and ignite `4TNT`c beneath drop chutes">
     	<region name="below-drop-chutes"/>
     </apply>
+    <!--    don't allow water beneath spawn chutes    -->
+    <apply block="deny-water" message="You may not place `9water`c beneath the spawn chutes">
+    	<region name="below-drop-chutes"/>
+    </apply>
     <!--    keep the teams out of each other's spawns    -->
     <apply enter="defenders-only" message="You may not enter the `9Defender`c spawn">
         <region name="defender-spawn"/>
