@@ -356,42 +356,68 @@
         <rectangle min="-oo,-oo" max="oo,oo"/>
     </apply>
     <!--    the D.M.Ps    -->
-    <apply velocity="-1.6,1.9,-1.6">
-        <cuboid min="-24,31,-34" max="-22,33,-32"/>
+    <!--    3 D.M.Ps on cubes   -->
+    <apply velocity="-1,1,0" enter="defenders-only">
+        <cuboid min="20,10,-10" max="21,11,-9"/>
     </apply>
-    <apply velocity="-1.6,1.9,-1.6">
-        <cuboid min="-4,10,-34" max="-2,12,-32"/>
+    <apply velocity="0,1,1" enter="defenders-only">
+        <cuboid min="0,10,-30" max="1,11,-29"/>
     </apply>
-    <apply velocity="1.6,1.9,-1.6">
-        <cuboid min="3,10,-34" max="5,12,-32"/>
+    <apply velocity="1,1,0" enter="defenders-only">
+        <cuboid min="-20,10,-30" max="-19,11,-29"/>
     </apply>
-    <apply velocity="1.6,1.9,-1.6">
-        <cuboid min="23,31,-34" max="25,33,-32"/>
+    <!--    2 D.M.Ps on lower cube   -->
+    <apply velocity="-1.6,1.9,-1.6" enter="defenders-only" kit="launch-buff-apply">
+        <cuboid min="-4,10,-34" max="-3,11,-33"/>
     </apply>
-    </regions>
-    <destroyables>
-        <destroyable name="holding-areas" owner="Attackers" completion="0%" materials="iron door block" mode-changes="true" show="false">
-            <cuboid min="-45,32,-212" max="-34,33,-203"/>
-        </destroyable>
-        <destroyable name="Endstone Pillar" owner="Defenders" show-progress="true" materials="ender stone" sparks="true" mode-changes="false" completion="100%">
-		    <region name="pillar"/>
-        </destroyable>
-    </destroyables>
-    <modes>
-        <mode after="30s" material="air" name="ATTACKERS RELEASED!"/>
-    </modes>
-    <time result="defenders">1230s</time>
-    <disabledamage>
-        <damage self="false" ally="true" enemy="false" other="false">block explosion</damage>
-    </disabledamage>
-    <portals>
+    <apply velocity="1.6,1.9,-1.6" enter="defenders-only" kit="launch-buff-apply">
+        <cuboid min="4,10,-34" max="5,11,-33"/>
+    </apply>
+    <!--    2 outward D.M.Ps on upper cubes   -->
+    <apply velocity="1.6,1.9,-1.6" enter="defenders-only" kit="launch-buff-apply">
+        <cuboid min="24,21,-34" max="25,22,-33"/>
+    </apply>
+    <apply velocity="-1.6,1.9,-1.6" enter="defenders-only" kit="launch-buff-apply">
+        <cuboid min="-24,21,-34" max="-23,22,-33"/>
+    </apply>
+    <!--    2 inward D.M.Ps on upper cubes   -->
+    <apply velocity="0.65,1.2,0.65" enter="defenders-only">
+        <cuboid min="16,21,-26" max="17,22,-27"/>
+    </apply>
+    <apply velocity="-0.65,1.2,0.65" enter="defenders-only">
+        <cuboid min="-16,21,-26" max="-15,22,-27"/>
+    </apply>
+    <!--    2 outward D.M.Ps on lower ring   -->
+    <apply velocity="-1,1.2,-1" enter="defenders-only">
+        <cuboid min="-10,15,-20" max="-9,16,-19"/>
+    </apply>
+    <apply velocity="1,1.2,-1" enter="defenders-only">
+        <cuboid min="10,15,-20" max="11,16,-19"/>
+    </apply>
+</regions>
+<destroyables>
+    <destroyable name="holding" owner="Attackers" completion="0%" materials="iron door block" mode-changes="true" show="false">
+        <region name="holding-areas"/>
+    </destroyable>
+    <destroyable name="Endstone Pillar" owner="Defenders" show-progress="true" materials="ender stone" sparks="true" mode-changes="false" completion="100%">
+        <region name="pillar"/>
+    </destroyable>
+</destroyables>
+<modes>
+    <mode after="30s" material="air" name="ATTACKERS RELEASED!"/>
+</modes>
+<time result="defenders">1230s</time>
+<disabledamage>
+    <damage self="false" ally="true" enemy="false" other="false">block explosion</damage>
+</disabledamage>
+<portals>
     <!--   portals to the chutes   -->
     <!--   chute A   -->
-    <portal x="34" y="15" z="133">
+    <portal x="25" y="15" z="133">
         <region name="portal-a"/>
     </portal>
     <!--  chute B   -->
-    <portal x="-34" y="15" z="133">
+    <portal x="-25" y="15" z="133">
         <region name="portal-b"/>
     </portal>
 	<!--  chute C   -->
@@ -421,11 +447,11 @@
     </portal>
     <!--   portals from the chutes   -->
     <!--   chute A   -->
-    <portal x="-40" y="-15" z="-158">
+    <portal x="-30" y="-15" z="-158">
         <region name="return-portal-a"/>
     </portal>
     <!--  chute B   -->
-    <portal x="40" y="-15" z="-158">
+    <portal x="30" y="-15" z="-158">
         <region name="return-portal-b"/>
     </portal>
 	<!--  chute C   -->
