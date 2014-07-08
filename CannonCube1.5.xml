@@ -186,7 +186,8 @@
         </deny>
     </filter>
     <filter name="defender-only-explosives">
-        <not>
+        <any>
+        <team>attackers</team>
         <all>
             <team>defenders</team>
             <any>
@@ -198,7 +199,7 @@
                 <block>stone button</block>
             </any>
         </all>
-        </not>
+        </any>
     </filter>
     <filter name="deny-manual-endstone">
         <not>
