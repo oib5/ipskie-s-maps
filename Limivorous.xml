@@ -148,15 +148,15 @@
     <destroyable name="Front Monument" owner="Red Team" mode-changes="false" materials="smooth brick;cobblestone stairs;beacon" completion="100%">
         <cuboid min="-1495,7,-1324" max="-1493,10,-1321"/>
     </destroyable>
-    <destroyable name="Back Monument" owner="Blue Team" mode-changes="true" materials="beacon;gold block" completion="100%">
+    <destroyable name="Back Monument" owner="Blue Team" mode-changes="true" materials="beacon;redstone block" completion="100%">
         <cuboid min="-1428,7,-1325" max="-1423,11,-1320"/>
     </destroyable>
-    <destroyable name="Back Monument" owner="Red Team" mode-changes="true" materials="beacon;gold block" completion="100%">
+    <destroyable name="Back Monument" owner="Red Team" mode-changes="true" materials="beacon;redstone block" completion="100%">
         <cuboid min="-1632,7,-1325" max="-1627,11,-1320"/>
     </destroyable>
 </destroyables>
 <modes>
-    <mode after="10m" material="redstone block"/>
-    <mode after="20m" material="glass"/>
+    <mode after="15m" material="gold block"/>
+    <mode after="25m" material="glass"/>
 </modes>
 </map>
