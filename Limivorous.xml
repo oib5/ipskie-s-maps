@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.3.3">
 <name>Limivorous</name>
-<version>2.1.1</version>
+<version>3.0.0</version>
 <objective>Destroy both of the enemy's monuments to win!</objective>
 <authors>
     <author>Qixit</author>
@@ -23,12 +23,12 @@
         <cuboid min="-1529,38,-1257" max="-1525,38,-1252"/>
     </default>
     <spawn team="Red Team" kit="red">
-        <block yaw="45">-1457.5,15,-1357.5</block>
-        <block yaw="135">-1457.5,15,-1287.5</block>
+        <block yaw="45">-1458.5,65,-1356.5</block>
+        <block yaw="135">-1458.5,65,-1288.5</block>
     </spawn>
     <spawn team="Blue Team" kit="blue">
-        <block yaw="-45">-1597.5,15,-1357.5</block>
-        <block yaw="-135">-1597.5,15,-1287.5</block>
+        <block yaw="-45">-1596.5,65,-1356.5</block>
+        <block yaw="-135">-1596.5,65,-1288.5</block>
     </spawn>
 </spawns>
 <kits>
@@ -41,7 +41,7 @@
    <kit name="team" parents="all">
         <item slot="0">stone sword</item>
         <item slot="1">bow</item>
-        <item slot="2" enchantment="dig speed:2">diamond pickaxe</item>
+        <item slot="2">diamond pickaxe</item>
         <item slot="28" amount="64">arrow</item>
         <item slot="3">iron axe</item>
         <item slot="8" amount="64">glass</item>
@@ -95,6 +95,7 @@
             <block>mob spawner</block>
             <block>enchantment table</block>
             <block>anvil</block>
+            <block>iron door</block>
         </any>
         </deny>
     </filter>
@@ -108,17 +109,17 @@
 <regions>
     <!--    the map area   -->
     <union name="map">
-        <cuboid min="-1597,2,-1357" max="-1458,32,-1288"/>
-        <cuboid min="-1616,2,-1333" max="-1597,32,-1312"/>
-        <cuboid min="-1458,2,-1333" max="-1439,32,-1312"/>
+        <cuboid min="-1597,3,-1357" max="-1458,32,-1288"/>
+        <cuboid min="-1621,3,-1348" max="-1434,32,-1297"/>
+        <cuboid min="-1640,3,-1333" max="-1415,32,-1312"/>
     </union>
     <union name="red-spawn">
-        <rectangle name="red-spawn-1" max="-1466,-1295" min="-1456,-1286"/>
-        <rectangle name="red-spawn-2" max="-1466,-1349" min="-1456,-1359"/>
+        <rectangle name="red-spawn-1" max="-1460,-1290" min="-1457,-1287"/>
+        <rectangle name="red-spawn-2" max="-1460,-1358" min="-1457,-1355"/>
     </union>
 	    <union name="blue-spawn">
-        <rectangle name="blue-spawn-1" max="-1589,-1349" min="-1599,-1359"/>
-        <rectangle name="blue-spawn-2" max="-1589,-1296" min="-1599,-1286"/>
+        <rectangle name="blue-spawn-1" max="-1598,-1358" min="-1595,-1355"/>
+        <rectangle name="blue-spawn-2" max="-1598,-1290" min="-1595,-1287"/>
     </union>
 	<apply block="deny-blocks" message="You may not break the spawns">
         <region name="blue-spawn" />
@@ -147,16 +148,15 @@
     <destroyable name="Front Monument" owner="Red Team" mode-changes="false" materials="smooth brick;cobblestone stairs;beacon" completion="100%">
         <cuboid min="-1495,7,-1324" max="-1493,10,-1321"/>
     </destroyable>
-    <destroyable name="Back Monument" owner="Blue Team" mode-changes="true" materials="obsidian" completion="100%">
-        <cuboid min="-1450,7,-1323" max="-1449,10,-1322"/>
+    <destroyable name="Back Monument" owner="Blue Team" mode-changes="true" materials="beacon;gold block" completion="100%">
+        <cuboid min="-1428,7,-1325" max="-1423,11,-1320"/>
     </destroyable>
-    <destroyable name="Back Monument" owner="Red Team" mode-changes="true" materials="obsidian" completion="100%">
-        <cuboid min="-1606,7,-1323" max="-1605,10,-1322"/>
+    <destroyable name="Back Monument" owner="Red Team" mode-changes="true" materials="beacon;gold block" completion="100%">
+        <cuboid min="-1632,7,-1325" max="-1627,11,-1320"/>
     </destroyable>
 </destroyables>
 <modes>
-    <mode after="20m" material="beacon"/>
-    <mode after="45m" material="gold block"/>
-    <mode after="1h" material="glass"/>
+    <mode after="10m" material="redstone block"/>
+    <mode after="20m" material="glass"/>
 </modes>
 </map>
