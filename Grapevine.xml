@@ -1,0 +1,134 @@
+<map proto="1.3.3">
+    <name>Grapevine</name>
+    <version>1.0</version>
+    <objective>Leak lava from the enemy's core</objective>
+    <authors>
+        <author>_Cuberoot</author>
+    </authors>
+    <contributors>
+        <contributor contribution="Doing the XML">elijahyap</contribution>
+    </contributors>
+    <teams>
+        <team id="green" color="dark green" max="16" max-overfill="20">Green Team</team>
+        <team id="purple" color="dark purple" max="16" max-overfill="20">Purple Team</team>
+    </teams>
+    <regions>
+        <cuboid name="map" min="-42,19,-95" max="26,50,19"/>
+        <cuboid name="island" min="-18,19,-42" max="2,23,-33"/>
+        <complement name="renew">
+            <region name="map"/>
+            <region name="island"/>
+        </complement>
+        <apply block="deny-all" team="green"><cuboid min="-26,21,4" max="-19,25,14"/></apply>
+        <apply block="deny-all" team="purple"><cuboid min="3,21,-90" max="10,25,-80"/></apply>
+    </regions>
+    <kits>
+        <kit name="common">
+            <item slot="0">diamond sword</item>
+            <item slot="1" enchantment="arrow infinite:1">bow</item>
+            <item slot="2">diamond pickaxe</item>
+            <item slot="3" enchantment="durability:2">iron axe</item>
+            <item slot="4" amount="64">tnt</item>
+            <item slot="31" amount="64">tnt</item>
+            <item slot="22" amount="64">tnt</item>
+            <item slot="13" amount="64">tnt</item>
+            <item slot="5">water bucket</item>
+            <item slot="32">water bucket</item>
+            <item slot="23">water bucket</item>
+            <item slot="6" amount="32">stone button</item>
+            <item slot="7" amount="32">ladder</item>
+            <item slot="8" amount="64">quartz block</item>
+            <item slot="14">workbench</item>
+            <item slot="15" amount="64">redstone torch on</item>
+            <item slot="16" amount="64">diode block off</item>
+            <item slot="17" amount="8">trap door</item>
+            <item slot="24" amount="64" damage="7">step</item>
+            <item slot="25" amount="8">redstone block</item>
+            <item slot="26" amount="64">stone plate</item>
+            <item slot="33" amount="16">lever</item>
+            <item slot="34" amount="64">redstone</item>
+            <item slot="35" amount="64">fence</item>
+            <leggings enchantment="protection explosions:3" damage="-3000">iron leggings</leggings>
+        </kit>
+        <kit name="green" parents="common">
+            <helmet damage="-3000" color="7fcc19">leather helmet</helmet>
+            <chestplate damage="-3000" color="7fcc19">leather chestplate</chestplate>
+            <boots damage="-3000" color="7fcc19">leather boots</boots>
+        </kit>
+        <kit name="purple" parents="common">
+            <helmet damage="-3000" color="7f3fb2">leather helmet</helmet>
+            <chestplate damage="-3000" color="7f3fb2">leather chestplate</chestplate>
+            <boots damage="-3000" color="7f3fb2">leather boots</boots>
+        </kit>
+    </kits>
+    <itemremove>
+        <item>diamond sword</item>
+        <item>bow</item>
+        <item>diamond pickaxe</item>
+        <item>iron axe</item>
+        <item>tnt</item>
+        <item>water bucket</item>
+        <item>stone button</item>
+        <item>ladder</item>
+        <item>quartz block</item>
+        <item>workbench</item>
+        <item>redstone torch on</item>
+        <item>diode block off</item>
+        <item>trap door</item>
+        <item>step</item>
+        <item>redstone block</item>
+        <item>stone plate</item>
+        <item>lever</item>
+        <item>redstone</item>
+        <item>fence</item>
+        <item>iron leggings</item>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>leather boots</item>
+        <item>quartz block</item>
+        <item>quartz block:1</item>
+        <item>quartz slab</item>
+        <item>quartz stairs</item>
+    </itemremove>
+    <killreward>
+        <item amount="16">tnt</item>
+    <spawns>
+        <spawn team="green" yaw="-90" kit="green"><cuboid min="-26,22,4" max="-19,22,14"/></spawn>
+        <spawn team="purple" yaw="90" kit="purple"><cuboid min="3,22,-90" max="10,22,-80"/></spawn>
+        <default yaw="-90"><cuboid min="-53,48,-40" max="-48,48,-35"/></default>
+    </spawns>
+    <cores material="obsidian" leak="5">
+        <core team="purple"><cuboid min="-10,36,-67" max="-6,42,-63"/></core>
+        <core team="green"><cuboid min="-10,36,-13" max="-6,42,-9"/></core>
+    </cores>
+    <portals>
+        <!--   portals to the cannon-pads   -->
+        <portal x="@-26.5" y="@37" z="@9.5">
+            <cuboid min="-28,23,6" max="-27,31,12"/>
+        </portal>
+        <portal x="@10.5" y="@37" z="@-88.5">
+            <cuboid min="12,23,-88" max="11,31,-82"/>
+        </portal>
+        <!--   portals back to spawns   -->
+        <portal x="@-20" y="@22" z="@9">
+            <cuboid min="-28,37,9" max="-27,40,10"/>
+        </portal>
+        <portal x="@4" y="@22" z="@-85">
+            <cuboid min="11,37,-86" max="12,40,-85"/>
+        </portal>
+    </portals>
+    <renewables>
+        <renewable rate="40" grow="true" avoid-entities="true" particles="false" sound="false">
+            <region name="renew"/>
+            <renew>stained clay:2</renew>
+            <renew>stained clay:5</renew>
+            <renew>stained clay:10</renew>
+            <renew>stained clay:13</renew>
+            <renew>stained glass:5</renew>
+            <renew>stained glass:10</renew>
+            <replace>air</replace>
+            <replace>water</replace>
+            <replace>stationary water</replace>
+        </renewable>
+    </renewables>
+</map>

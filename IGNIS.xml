@@ -1,60 +1,55 @@
-<?xml version="1.0"?>
-<map proto="1.3.2">
-<name>Ignis</name>
+<map proto="1.3.3">
+<name>Race For Victory 2.5</name>
 <version>1.0.0</version>
-<objective>Capture both wools from the enemy side and bring them back!</objective>
+<objective>Take the enemy's wool located to either side of the enemy's base and place it in your victory monument.</objective>
 <!-- Authors: -->
 <authors>
-	<author>elijahyap/mrsensiblle/IpsKie</author>
-	<author contribution="Built the thing">elijahyap</author>
+    <author contribution="map design">Plastix</author>
+    <author contribution="map design">IM_A_H0B0</author>
+    <author contribution="map design and gameplay management">MonsieurApple</author>
+    <author contribution="map design and item management">Anxuiz</author>
+    <author contribution="revamping the map">Cratain</author>
 </authors>
 
 <contributors>
-	<contributor contribution="Aesthetic feedback">Tau42</contributor>
+    <contributor contribution="XML">Elijahyap</contributor>
 </contributors>
 
+<rules>
+    <rule>Players may not obstruct their own wool room with lava above or below ground</rule>
+    <rule>Players may use lava freely on the opponent's side</rule>
+    <rule>Obsidian may be used underground to defend wool rooms</rule>
+</rules>
+
 <teams>
-   <team color="dark red" max="12" max-overfill="16">red</team>
-   <team color="yellow" max="12" max-overfill="16">yellow</team>
+    <team color="blue" max="32">Blue Team</team>
+    <team color="dark red" max="32">Red Team</team>
 </teams>
 
 <kits>
-    <kit name="spawn" force="true">
-        <item slot="0">stone sword</item>
+    <kit name="spawn">
+        <item slot="0">iron sword</item>
         <item slot="1">bow</item>
-		<item slot="2" enchantment="durability:3">iron pickaxe</item>
-		<item slot="3" enchantment="durability:3">stone axe</item>
-		<item slot="5" amount="64" damage="0">wood planks</item>
-		<item slot="8" amount="64">cooked chicken</item>
-		<item slot="28" amount="16">arrow</item>
-        <potion duration="5" amplifier="1">heal</potion>
-    </kit>
-    <kit name="red" parents="spawn">
-		<item slot="4" amount="64" damage="14">hardened clay</item>
-        <helmet color="cd0000">leather helmet</helmet>
-		<chestplate color="cd0000">leather chestplate</chestplate>
-		<leggings color="cd0000">leather leggings</leggings>
-		<boots color="cd0000">leather boots</boots>
-    </kit>
-    <kit name="yellow" parents="spawn">
-		<item slot="4" amount="64" damage="4">hardened clay</item>
-        <helmet color="E5E533">leather helmet</helmet>
-		<chestplate color="E5E533">leather chestplate</chestplate>
-		<leggings color="E5E533">leather leggings</leggings>
-		<boots color="E5E533">leather boots</boots>
+        <item slot="2" enchantment="durability:3;dig speed:1">iron pickaxe</item>
+        <item slot="3" enchantment="durability:3">wood axe</item>
+        <item slot="4" amount="64" damage="2">log</item>
+        <item slot="5" amount="64">cooked fish</item>
+        <item slot="6" amount="64">glass</item>
+        <item slot="7" amount="2">bucket</item>
+        <item slot="8" amount="64">ladder</item>
+        <item slot="9" amount="64">arrow</item>
+        <item slot="10" amount="64">arrow</item>
+        <item slot="16" amount="2">ice</item>
+        <item slot="17" amount="8">chest</item>
     </kit>
 </kits>
 
 <spawns>
-    <spawns safe="true">
-        <spawn team="red" kit="red" yaw="180">
-            <cuboid min="-210,30,-385" max="-206,30,-382"/>
-        </spawn>
-        <spawn team="yellow" kit="yellow" yaw="0">
-            <cuboid min="-210,30,-492" max="-206,30,-489"/>
-        </spawn>
+    <spawns kit="spawn">
+        <spawn team="red" yaw="0"><cylinder base="124.5,4,-58.5" radius="2.5" height="0"/></spawn>
+        <spawn team="yellow" yaw="180"><cylinder base="0.5,4,-54.5" radius="2.5" height="0"/></spawn>
     </spawns>
-    <default yaw="90"><cuboid min="-143.5.5,50.5,-437.5" max="-142.5,50.5,-436.5"/></default>
+    <default yaw="-90"><cylinder base="44.5,8,7.5" radius="4" height="0"/></default>
 </spawns>
 
 <playable>
@@ -119,8 +114,8 @@
     <item>leather boots</item>
     <item>wood planks</item>
     <item>hardened clay</item>
-	<item>cooked chicken</item>
-	<item>string</item>
+    <item>cooked chicken</item>
+    <item>string</item>
 </itemremove>
 
 <killreward>
@@ -133,18 +128,18 @@
 <maxbuildheight>20</maxbuildheight>
 
 <wools>
-	<wool team="red" color="yellow" craftable="false">
-		<block>-208.5,10,-380.5</block>
-	</wool>
-	<wool team="red" color="orange" craftable="false">
-		<block>-207.5,10,-380.5</block>
-	</wool>
-	<wool team="yellow" color="white" craftable="false">
-		<block>-208.5,10,-493.5</block>
-	</wool>
-	<wool team="yellow" color="red" craftable="false">
-		<block>-207.5,10,-493.5</block>
-	</wool>
+    <wool team="red" color="yellow" craftable="false">
+        <block>-208.5,10,-380.5</block>
+    </wool>
+    <wool team="red" color="orange" craftable="false">
+        <block>-207.5,10,-380.5</block>
+    </wool>
+    <wool team="yellow" color="white" craftable="false">
+        <block>-208.5,10,-493.5</block>
+    </wool>
+    <wool team="yellow" color="red" craftable="false">
+        <block>-207.5,10,-493.5</block>
+    </wool>
 </wools>
 
 </map>

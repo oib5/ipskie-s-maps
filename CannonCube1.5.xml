@@ -187,18 +187,18 @@
     </filter>
     <filter name="defender-only-explosives">
         <any>
-        <team>attackers</team>
-        <all>
-            <team>defenders</team>
-            <any>
-                <block>TNT</block>
-                <block>stone plate</block>
-                <block>redstone torch on</block>
-                <block>lever</block>
-                <block>redstone block</block>
-                <block>stone button</block>
-            </any>
-        </all>
+            <team>attackers</team>
+            <all>
+                <team>defenders</team>
+                <any>
+                    <block>TNT</block>
+                    <block>stone plate</block>
+                    <block>redstone torch on</block>
+                    <block>lever</block>
+                    <block>redstone block</block>
+                    <block>stone button</block>
+                </any>
+            </all>
         </any>
     </filter>
     <filter name="deny-manual-endstone">
