@@ -36,6 +36,7 @@
             <item slot="5" amount="16">glass</item>
             <item slot="28" amount="8">arrow</item>
             <item slot="8" amount="64">cooked beef</item>
+            <potion duration="5" amplifier="5" ambient="true">damage resistance</potion>
         </kit>
         <kit name="red" parents="team">
             <helmet color="dd5566">leather helmet</helmet>
@@ -90,19 +91,28 @@
         <union name="blue-side">
             <cuboid min="-32,0,15" max="44,30,25"/>
             <cuboid min="9,0,-39" max="39,30,-24"/>
-            <negative><rectangle name="blue-spawn-room" min="20,-39" max="29,-32"/></negative>
-            <negative><rectangle min="16,-25" max="33,-32"/></negative>
+            <cpmplement>
+                <cuboid name="blue-spawn-lane" min="9,7,-39" max="39,30,-25"/>
+                <cuboid name="blue-spawn-room" min="20,7,-39" max="29,30,-32"/>
+                <cuboid min="16,7,-25" max="33,30,-32"/>    
+            </cpmplement>
+            
         </union>
         <union name="red-side">
             <cuboid min="-32,0,15" max="44,30,25"/>
             <cuboid min="-32,0,-25" max="44,30,-11"/>
-            <negative><rectangle name="red-spawn-room" min="20,33" max="29,40"/></negative>
-            <negative><rectangle min="16,26" max="33,33"/></negative>
+            <complement>
+                <cuboid name="red-spawn-lane" min="9,7,26" max="39,30,40"/>
+                <rectangle name="red-spawn-room" min="20,33" max="29,40"/>
+                <rectangle min="16,26" max="33,33"/>
+            </complement>
         </union>
         <union name="buildable">
             <region name="red-side"/>
             <region name="blue-side"/>
             <region name="void"/>
+            <region name="blue-wool"/>
+            <region name="red-wool"/>
         <cuboid name="void" min="2,7,-14" max="44,30,17"/>
         <apply block="deny-all" message="You may not place or break blocks outside of the map">
             <negative>
