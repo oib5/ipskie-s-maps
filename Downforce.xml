@@ -66,17 +66,19 @@
     <item>leather chestplate</item>
     <item>chainmail leggings</item>
     <item>leather boots</item>
+    <item>wool:11</item>
+    <item>wool:14</item>
 </itemremove>
 <filters>
     <filter name="blue-chests">
         <all>
-            <block>chest</block>
+            <not><block>chest</block></not>
             <team>blue</team>
         </all>
     </filter>
     <filter name="red-chests">
         <all>
-            <block>chest</block>
+            <not><block>chest</block></not>
             <team>red</team>
         </all>
     </filter>
@@ -93,23 +95,21 @@
     </filter>
 </filters>
 <regions>
-    <cuboid name="void" min="2,7,-14" max="44,30,17"/>
-    <cuboid name="blue-wool" max="=41,0,15" min="=32,30,26"/>
+    <cuboid name="void" min="2,7,-14" max="44,30,15"/>
+    <cuboid name="blue-wool" max="-41,0,15" min="-32,30,26"/>
     <cuboid name="red-wool" max="-41,0,-25" min="-32,30,-14"/>
     <union name="blue-side">
-        <cuboid min="-32,0,15" max="44,30,25"/>
-        <cuboid min="9,0,-39" max="39,30,-24"/>
-        <complement>
-            <cuboid name="blue-spawn-lane" min="9,7,-39" max="39,30,-25"/>
+        <cuboid min="-32,0,-25" max="44,30,-14"/>
+        <complement name="blue-spawn-lane">
+            <cuboid min="9,7,-39" max="39,30,-25"/>
             <cuboid name="blue-spawn-room" min="20,7,-39" max="29,30,-32"/>
             <cuboid min="16,7,-25" max="33,30,-32"/>    
         </complement>
     </union>
     <union name="red-side">
-        <cuboid min="-32,0,15" max="44,30,25"/>
-        <cuboid min="-32,0,-25" max="44,30,-11"/>
-        <complement>
-            <cuboid name="red-spawn-lane" min="9,7,26" max="39,30,40"/>
+        <cuboid min="-32,0,15" max="44,30,26"/>
+        <complement name="red-spawn-lane">
+            <cuboid min="9,7,26" max="39,30,40"/>
             <rectangle name="red-spawn-room" min="20,33" max="29,40"/>
             <rectangle min="16,26" max="33,33"/>
         </complement>
