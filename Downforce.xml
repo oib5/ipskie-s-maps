@@ -26,7 +26,6 @@
         </spawn>
     </spawns>
     <kits>
-        <!--    kit given to everyone, including observers    -->
         <kit name="team">
             <item slot="0">iron sword</item>
             <item slot="1">bow</item>
