@@ -80,10 +80,18 @@
                 <team>red</team>
             </all>
         </filter>
+        <filter name="deny-spawners">
+            <not>
+                <block>mob spawner</block>
+            </not>
+        </filter>
+        <filter name="red">
+            <team>red</team>
+        </filter>
+        <filter name="blue">
+            <team>blue</team>
+        </filter>
     </filters>
-    <filter name="deny-spawners">
-        <deny><block>mob spawner</block></deny>
-    </filter>
     <regions>
         <cuboid name="blue-wool" max="=41,0,15" min="=32,30,26"/>
         <cuboid name="red-wool" max="-41,0,-25" min="-32,30,-14"/>
@@ -95,7 +103,6 @@
                 <cuboid name="blue-spawn-room" min="20,7,-39" max="29,30,-32"/>
                 <cuboid min="16,7,-25" max="33,30,-32"/>    
             </cpmplement>
-            
         </union>
         <union name="red-side">
             <cuboid min="-32,0,15" max="44,30,25"/>
