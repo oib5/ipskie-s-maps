@@ -249,6 +249,9 @@
             </all>
         </not>
     </filter>
+    <filter name="thirty">
+        <time>30s</time>
+    </filter>
     </filters>
     <regions>
         <cuboid name="cuboid" min="-24,0,-222" max="25,40,2"/>
@@ -349,6 +352,9 @@
         </apply>
         <apply enter="defenders-only" message="You may not use the `9Defender`c bridges">
             <region name="bridges"/>
+        </apply>
+        <apply leave="thirty">
+            <region name="attacker-spawn-platforms"/>
         </apply>
         <apply kit="speed-apply" filter="defenders-only">
             <region name="speed-bridge"/>
