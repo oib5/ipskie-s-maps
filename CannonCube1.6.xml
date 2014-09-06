@@ -13,7 +13,7 @@
 		<rule>Attacker pickaxes do double damage</rule>
 		<rule>Smooth quartz blocks are fully blast resistant (and can be mined)</rule>
 		<rule>Spawn platforms refill your health and give you full resistance</rule>
-		<rule>Defenders are allowed to blow up th</rule>
+		<rule>Only attackers can blow up the glass bridges</rule>
 	</rules>
 	<teams>
 		<team id="attackers" color="dark red" max="32" max-overfill="40">Attackers</team>
@@ -104,6 +104,12 @@
 		<kit name="spawn-buff-remove" force="true" potion-particles="false">
 			<potion amplifier="0" duration="0">damage resistance</potion>
 		</kit>
+		<kit name="speed-remove" force="true">
+			<walk-speed>1</walk-speed>
+		</kit>
+		<kit name="speed-apply" force="true">
+			<walk-speed>3</walk-speed>
+		</kit>
 	</kits>
 	<itemremove>
 		<item>diamond pickaxe</item>
@@ -140,6 +146,9 @@
 		<item>iron leggings</item>
 		<item>iron boots</item>
 		<item>snow ball</item>
+		<item>quartz block:0</item>
+		<item>quartz block:1</item>
+		<item>quartz block:2</item>
 	</itemremove>
 	<killreward>
 		<filter>
@@ -153,6 +162,9 @@
 		</filter>
 		<item amount="32">snow ball</item>
 	</killreward>
+	<killreward>
+		<item amount="32">tnt</item>
+	</killreward>
 	<filters>
 	<filter name="attackers-only">
 		<team>attackers</team>
@@ -163,18 +175,12 @@
 	<filter name="deny-unbreakable-blocks">
 		<deny>
 			<any>
-				<block>quartz block:2</block>
 				<block>quartz stairs</block>
 				<block>stained glass:15</block>
-				<block>wall sign</block>
+				<block>stained glass:8</block>
 				<block>iron door block</block>
 				<block>beacon</block>
 			</any>
-		</deny>
-	</filter>
-	<filter name="deny-tnt">
-		<deny>
-			<block>tnt</block>
 		</deny>
 	</filter>
 	<filter name="deny-beacon">
@@ -206,10 +212,10 @@
 			</all>
 		</any>
 	</filter>
-	<filter name="deny-manual-endstone">
+	<filter name="deny-manual-ice">
 		<not>
 			<all>
-				<block>ender stone</block>
+				<block>packed ice</block>
 				<any>
 					<filter name="allow-players"/>
 					<filter name="deny-all"/>
@@ -217,6 +223,21 @@
 			</all>
 		</not>
 	</filter>
+	<filter name="deny-manual-glass">
+		<not>
+			<all>
+				<block>stained glass:3</block>
+				<block>stained glass:11</block>
+				<block>stained glass:8</block>
+				<block>stained glass pane:11</block>
+				<block>stained glass pane:0</block>
+				<any>
+					<filter name="allow-players"/>
+					<filter name="deny-all"/>
+				</any>
+			</all>
+		</not>
+	</filter>         
 	<filter name="deny-quartz-world">
 		<not>
 			<all>
@@ -230,56 +251,66 @@
 	</filter>
 	</filters>
 	<regions>
-		<cuboid name="cuboid" min="-44,0,-222" max="45,40,1"/>
-		<cuboid name="platform" min="0,0,0" max="9,6,9"/>
+		<cuboid name="cuboid" min="-24,0,-222" max="25,40,2"/>
+		<union name="cannon-pads">
+			<cuboid name="top-left" min="-39,31,-158" max="-34,41,-153"/>
+			<cuboid name="mid-left" min="-39,20,-150" max="-34,30,-145"/>
+			<cuboid name="bot-left" min="-39,9,-142" max="-34,19,-137"/>
+			<cuboid name="top-right" min="35,31,-158" max="40,41,-153"/>
+			<cuboid name="mid-right" min="35,20,-150" max="40,30,-145"/>
+			<cuboid name="bot-right" min="35,9,-142" max="40,19,-137"/>
+		</union>
 		<union name="attacker-spawn-platforms">
-			<translate offset="36,31,-212"><region name="platform"/></translate>
-			<translate offset="-44,31,-212"><region name="platform"/></translate>
-			<translate offset="-4,9,-222"><region name="platform"/></translate>
+			<cuboid name="upper-platform" min="-4,31,-222" max="5,34,-213"/>
+			<cuboid name="lower-platform" min="-4,9,-222" max="5,13,-213"/>
 		</union>
-		<!--  The 3 iron door holding cells  -->
-		<cuboid name="holding-area" min="0,0,0" max="11,5,11"/>
-		<union name="holding-areas">
-			<translate offset="35,32,-213"><region name="holding-area"/></translate>
-			<translate offset="-45,32,-213"><region name="holding-area"/></translate>
-			<translate offset="-5,10,-223"><region name="holding-area"/></translate>
-		</union>
-		<cuboid name="attacker-spawn-room" min="-11,48,-233" max="12,52,-200"/>
-		<cuboid name="portal-origin" min="0,0,0" max="3,1,3"/>
-		<translate name="portal-a" offset="4,50,-206"><region name="portal-origin"/></translate>
-		<translate name="portal-b" offset="-6,50,-206"><region name="portal-origin"/></translate>
-		<translate name="portal-c" offset="-1,50,-212"><region name="portal-origin"/></translate>
-		<translate name="portal-d" offset="3,50,-218"><region name="portal-origin"/></translate>
-		<translate name="portal-e" offset="-5,50,-218"><region name="portal-origin"/></translate>
-		<translate name="portal-f" offset="5,50,-224"><region name="portal-origin"/></translate>
-		<translate name="portal-g" offset="-1,50,-225"><region name="portal-origin"/></translate>
-		<translate name="portal-h" offset="-7,50,-224"><region name="portal-origin"/></translate>
-		<translate name="return-portal-a" offset="29,65,-73"><region name="portal-origin"/></translate>
-		<translate name="return-portal-b" offset="-31,65,-73"><region name="portal-origin"/></translate>
-		<translate name="return-portal-c" offset="-1,65,-113"><region name="portal-origin"/></translate>
-		<translate name="return-portal-d" offset="19,65,-152"><region name="portal-origin"/></translate>
-		<translate name="return-portal-e" offset="-21,65,-152"><region name="portal-origin"/></translate>
+		<cuboid name="attacker-spawn-room" min="-4,55,-232" max="5,61,-199"/>
+		<cuboid name="portal-a" min="-2,57,-223" max="3,58,-218"/>
+		<cuboid name="portal-b" min="-2,57,-214" max="3,58,-209"/>
+		<cuboid name="portal-c" min="-2,57,-205" max="3,58,-200"/>
+		<cuboid name="portal-d" min="-3,56,-231" max="-2,59,-228"/>
+		<cuboid name="portal-e" min="3,56,-231" max="4,59,-228"/>
+		<cuboid name="return-portal-a" min="-1,65,-152" max="2,66,-149"/>
+		<cuboid name="return-portal-b" min="-1,65,-113" max="2,66,-110"/>
+		<cuboid name="return-portal-c" min="-1,65,-73" max="2,66,-70"/>
 		<cuboid name="pillar" min="-2,5,-12" max="3,34,-7"/>
-		<cuboid name="defender-spawn" min="-4,2,-14" max="5,5,-5"/>
+		<cuboid name="defender-spawn" min="-2,1,-12" max="3,4,-7"/>
 		<cuboid name="water-free-zone" min="-11,0,-21" max="12,35,2"/>
 		<cuboid name="above-monument" min="-11,35,-21" max="12,40,2"/>
-		<cuboid name="chute" min="0,0,0" max="9,43,9"/>
 		<union name="forward-drop-chutes">
-			<translate offset="-34,43,-73"><region name="chute"/></translate>
-			<translate offset="26,43,-73"><region name="chute"/></translate>
-			<translate offset="-4,43,-113"><region name="chute"/></translate>
-			<translate offset="-24,43,-152"><region name="chute"/></translate>
-			<translate offset="16,43,-152"><region name="chute"/></translate>
+			<cuboid name="chute-a" min="-4,43,-152" max="5,64,-143"/>
+			<cuboid name="chute-b" min="-4,43,-113" max="5,64,-104"/>
+			<cuboid name="chute-c" min="-4,43,-73" max="5,64,-64"/>
 		</union>
 		<cuboid name="drop" min="0,0,0" max="9,43,9"/>
 		<union name="below-drop-chutes">
-			<translate offset="-34,0,-73"><region name="drop"/></translate>
-			<translate offset="26,0,-73"><region name="drop"/></translate>
-			<translate offset="-4,0,-113"><region name="drop"/></translate>
-			<translate offset="-24,0,-152"><region name="drop"/></translate>
-			<translate offset="16,0,-152"><region name="drop"/></translate>
+			<cuboid name="drop-a" min="-4,0,-152" max="5,43,-143"/>
+			<cuboid name="drop-b" min="-4,0,-113" max="5,43,-104"/>
+			<cuboid name="drop-c" min="-4,0,-73" max="5,43,-64"/>
+		</union>
+		<complement name="speed-bridge">
+			<region name="bridges"/>
+			<region name="cannon-pads"/>
+		</complement>
+		<union name="bridges">
+			<cuboid name="left-run" min="-39,9,-158" max="-34,35,-7"/>
+			<cuboid name="right-run" min="35,9,-158" max="40,35,-7"/>
+			<cuboid name="left-in" min="-34,9,-32" max="-24,32,-7"/>
+			<cuboid name="left-out" min="-34,9,-111" max="-24,32,-86"/>
+			<cuboid name="left-in" min="25,9,-32" max="35,32,-7"/>
+			<cuboid name="left-out" min="25,9,-111" max="35,32,-86"/>
+		</union>
+		<union name="buildable">
+			<region name="cuboid"/>
+			<region name="bridges"/>
 		</union>
 		<!--  Applied  -->
+		<apply block="deny-manual-glass" message="You may only blow up the glass bridges">
+			<region name="bridges"/>
+		</apply>
+		<apply block="deny-blocks" message="You may only build on the cannon-pads">
+			<region name="speed-bridge"/>
+		</apply>
 		<apply block="deny-all" message="You may not modify the drop chute area">
 			<region name="forward-drop-chutes"/>
 		</apply>
@@ -294,7 +325,7 @@
 		</apply>
 		<apply block="deny-all" message="You may not place or break blocks outside of the map">
 			<negative>
-				<region name="cuboid"/>
+				<region name="buildable"/>
 			</negative>
 		</apply>
 		<apply block="deny-all" message="You may not modify the spawn area">
@@ -304,7 +335,7 @@
 				<region name="attacker-spawn-platforms"/>
 			</union>
 		</apply>
-		<apply block="deny-unbreakable-blocks" use="deny-beacon" message="This type of block is unbreakable and useable">
+		<apply block="deny-unbreakable-blocks" use="deny-beacon" message="This type of block is unbreakable and unuseable">
 			<rectangle min="-oo,-oo" max="oo,oo"/>
 		</apply>
 		<apply block="deny-water" message="You may not place `9water`c inside the fortress walls">
@@ -315,6 +346,17 @@
 		</apply>
 		<apply enter="attackers-only" message="You may not enter the `4Attacker`c spawn">
 			<region name="attacker-spawn-platforms"/>
+		</apply>
+		<apply enter="defenders-only" message="You may not use the `9Defender`c bridges">
+			<region name="bridges"/>
+		</apply>
+		<apply kit="speed-apply" filter="defenders-only">
+			<region name="speed-bridge"/>
+		</apply>
+		<apply kit="speed-remove">
+			<negative>
+				<region name="speed-bridge"/>
+			</negative>
 		</apply>
 		<apply kit="spawn-buff-apply" filter="attackers-only">
 			<region name="attacker-spawn-platforms"/>
@@ -335,7 +377,7 @@
 		<apply kit="drop-buff-apply" filter="attackers-only">
 			<region name="forward-drop-chutes"/>
 		</apply>
-		<apply block-break="deny-manual-endstone" message="The Endstone Pillar can only be damaged with TNT">
+		<apply block-break="deny-manual-ice" message="The Ice Pillar can only be damaged with TNT">
 			<region name="pillar"/>
 		</apply>
 		<apply block-break="deny-quartz-world">
@@ -379,16 +421,13 @@
 		</apply>
 	</regions>
 	<destroyables>
-		<destroyable id="holding-area" name="holding" owner="Attackers" completion="0%" materials="stained glass:0" mode-changes="true" show="false">
-			<region name="holding-areas"/>
+		<destroyable name="defender-bridges" owner="Defenders" show-progress="false" materials="stained glass:3;stained glass:11;stained glass:8;stained glass pane:11;stained glass pane:0" completion="0%">
+			<region name="bridges"/>
 		</destroyable>
 		<destroyable id="pillar" name="Endstone Pillar" owner="Defenders" show-progress="true" materials="ender stone" sparks="true" completion="100%">
 			<region name="pillar"/>
 		</destroyable>
 	</destroyables>
-	<modes boss-bar="false">
-		<mode after="30s" material="air" name="The `4attackers `chave been released"/>
-	</modes>
 	<time result="defenders">20m30s</time>
 	<disabledamage>
 		<damage self="false" ally="true" enemy="false" other="false">block explosion</damage>
@@ -399,17 +438,9 @@
 		<portal x="25" y="15" z="133">
 			<region name="portal-a"/>
 		</portal>
-		<!--  Chute b  -->
-		<portal x="-25" y="15" z="133">
-			<region name="portal-b"/>
-		</portal>
 		<!--  Chute C  -->
 		<portal x="0" y="15" z="99">
 			<region name="portal-c"/>
-		</portal>
-		<!--  Chute D  -->
-		<portal x="16" y="15" z="66">
-			<region name="portal-d"/>
 		</portal>
 		<!--  Chute E  -->
 		<portal x="-16" y="15" z="66">
@@ -434,20 +465,18 @@
 			<region name="return-portal-a"/>
 		</portal>
 		<!--  Chute B  -->
-		<portal x="30" y="-15" z="-158">
+		<portal x="0" y="-15" z="-118">
 			<region name="return-portal-b"/>
 		</portal>
 		<!--  Chute C  -->
-		<portal x="0" y="-15" z="-118">
+		<portal x="20" y="-15" z="-79">
 			<region name="return-portal-c"/>
 		</portal>
-		<!--  Chute D  -->
-		<portal x="-20" y="-15" z="-79">
-			<region name="return-portal-d"/>
-		</portal>
-		<!--  Chute E  -->
-		<portal x="20" y="-15" z="-79">
-			<region name="return-portal-e"/>
-		</portal>
 	</portals>
+	<broadcasts>
+		<alert after="0s">The attackers are released in 30 seconds!</alert>
+		<alert after="1s">Only defenders can enter their bridges, only attackers can blow it up</alert>
+		<tip after="2s">Defenders, step on the beacons to use your Fast-Track system</tip>
+		<tip after="3s">Attackers, jump on the platforms in spawn to teleport to the top of the spawn tubes</tip>
+	</broadcasts>
 </map>
