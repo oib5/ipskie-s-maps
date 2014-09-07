@@ -1,0 +1,361 @@
+<map proto="1.3.4">
+    <name>Icy Blast</name>
+    <version>1.0</version>
+    <objective>Capture the enemy's wool before they can capture yours.</objective>
+    <authors><author>BeanButt_jar</author></authors>
+    <contributors>
+        <contributor contribution="XML">Elijahyap</contributor>
+    </contributors>
+    <rules>
+        <rule>There are NO restrictions on spawn camping/killing</rule>
+        <rule>All quartz blocks are fully blast resistant (and can be mined)</rule>
+        <rule>Spawn platforms refill your health and give you full resistance</rule>
+    </rules>
+    <teams>
+        <team id="attackers" color="dark red" max="20" max-overfill="24">Red Team</team>
+        <team id="defenders" color="blue" max="20" max-overfill="24">Blue Team</team>
+    </teams>
+    <spawns>
+        <default kit="all" yaw="180" pitch="0">
+            <cuboid min="-81,78,-1" max="-78,78,2"/>
+        </default>
+        <spawn team="red" kit="red" yaw="90" pitch="0">
+            <cuboid min="-135,66,-1" max="-132,66,2"/>
+        </spawn>
+        <spawn team="blue" kit="blue" yaw="-90" pitch="0">
+            <cuboid min="-27,66,-1" max="-24,66,2"/>
+        </spawn>
+    </spawns>
+    <kits>
+        <kit name="all" potion-particles="false">
+            <potion duration="oo">night vision</potion>
+            <potion duration="oo">saturation</potion>
+        </kit>
+        <kit name="team" parents="all">
+            <item slot="9">workbench</item>
+            <item slot="18" amount="3">dispenser</item>
+            <item slot="10">shears</item>
+            <item slot="28">arrow</item>
+            <item slot="29" amount="64">vine</item>
+            <item slot="2" amount="64">vine</item>
+            <item slot="13" amount="16">trap door</item>
+            <item slot="22" amount="16">ladder</item>
+            <item slot="31" amount="64">step</item>
+            <item slot="4" amount="64">nether fence</item>
+            <item slot="14" amount="16">piston base</item>
+            <item slot="23" amount="16">lever</item>
+            <item slot="32" amount="16">stone plate</item>
+            <item slot="5" amount="16">stone button</item>
+            <item slot="15">water bucket</item>
+            <item slot="24">water bucket</item>
+            <item slot="33">water bucket</item>
+            <item slot="6">water bucket</item>
+            <item slot="16" amount="16">diode</item>
+            <item slot="25" amount="16">redstone torch on</item>
+            <item slot="34" amount="64">redstone</item>
+            <item slot="7" amount="16">redstone block</item>
+            <item slot="17" amount="64">tnt</item>
+            <item slot="26" amount="64">tnt</item>
+            <item slot="35" amount="64">tnt</item>
+            <item slot="8" amount="64">tnt</item>
+            <item slot="1">bow</item>
+            <item slot="28" amount="32">arrow</item>
+            <item slot="0">diamond pickaxe</item>
+            <potion amplifier="5" duration="oo">damage resistance</potion>
+            <potion amplifier="10" duration="1">heal</potion>
+            <walk-speed>4</walk-speed>
+        </kit>
+        <kit name="red" parents="team">
+            <item slot="21" damage="14" amount="64">stained clay</item>
+            <item slot="30" damage="14" amount="64">stained clay</item>
+            <item slot="3" damage="14" amount="64">stained clay</item>
+            <helmet enchantment="protection explosions:3;water worker:3" damage="-3000">iron helmet</helmet>
+            <chestplate color="dd5566" damage="-3000">leather chestplate</chestplate>
+            <leggings color="dd5566" damage="-3000">leather leggings</leggings>
+            <boots color="dd5566" enchantment="protection fall:3" damage="-3000">leather boots</boots>
+        </kit>
+        <kit name="blue" parents="team">
+            <item slot="21" damage="11" amount="64">stained clay</item>
+            <item slot="30" damage="11" amount="64">stained clay</item>
+            <item slot="3" damage="11" amount="64">stained clay</item>
+            <helmet enchantment="protection explosions:3;water worker:3" damage="-3000">iron helmet</helmet>
+            <chestplate color="5e55dd" damage="-3000">leather chestplate</chestplate>
+            <leggings color="5e55dd" damage="-3000">leather leggings</leggings>
+            <boots color="5e55dd" enchantment="protection fall:3" damage="-3000">leather boots</boots>
+        </kit>
+        <kit name="spawn-buff-apply" force="true" potion-particles="false">
+            <potion amplifier="5" duration="oo">damage resistance</potion>
+            <potion amplifier="10" duration="1">heal</potion>
+        </kit>
+        <kit name="spawn-buff-remove" force="true" potion-particles="false">
+            <potion amplifier="0" duration="0">damage resistance</potion>
+        </kit>
+    </kits>
+    <itemremove>
+        <item>diamond pickaxe</item>
+        <item>workbench</item>
+        <item>dispenser</item>
+        <item>shears</item>
+        <item>wood sword</item>
+        <item>bow</item>
+        <item>arrow</item>
+        <item>vine</item>
+        <item>stained clay</item>
+        <item>stained glass</item>
+        <item>nether fence</item>
+        <item>step</item>
+        <item>ladder</item>
+        <item>trap door</item>
+        <item>stone plate</item>
+        <item>piston base</item>
+        <item>redstone block</item>
+        <item>redstone</item>
+        <item>stone button</item>
+        <item>lever</item>
+        <item>redstone torch on</item>
+        <item>diode</item>
+        <item>water bucket</item>
+        <item>bucket</item>
+        <item>tnt</item>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>leather leggings</item>
+        <item>leather boots</item>
+        <item>iron helmet</item>
+        <item>iron chestplate</item>
+        <item>iron leggings</item>
+        <item>iron boots</item>
+        <item>ice</item>
+        <item>quartz block:0</item>
+        <item>quartz block:1</item>
+        <item>quartz block:2</item>
+                
+    </itemremove>
+    <killreward>
+        <item amount="8">arrow</item>
+        <item amount="32">tnt</item>
+        <item amount="8">ice</item>
+    </killreward>
+    <blockdrops>
+        <rule>
+            <filter>
+                <block>iron block</block>
+            </filter>
+            <drops>
+                <item attributes="generic.movementSpeed:base:0.10">iron leggings</item>
+            </drops>
+        </rule>
+        <rule>
+            <filter>
+                <any>
+                    <block>stained clay:3</block>
+                    <block>stained clay:9</block>
+                    <block>stained clay:6</block>
+                </any>
+            </filter>
+            <fall-chance>0.35</fall-chance>
+            <land-chance>0.5</land-chance>
+            <fall-speed>0.75</fall-speed>
+            <drops/>
+        </rule>
+    </blockdrops>
+    <filters>
+        <filter name="red-only">
+            <team>red</team>
+        </filter>
+        <filter name="blue-only">
+            <team>blue</team>
+        </filter>
+        <filter name="deny-spawners">
+            <deny>
+                <block>spawner</block>
+            </deny>
+        </filter>
+        <!--  non-clay base cannot be blown up  -->
+        <filter name="deny-base-world">
+            <not>
+                <all>
+                    <block>quartz block:0</block>
+                    <block>quartz block:1</block>
+                    <block>quartz block:2</block>
+                    <block>stained glass:11</block>
+                    <block>stained glass:14</block>
+                    <any>
+                        <filter name="allow-world"/>
+                        <filter name="deny-all"/>
+                    </any>
+                </all>
+            </not>
+        </filter>
+        <filter name="deny-ice-world">
+            <not>
+                <all>
+                    <block>ice</block>
+                    <any>
+                        <filter name="allow-world"/>
+                        <filter name="deny-all"/>
+                    </any>
+                </all>
+            </not>
+        </filter>
+        <filter name="deny-safeties">
+            <deny>
+                <block>wool:11</block>
+                <block>wool:14</block>
+            </deny>
+        </filter>
+    </filters>
+    <regions>
+        <cuboid name="cuboid" min="-168,25,-45" max="9,65,46"/>
+        <union name="red-spawn-platforms">
+            <cuboid name="red-left-spawn" min="-135,29,25" max="-132,33,28"/>
+            <cuboid name="red-mid-spawn" min="-161,29,-1" max="-158,33,2"/>
+            <cuboid name="red-right-spawn" min="-135,29,-27" max="-132,33,24"/>
+        </union>
+        <union name="blue-spawn-platforms">
+            <cuboid name="blue-left-spawn" min="-27,29,-27" max="-24,33,-24"/>
+            <cuboid name="blue-mid-spawn" min="-1,29,-1" max="2,33,2"/>
+            <cuboid name="blue-right-spawn" min="-27,29,25" max="-24,33,28"/>
+        </union>
+        <union name="red-portals">
+            <cuboid name="red-left" min="-135,67,25" max="-132,68,28"/>
+            <cuboid name="red-mid" min="-161,67,-1" max="-158,68,2"/>
+            <cuboid name="red-right" min="-135,67,-27" max="-132,68,24"/>
+        </union>
+        <union name="blue-portals">
+            <cuboid name="blue-left" min="-27,67,-27" max="-24,68,-24"/>
+            <cuboid name="blue-mid" min="-1,67,-1" max="2,68,2"/>
+            <cuboid name="blue-right" min="-27,67,25" max="-24,68,28"/>
+        </union>
+        <cuboid name="red-ice" min="-139,41,-5" max="-128,52,6"/>
+        <cuboid name="blue-ice" min="-31,41,-5" max="20,52,6"/>
+        <cuboid name="blue-wool-room" min="-136,44,-2" max="-131,49,3"/>
+        <cuboid name="red-wool-room" min="-28,44,-2" max="-23,49,3"/>
+        <block name="red-wool">163.5,51.5,0.5</block>
+        <block name="blue-wool">4.5,51.5,0.5</block>
+        <!--  Applied  -->
+        <apply block="deny-safeties" message="You may not place safeties">
+            <complement>
+                <region name="cuboid"/>
+                <region name="red-wool"/>
+                <region name="blue-wool"/>
+            </complement>
+        </apply>
+        <apply block="deny-all" message="You may not place or break blocks outside of the map">
+            <negative>
+                <region name="cuboid"/>
+            </negative>
+        </apply>
+        <apply block="deny-all" message="You may not modify the spawn area">
+            <union>
+                <region name="red-spawn-platforms"/>
+                <region name="blue-spawn-platforms"/>
+            </union>
+        </apply>
+        <apply block="deny-spawners">
+            <union>
+                <region name="red-wool-room"/>
+                <region name="blue-wool-room"/>
+            </union>
+        </apply>
+        <apply block="deny-base-world">
+            <rectangle min="-oo,-oo" max="oo,oo"/>
+        </apply>
+        <apply enter="blue-only" message="You may not enter the `9Blue`c portals">
+            <region name="blue-portals"/>
+        </apply>
+        <apply enter="red-only" message="You may not enter the `4Red`c portals">
+            <region name="red-portals"/>
+        </apply>
+        <apply enter="blue-only" message="You may not enter the `9Blue`c spawn">
+            <region name="blue-spawn-platforms"/>
+        </apply>
+        <apply enter="red-only" message="You may not enter the `4Red`c spawn">
+            <region name="red-spawn-platforms"/>
+        </apply>
+        <apply enter="blue-only" message="You may not enter the `9Blue`c wool">
+            <region name="blue-wool-room"/>
+        </apply>
+        <apply enter="red-only" message="You may not enter the `4Red`c wool">
+            <region name="red-wool-room"/>
+        </apply>
+        <apply kit="spawn-buff-apply" filter="red-only">
+            <region name="red-spawn-platforms"/>
+        </apply>
+        <apply kit="spawn-buff-apply" filter="blue-only">
+            <region name="blue-spawn-platforms"/>
+        </apply>
+        <apply kit="spawn-buff-remove">
+            <negative>
+                <union>
+                    <region name="red-spawn-platforms"/>
+                    <region name="blue-spawn-platforms"/>
+                </union>
+            </negative>
+        </apply>
+    </regions>
+    <destroyables>
+        <destroyable id="red-ice-cube" name="red-ice-cube" owner="red" completion="100%" materials="ice" show="false">
+            <region name="red-ice"/>
+        </destroyable>
+        <destroyable id="blue-ice-cube" name="blue-ice-cube" owner="blue" completion="100%" materials="ice" show="false">
+            <region name="blue-ice"/>
+        </destroyable>
+    </destroyables>
+    <disabledamage>
+        <damage self="false" ally="true" enemy="false" other="false">block explosion</damage>
+    </disabledamage>
+    <portals filter="attackers-only">
+        <!--  red spawn portals  -->
+        <portal x="0" y="-36" z="0">
+            <region name="red-right"/>
+        </portal>
+        <portal x="0" y="-36" z="0">
+            <region name="red-mid"/>
+        </portal>
+        <portal x="0" y="-36" z="0">
+            <region name="red-left"/>
+        </portal>
+        <!--  blue spawn portals  -->
+        <portal x="0" y="-36" z="0">
+            <region name="blue-right"/>
+        </portal>
+        <portal x="0" y="-36" z="0">
+            <region name="blue-mid"/>
+        </portal>
+        <portal x="0" y="-36" z="0">
+            <region name="blue-left"/>
+        </portal>
+    </portals>
+    <wools>
+        <wool team="blue" color="blue">
+            <region name="blue-wool"/>
+        </wool>
+        <wool team="red" color="red">
+            <region name="red-wool"/>
+        </wool>
+    </wools>
+    <renewables>
+        <renewable rate="10" avoid-entities="true" particles="false" sound="false">
+            <union>
+                <region name="red-wool-room"/>
+                <region name="blue-wool-room"/>
+            </union>
+            <renew-filter>
+                <block>iron block</block>
+            </renew-filter>
+            <replace>air</replace>
+        </renewable>
+        <renewable rate="50" grow="false" avoid-entities="true" particles="false" sound="false">
+            <region name="cuboid"/>
+            <renew-filter>
+                <block>stained clay:3</block>
+                <block>stained clay:6</block>
+                <block>stained clay:9</block>
+            </renew-filter>
+            <replace>air</replace>
+            <replace>water</replace>
+            <replace>stationary water</replace>
+        </renewable>
+    </renewables>
+</map>

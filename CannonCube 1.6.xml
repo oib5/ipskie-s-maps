@@ -264,7 +264,7 @@
             <cuboid name="bot-right" min="35,9,-142" max="40,19,-137"/>
         </union>
         <union name="attacker-spawn-platforms">
-            <cuboid name="upper-platform" min="-4,31,-222" max="5,34,-213"/>
+            <cuboid name="upper-platform" min="-4,31,-222" max="5,35,-213"/>
             <cuboid name="lower-platform" min="-4,9,-222" max="5,13,-213"/>
         </union>
         <cuboid name="attacker-spawn-room" min="-4,55,-232" max="5,61,-199"/>
@@ -427,6 +427,9 @@
         </apply>
     </regions>
     <destroyables>
+        <destroyable id="holding-area" name="holding" owner="Attackers" completion="0%" materials="stained glass:0" mode-changes="true" show="false">
+            <region name="attacker-spawn-platforms"/>
+        </destroyable>
         <destroyable name="defender-bridges" owner="Defenders" show-progress="false" materials="stained glass:3;stained glass:11;stained glass:8;stained glass pane:11;stained glass pane:0" completion="0%">
             <region name="bridges"/>
         </destroyable>
@@ -434,6 +437,9 @@
             <region name="pillar"/>
         </destroyable>
     </destroyables>
+    <modes boss-bar="false">
+        <mode after="30s" material="air" name="The `4attackers `chave been released"/>
+    </modes>
     <time result="defenders">20m30s</time>
     <disabledamage>
         <damage self="false" ally="true" enemy="false" other="false">block explosion</damage>
