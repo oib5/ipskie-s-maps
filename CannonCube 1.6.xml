@@ -249,7 +249,7 @@
             </all>
         </not>
     </filter>
-    \</filters>
+    </filters>
     <regions>
         <cuboid name="cuboid" min="-24,0,-222" max="25,40,2"/>
         <union name="cannon-pads">
