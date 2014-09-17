@@ -67,8 +67,6 @@
     <item>leather chestplate</item>
     <item>chainmail leggings</item>
     <item>leather boots</item>
-    <item>wool:11</item>
-    <item>wool:14</item>
 </itemremove>
 <filters>
     <filter name="only-red-usage">
@@ -163,11 +161,11 @@
     </apply>
 </regions>
 <wools>
-    <wool team="blue" color="blue">
-        <block>21.5,14.5,55.5</block>
-    </wool>
-    <wool team="red" color="red">
+    <wool team="blue" color="light blue">
         <block>21.5,14.5,-54.5</block>
+    </wool>
+    <wool team="red" color="pink">
+        <block>21.5,14.5,55.5</block>
     </wool>
 </wools>
 <killreward>

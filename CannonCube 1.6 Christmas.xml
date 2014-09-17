@@ -177,6 +177,7 @@
             <any>
                 <block>quartz stairs</block>
                 <block>stained glass:15</block>
+                <block>stained glass:8</block>
                 <block>iron door block</block>
                 <block>beacon</block>
             </any>
@@ -241,7 +242,6 @@
         <not>
             <all>
                 <block>quartz block:0</block>
-                <block>quartz block:2</block>
                 <any>
                     <filter name="allow-world"/>
                     <filter name="deny-all"/>
@@ -349,6 +349,9 @@
         </apply>
         <apply enter="defenders-only" message="You may not use the `9Defender`c bridges">
             <region name="bridges"/>
+        </apply>
+        <apply leave="thirty">
+            <region name="attacker-spawn-platforms"/>
         </apply>
         <apply kit="speed-apply" filter="defenders-only">
             <region name="speed-bridge"/>
