@@ -147,7 +147,7 @@
         <item>iron boots</item>
         <item>snow ball</item>
         <item>nether brick</item>
-   	</itemremove>
+    </itemremove>
     <killreward>
         <filter>
             <team>defenders</team>
@@ -239,6 +239,7 @@
         <not>
             <all>
                 <block>nether brick</block>
+                <block>log 2:1</block>
                 <any>
                     <filter name="allow-world"/>
                     <filter name="deny-all"/>
@@ -346,9 +347,6 @@
         </apply>
         <apply enter="defenders-only" message="You may not use the `4Pumpkin`c bridges">
             <region name="bridges"/>
-        </apply>
-        <apply leave="thirty">
-            <region name="attacker-spawn-platforms"/>
         </apply>
         <apply kit="speed-apply" filter="defenders-only">
             <region name="speed-bridge"/>
