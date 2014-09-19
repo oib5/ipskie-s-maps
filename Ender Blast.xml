@@ -177,6 +177,22 @@
                 <block>wool</block>
             </deny>
         </filter>
+        <filter name="no-red-tnt">
+            <deny>
+                <all>
+                    <block>tnt</block>
+                    <team>red</team>
+                </all>
+            </deny>
+        </filter>
+        <filter name="no-blue-tnt">
+            <deny>
+                <all>
+                    <block>tnt</block>
+                    <team>blue</team>
+                </all>
+            </deny>
+        </filter>
         <filter name="no-water">
             <deny>
                 <any>
@@ -268,6 +284,12 @@
         <apply block-break="only-player-endstone-and-panes" message="You may only break this with TNT">
             <region name="cubes"/>
         </apply>
+        <apply block-place="no-blue-tnt">
+            <region name="blue-cube"/>
+        </apply>
+        <apply block-place="no-red-tnt">
+            <region name="red-cube"/>
+        </apply>
         <apply block-break="only-explosion-quartz-and-glass">
             <region name="cuboid"/>
         </apply>
@@ -282,6 +304,9 @@
         </apply>
         <apply block="only-blue" message="You may not edit the enemy wool room">
             <region name="blue-room"/>
+        </apply>
+        <apply block="deny-world">
+            <region name="wool-rooms"/>
         </apply>
         <!--  Entry Rules  -->
         <apply enter="only-blue" message="You may not enter the enemy spawn">
