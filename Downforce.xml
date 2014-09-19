@@ -118,8 +118,8 @@
 <regions>
     <!--  the void gap in which building is allowed, including the islands that can be built on  -->
     <cuboid name="void" min="-4,8,-33" max="38,30,34"/>
-    <mirror name="blue-wool" region="red-wool" normal="0,0,-1"/>
     <cuboid name="red-wool" max="-67,0,-24" min="-58,30,-13"/>
+    <mirror name="blue-wool" region="red-wool" normal="0,0,-1"/>
     <union name="blue-side">
         <cuboid min="-58,0,-24" max="28,30,-13"/>
         <cuboid min="-28,4,-29" max="-15,30,-14"/>
