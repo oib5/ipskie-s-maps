@@ -11,10 +11,10 @@
         <contributor>kaskitogarcia</contributor>
     </contributors>
     <teams>
-        <team id="grass" color="dark green" max="8" max-overfill="10">Grass</team>
-        <team id="mycelium" color="light-gray" max="8" max-overfill="10">Mycelium</team>
-        <team id="clay" color="dark light-gray" max="8" max-overfill="10">Clay</team>
-        <team id="podzol" color="dark red" max="8" max-overfill="10">Podzol</team>
+        <team id="grass" color="dark green" max="7" max-overfill="10">Grass</team>
+        <team id="mycelium" color="light-gray" max="7" max-overfill="10">Mycelium</team>
+        <team id="clay" color="dark light-gray" max="7" max-overfill="10">Clay</team>
+        <team id="podzol" color="dark red" max="7" max-overfill="10">Podzol</team>
     </teams>
     <wools team="grass">
         <wool color="light gray">
