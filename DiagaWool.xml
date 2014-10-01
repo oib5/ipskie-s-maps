@@ -1,0 +1,176 @@
+<map proto="1.3.0">
+	<include src="tutorial.xml"/>
+	<name>DiagaWool</name>
+	<version>1.0.0</version>
+	<objective>Take the enemy's wool located to either side of the enemy's base and place it in your victory monument.</objective>
+	<authors>
+		<author contribution="new map design and ideas">Elijahyap</author>
+	</authors>
+	<contributors>
+		<contributor contribution="old map design">Plastix</contributor>
+		<contributor contribution="old map design">IM_A_H0B0</contributor>
+		<contributor contribution="old map design and gameplay management">MonsieurApple</contributor>
+		<contributor contribution="old map design and item management">Anxuiz</contributor>
+		<contributor contribution="inspiration and ideas from NextGen">ElectroidFilms</contributor>
+		<contributor contribution="aesthetic feedback">Timothee38</contributor>
+	</contributors>
+	<teams>
+		<team color="blue" max="32">Blue Team</team>
+		<team color="dark red" max="32">Red Team</team>
+	</teams>
+	<spawns>
+		<spawn team="blue" yaw="-45">
+			<point>-37.5,5,-37.5</point>
+		</spawn>
+		<spawn team="red" yaw="145">
+			<point>39.5,5,39.5</point>
+		</spawn>
+		<default yaw="45">
+			<point>43.5,18,-41.5</point>
+		</default>
+	</spawns>
+	<filters>
+		<filter name="only-blue">
+			<team>blue</team>
+		</filter>
+		<filter name="only-red">
+			<team>red</team>
+		</filter>
+		<filter name="only-red-usage">
+			<not>
+				<all>
+					<any>
+						<block>chest</block>
+						<block>workbench</block>
+					</any>
+					<team>blue</team>
+				</all>
+			</not>
+		</filter>
+		<filter name="only-blue-usage">
+			<not>
+				<all>
+					<any>
+						<block>chest</block>
+						<block>workbench</block>
+					</any>
+					<team>red</team>
+				</all>
+			</not>
+		</filter>
+		<filter name="deny-fire">
+			<deny>
+				<block>fire</block>
+			</deny>
+		</filter>
+		<filter name="no-void">
+			<deny>
+				<void/>
+			</deny>
+		</filter>
+		<filter name="deny-panes">
+			<deny>
+				<block>stained glass pane:7</block>
+			</deny>
+		</filter>
+		<filter name="hill-owner">
+			<objective>Hill</objective>
+		</filter>
+	</filters>
+	<regions>
+		<!--
+		 blue wool room protection (these are the wools blue has to get) 
+		-->
+		<union name="blue-wool-rooms">
+			<rectangle name="purple-room" min="-51,-92" max="-39,-77"/>
+			<rectangle name="yellow-room" min="-92,-51" max="-77,-39"/>
+		</union>
+		<apply block="only-blue" use="only-blue-usage" message="You may not edit your own wool room!">
+			<region name="blue-wool-rooms"/>
+		</apply>
+		<apply enter="only-blue" message="You may not enter your own wool room!">
+			<region name="blue-wool-rooms"/>
+		</apply>
+		<!--
+		 red wool room protection (these are the wools red has to get) 
+		-->
+		<union name="red-wool-rooms">
+			<rectangle name="orange-room" min="41,79" max="53,94"/>
+			<rectangle name="lime-room" min="79,41" max="94,53"/>
+		</union>
+		<apply block="only-red" use="only-red-usage">
+			<region name="red-wool-rooms"/>
+		</apply>
+		<apply enter="only-red" message="You may not enter your own wool room!">
+			<region name="red-wool-rooms"/>
+		</apply>
+		<!--  spawn protection  -->
+		<apply enter="only-red" message="You may not enter the enemy team's spawn!">
+			<union name="red-spawn-room">
+				<cuboid min="30,0,30" max="40,10,40"/>
+				<cuboid min="32,0,32" max="42,10,42"/>
+				<cuboid min="34,0,34" max="44,10,44"/>
+				<cuboid min="36,0,36" max="46,10,46"/>
+				<cuboid min="38,0,38" max="48,10,48"/>
+			</union>
+		</apply>
+		<apply enter="only-blue" message="You may not enter the enemy team's spawn!">
+			<union name="blue-spawn-room">
+				<cuboid min="-28,0,-28" max="-38,10,-38"/>
+				<cuboid min="-30,0,-30" max="-40,10,-40"/>
+				<cuboid min="-32,0,-32" max="-42,10,-42"/>
+				<cuboid min="-34,0,-34" max="-44,10,-44"/>
+				<cuboid min="-36,0,-36" max="-46,10,-46"/>
+			</union>
+		</apply>
+		<apply block="deny-all" message="You may not edit the spawns!">
+			<union name="spawns">
+				<region name="blue-spawn-room"/>
+				<region name="red-spawn-room"/>
+			</union>
+		</apply>
+		<apply block="deny-fire">
+			<rectangle min="-oo,-oo" max="oo,oo"/>
+		</apply>
+		<apply block="no-void" message="You may not edit the void area!">
+			<rectangle min="-oo,-oo" max="oo,oo"/>
+		</apply>
+		<apply block="deny-panes" message="You may not edit the spawns!">
+			<cuboid min="-oo,0,-oo" max="oo,10,oo"/>
+		</apply>
+		<apply block-break="hill-owner" message="You must capture the hill to mine this iron!">
+			<union name="spawn-iron">
+				<cuboid min="-35,8,-35" max="-50,20,-50"/>
+				<cuboid min="52,8,52" max="27,20,27"/>
+			</union>
+		</apply>
+	</regions>
+	<hill name="Hill" id="Hill" capture-time="15s" capture-rule="lead" scaled-time="true" show="false">
+		<capture><cylinder name="capture" base="1,7,1" radius="6" height="3"/></capture>
+		<progress><cuboid name="progress" min="-5,0,-5" max="7,7,7"/></progress>
+	</hill>
+	<maxbuildheight>28</maxbuildheight>
+	<wools team="red">
+		<wool color="orange">
+			<block location="-41.5,5.5,-33.5"/>
+		</wool>
+		<wool color="lime">
+			<block location="-33.5,5.5,-41.5"/>
+		</wool>
+	</wools>
+	<wools team="blue">
+		<wool color="purple">
+			<block location="43.5,5.5,35.5"/>
+		</wool>
+		<wool color="yellow">
+			<block location="35.5,5.5,43.5"/>
+		</wool>
+	</wools>
+	<itemremove>
+		<item>string</item>
+		<item>glowstone dust</item>
+		<item>clay ball</item>
+		<item>gravel</item>
+		<item>cooked fish</item>
+	</itemremove>
+</map>
