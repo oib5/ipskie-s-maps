@@ -205,18 +205,24 @@
             <any>
                 <block>quartz block</block>
                 <block>quartz stairs</block>
+                <block>ender stone</block>
             </any>
         </filter>
         <filter name="falling-blocks">
             <any>
-                <block>stained clay</block>
-                <block>stained glass</block>
+                <block>stained clay:11</block>
+                <block>stained clay:14</block>
+                <block>stained glass:11</block>
+                <block>stained glass:14</block>
                 <block>step</block>
                 <block>double step</block>
                 <block>nether fence</block>
                 <block>redstone block</block>
                 <block>workbench</block>
                 <block>piston base</block>
+                <block>redstone wire</block>
+                <block>redstone torch on</block>
+                <block>redstone torch off</block>
             </any>
         </filter>
     </filters>
@@ -474,8 +480,8 @@
                 </all>
             </filter>
             <sticky>
-                    <filter name="falling-blocks"/>
-                    <filter name="sticky-blocks"/>
+                <filter name="falling-blocks"/>
+                <filter name="sticky-blocks"/>
             </sticky>
         </rule>
     </falling-blocks>

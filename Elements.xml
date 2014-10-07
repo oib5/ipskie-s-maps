@@ -1,251 +1,251 @@
 <map proto="1.3.5">
-    <name>Elements</name>
-    <version>0.2</version>
-    <objective>Capture the 3 enemy wools before any of them can do the same!</objective>
-    <authors>
-        <author>LessFruit</author>
-    </authors>
-    <contributors>
-        <contributor contribution="XML">Elijahyap</contributor>
-        <contributor>nahuelgamer00</contributor>
-        <contributor>kaskitogarcia</contributor>
-    </contributors>
-    <teams>
-        <team id="grass" color="dark green" max="7" max-overfill="10">Grass</team>
-        <team id="mycelium" color="light-gray" max="7" max-overfill="10">Mycelium</team>
-        <team id="clay" color="dark light-gray" max="7" max-overfill="10">Clay</team>
-        <team id="podzol" color="dark red" max="7" max-overfill="10">Podzol</team>
-    </teams>
-    <wools team="grass">
-        <wool color="light gray">
-            <block name="grass-light-gray">-0.5,5.5,-69.5</block>
-        </wool>
-        <wool color="light blue">
-            <block name="grass-light-blue">0.5,5.5,-69.5</block>
-        </wool>
-        <wool color="brown">
-            <block name="grass-brown">1.5,5.5,-69.5</block>
-        </wool>
-    </wools>
-    <wools team="mycelium">
-        <wool color="brown">
-            <block name="mycelium-brown">1.5,5.5,70.5</block>
-        </wool>
-        <wool color="green">
-            <block name="mycelium-green">0.5,5.5,70.5</block>
-        </wool>
-        <wool color="light gray">
-            <block name="mycelium-light-gray">-0.5,5.5,70.5</block>
-        </wool>
-    </wools>
-    <wools team="clay">
-        <wool color="light blue">
-            <block name="clay-light-blue">-69.5,5.5,1.5</block>
-        </wool>
-        <wool color="brown">
-            <block name="clay-brown">-69.5,5.5,0.5</block>
-        </wool>
-        <wool color="green">
-            <block name="clay-green">-69.5,5.5,-0.5</block>
-        </wool>
-    </wools>
-    <wools team="podzol">
-        <wool color="green">
-            <block name="podzol-green">70.5,5.5,-0.5</block>
-        </wool>
-        <wool color="light gray">
-            <block name="podzol-light-gray">70.5,5.5,0.5</block>
-        </wool>
-        <wool color="light blue">
-            <block name="podzol-light-blue">70.5,5.5,1.5</block>
-        </wool>
-    </wools>
-    <spawns>
-        <default yaw="180" pitch="0">
-            <cuboid min="-1,42,-1" max="2,42,2"/>
-        </default>
-        <spawn team="grass" kit="grass" yaw="0" pitch="0">
-            <block>0.5,4,-67.5</block>
-        </spawn>
-        <spawn team="mycelium" kit="mycelium" yaw="180" pitch="0">
-            <block>0.5,4,68.5</block>
-        </spawn>
-        <spawn team="clay" kit="clay" yaw="-90" pitch="0">
-            <block>-67.5,4,0.5</block>
-        </spawn>
-        <spawn team="podzol" kit="podzol" yaw="90" pitch="0">
-            <block>68.5.5,4,0.5</block>
-        </spawn>
-    </spawns>
-    <kits>
-        <kit name="team">
-            <item slot="0" damage="-3000">stone sword</item>
-            <item slot="1" enchantment="arrow infinite:1" damage="-3000">bow</item>
-            <item slot="2" enchantment="durability:2;dig speed:1" damage="-3000">iron pickaxe</item>
-            <item slot="3" enchantment="durability:2;dig speed:1;silk touch:1" damage="-3000">iron spade</item>
-            <item slot="5" amount="8">stone</item>
-            <item slot="8" amount="64">baked potato</item>
-            <item slot="28">arrow</item>
-        </kit>
-        <kit name="grass" parents="team">
-            <item slot="4" damage="5" amount="16">stained clay</item>
-            <helmet color="72a526" damage="-3000">leather helmet</helmet>
-            <chestplate color="72a526" damage="-3000">leather chestplate</chestplate>
-            <leggings color="72a526" damage="-3000">leather leggings</leggings>
-            <boots color="72a526" damage="-3000">leather boots</boots>
-        </kit>
-        <kit name="mycelium" parents="team">
-            <item slot="4" damage="3" amount="16">stained clay</item>
-            <helmet color="9845c5" damage="-3000">leather helmet</helmet>
-            <chestplate color="9845c5" damage="-3000">leather chestplate</chestplate>
-            <leggings color="9845c5" damage="-3000">leather leggings</leggings>
-            <boots color="9845c5" damage="-3000">leather boots</boots>
-        </kit>
-        <kit name="clay" parents="team">
-            <item slot="4" damage="9" amount="16">stained clay</item>
-            <helmet color="999999" damage="-3000">leather helmet</helmet>
-            <chestplate color="999999" damage="-3000">leather chestplate</chestplate>
-            <leggings color="999999" damage="-3000">leather leggings</leggings>
-            <boots color="999999" damage="-3000">leather boots</boots>
-        </kit>
-        <kit name="podzol" parents="team">
-            <item slot="4" damage="12" amount="16">stained clay</item>
-            <helmet color="664c33" damage="-3000">leather helmet</helmet>
-            <chestplate color="664c33" damage="-3000">leather chestplate</chestplate>
-            <leggings color="664c33" damage="-3000">leather leggings</leggings>
-            <boots color="664c33" damage="-3000">leather boots</boots>
-        </kit>
-    </kits>
-    <filters>
-        <filter name="only-grass">
+<name>Elements</name>
+<version>0.2</version>
+<objective>Capture the 3 enemy wools before any of them can do the same!</objective>
+<authors>
+    <author>LessFruit</author>
+</authors>
+<contributors>
+    <contributor contribution="XML">Elijahyap</contributor>
+    <contributor>nahuelgamer00</contributor>
+    <contributor>kaskitogarcia</contributor>
+</contributors>
+<teams>
+    <team id="grass" color="dark green" max="7" max-overfill="10">Grass</team>
+    <team id="mycelium" color="light gray" max="7" max-overfill="10">Mycelium</team>
+    <team id="clay" color="dark gray" max="7" max-overfill="10">Clay</team>
+    <team id="podzol" color="dark red" max="7" max-overfill="10">Podzol</team>
+</teams>
+<wools team="grass">
+    <wool color="light gray">
+        <block name="grass-light-gray">-0.5,5.5,-69.5</block>
+    </wool>
+    <wool color="light blue">
+        <block name="grass-light-blue">0.5,5.5,-69.5</block>
+    </wool>
+    <wool color="brown">
+        <block name="grass-brown">1.5,5.5,-69.5</block>
+    </wool>
+</wools>
+<wools team="mycelium">
+    <wool color="brown">
+        <block name="mycelium-brown">1.5,5.5,70.5</block>
+    </wool>
+    <wool color="green">
+        <block name="mycelium-green">0.5,5.5,70.5</block>
+    </wool>
+    <wool color="light gray">
+        <block name="mycelium-light-gray">-0.5,5.5,70.5</block>
+    </wool>
+</wools>
+<wools team="clay">
+    <wool color="light blue">
+        <block name="clay-light-blue">-69.5,5.5,1.5</block>
+    </wool>
+    <wool color="brown">
+        <block name="clay-brown">-69.5,5.5,0.5</block>
+    </wool>
+    <wool color="green">
+        <block name="clay-green">-69.5,5.5,-0.5</block>
+    </wool>
+</wools>
+<wools team="podzol">
+    <wool color="green">
+        <block name="podzol-green">70.5,5.5,-0.5</block>
+    </wool>
+    <wool color="light gray">
+        <block name="podzol-light-gray">70.5,5.5,0.5</block>
+    </wool>
+    <wool color="light blue">
+        <block name="podzol-light-blue">70.5,5.5,1.5</block>
+    </wool>
+</wools>
+<spawns>
+    <default yaw="180" pitch="0">
+        <cuboid min="-1,42,-1" max="2,42,2"/>
+    </default>
+    <spawn team="grass" kit="grass" yaw="0" pitch="0">
+        <block>0.5,4,-67.5</block>
+    </spawn>
+    <spawn team="mycelium" kit="mycelium" yaw="180" pitch="0">
+        <block>0.5,4,68.5</block>
+    </spawn>
+    <spawn team="clay" kit="clay" yaw="-90" pitch="0">
+        <block>-67.5,4,0.5</block>
+    </spawn>
+    <spawn team="podzol" kit="podzol" yaw="90" pitch="0">
+        <block>68.5.5,4,0.5</block>
+    </spawn>
+</spawns>
+<kits>
+    <kit name="team">
+        <item slot="0" damage="-3000">stone sword</item>
+        <item slot="1" enchantment="arrow infinite:1" damage="-3000">bow</item>
+        <item slot="2" enchantment="durability:2;dig speed:1" damage="-3000">iron pickaxe</item>
+        <item slot="3" enchantment="durability:2;dig speed:1;silk touch:1" damage="-3000">iron spade</item>
+        <item slot="5" amount="8">stone</item>
+        <item slot="8" amount="64">baked potato</item>
+        <item slot="28">arrow</item>
+    </kit>
+    <kit name="grass" parents="team">
+        <item slot="4" damage="5" amount="16">stained clay</item>
+        <helmet color="72a526" damage="-3000">leather helmet</helmet>
+        <chestplate color="72a526" damage="-3000">leather chestplate</chestplate>
+        <leggings color="72a526" damage="-3000">leather leggings</leggings>
+        <boots color="72a526" damage="-3000">leather boots</boots>
+    </kit>
+    <kit name="mycelium" parents="team">
+        <item slot="4" damage="3" amount="16">stained clay</item>
+        <helmet color="9845c5" damage="-3000">leather helmet</helmet>
+        <chestplate color="9845c5" damage="-3000">leather chestplate</chestplate>
+        <leggings color="9845c5" damage="-3000">leather leggings</leggings>
+        <boots color="9845c5" damage="-3000">leather boots</boots>
+    </kit>
+    <kit name="clay" parents="team">
+        <item slot="4" damage="9" amount="16">stained clay</item>
+        <helmet color="999999" damage="-3000">leather helmet</helmet>
+        <chestplate color="999999" damage="-3000">leather chestplate</chestplate>
+        <leggings color="999999" damage="-3000">leather leggings</leggings>
+        <boots color="999999" damage="-3000">leather boots</boots>
+    </kit>
+    <kit name="podzol" parents="team">
+        <item slot="4" damage="12" amount="16">stained clay</item>
+        <helmet color="664c33" damage="-3000">leather helmet</helmet>
+        <chestplate color="664c33" damage="-3000">leather chestplate</chestplate>
+        <leggings color="664c33" damage="-3000">leather leggings</leggings>
+        <boots color="664c33" damage="-3000">leather boots</boots>
+    </kit>
+</kits>
+<filters>
+    <filter name="only-grass">
+        <team>grass</team>
+    </filter>
+    <filter name="only-mycelium">
+        <team>mycelium</team>
+    </filter>
+    <filter name="only-clay">
+        <team>clay</team>
+    </filter>
+    <filter name="only-podzol">
+        <team>podzol</team>
+    </filter>
+    <filter name="no-wool">
+        <deny>
+            <block>wool</block>
+        </deny>
+    </filter>
+    <filter name="deny-grass">
+        <deny>
             <team>grass</team>
-        </filter>
-        <filter name="only-mycelium">
+        </deny>
+    </filter>
+    <filter name="deny-mycelium">
+        <deny>
             <team>mycelium</team>
-        </filter>
-        <filter name="only-clay">
+        </deny>
+    </filter>
+    <filter name="deny-clay">
+        <deny>
             <team>clay</team>
-        </filter>
-        <filter name="only-podzol">
+        </deny>
+    </filter>
+    <filter name="deny-podzol">
+        <deny>
             <team>podzol</team>
-        </filter>
-        <filter name="no-wool">
-            <deny>
-                <block>wool</block>
-            </deny>
-        </filter>
-        <filter name="deny-grass">
-            <deny>
-                <team>grass</team>
-            </deny>
-        </filter>
-        <filter name="deny-mycelium">
-            <deny>
-                <team>mycelium</team>
-            </deny>
-        </filter>
-        <filter name="deny-clay">
-            <deny>
-                <team>clay</team>
-            </deny>
-        </filter>
-        <filter name="deny-podzol">
-            <deny>
-                <team>podzol</team>
-            </deny>
-        </filter>
-        <filter name="no-wool">
-            <deny>
-                <block>wool</block>
-            </deny>
-        </filter>
-        <filter name="no-void">
-            <deny>
-                <void/>
-            </deny>
-        </filter>
-    </filters>
-    <regions>
-        <!--  Region Definitions  -->
-        <union name="spawns">
-            <cuboid name="grass-spawn-room" min="-2,4,-69" max="3,9,-65"/>
-            <cuboid name="mycelium-spawn-room" min="-2,4,66" max="3,9,70"/>
-            <cuboid name="clay-spawn-room" min="-69,4,-2" max="-65,9,3"/>
-            <cuboid name="podzol-spawn-room" min="66,4,-2" max="70,9,3"/>   
-        </union>
-        <union name="wool-rooms">
-            <cylinder name="light-blue-wool-room" base="0.5,0,-84.5" radius="6" height="15"/>
-            <cylinder name="light-gray-wool-room" base="0.5,0,85.5" radius="6" height="15"/>
-            <cylinder name="brown-wool-room" base="-84.5,0,0.5" radius="6" height="15"/>
-            <cylinder name="green-wool-room" base="85.5,0,0.5" radius="6" height="15"/>
-        </union>
-        <union name="wools">
-            <region name-"grass-brown"/>
-            <region name-"grass-light-blue"/>
-            <region name-"grass-light-gray"/>
-            <region name-"mycelium-brown"/>
-            <region name-"mycelium-light-gray"/>
-            <region name-"mycelium-green"/>
-            <region name-"clay-brown"/>
-            <region name-"clay-light-blue"/>
-            <region name-"clay-green"/>
-            <region name-"podzol-light-blue"/>
-            <region name-"podzol-light-gray"/>
-            <region name-"podzol-green"/>
-        </union>
-        <!--  Block Rules  -->
-        <apply block="no-void" message="You may not edit the void area">
-            <negative>
-                <rectangle min="-33,-33" max="34,34"/>
-            </negative>
-        </apply>
-        <apply block="deny-all" message="You may not modify the spawn areas">
-            <region name="platforms"/>
-        </apply>
-        <apply block-place="no-wool" message="You may only place the wool at the victory monument">
-            <region name="wool-rooms"
-        </apply>
-        <apply block="deny-all" message="You may not edit the wool rooms">
-            <region name="wool-rooms-room"/>
-        </apply>
-        <!--  Entry Rules  -->
-        <apply enter="only-grass" message="You may not enter the enemy spawn">
-            <region name="grass-spawn-room"/>
-        </apply>
-        <apply enter="only-mycelium" message="You may not enter the enemy spawn">
-            <region name="mycelium-spawn-room"/>
-        </apply>
-        <apply enter="only-clay" message="You may not enter the enemy spawn">
-            <region name="clay-spawn-room"/>
-        </apply>
-        <apply enter="only-podzol" message="You may not enter the enemy spawn">
-            <region name="podzol-spawn-room"/>
-        </apply>
-        <apply enter="deny-mycelium" message="You may not enter your wool room">
-            <region name="light-blue-wool-room"/>
-        </apply>
-        <apply enter="deny-podzol" message="You may not enter your wool room">
-            <region name="brown-wool-room"/>
-        </apply>
-        <apply enter="deny-clay" message="You may not enter your wool room">
-            <region name="light-gray-wool-room"/>
-        </apply>
-        <apply enter="deny-grass" message="You may not enter your wool room">
-            <region name="green-wool-room"/>
-        </apply>
-    </regions>
-    <itemremove>
-        <item>stone sword</item>
-        <item>bow</item>
-        <item>iron pickaxe</item>
-        <item>iron spade</item>
-        <item>stained clay</item>
-        <item>arrow</item>
-        <item>leather helmet</item>
-        <item>leather chestplate</item>
-        <item>leather leggings</item>
-        <item>leather boots</item>
-        <item>baked potato</item>
-    </itemremove>
-    <maxbuildheight>15</maxbuildheight>
+        </deny>
+    </filter>
+    <filter name="no-wool">
+        <deny>
+            <block>wool</block>
+        </deny>
+    </filter>
+    <filter name="no-void">
+        <deny>
+            <void/>
+        </deny>
+    </filter>
+</filters>
+<regions>
+    <!--  Region Definitions  -->
+    <union name="spawns">
+        <cuboid name="grass-spawn-room" min="-2,4,-69" max="3,9,-65"/>
+        <cuboid name="mycelium-spawn-room" min="-2,4,66" max="3,9,70"/>
+        <cuboid name="clay-spawn-room" min="-69,4,-2" max="-65,9,3"/>
+        <cuboid name="podzol-spawn-room" min="66,4,-2" max="70,9,3"/>   
+    </union>
+    <union name="wool-rooms">
+        <cylinder name="light-blue-wool-room" base="0.5,0,-84.5" radius="6" height="15"/>
+        <cylinder name="light-gray-wool-room" base="0.5,0,85.5" radius="6" height="15"/>
+        <cylinder name="brown-wool-room" base="-84.5,0,0.5" radius="6" height="15"/>
+        <cylinder name="green-wool-room" base="85.5,0,0.5" radius="6" height="15"/>
+    </union>
+    <union name="wools">
+        <region name"grass-brown"/>
+        <region name"grass-light-blue"/>
+        <region name"grass-light-gray"/>
+        <region name"mycelium-brown"/>
+        <region name"mycelium-light-gray"/>
+        <region name"mycelium-green"/>
+        <region name"clay-brown"/>
+        <region name"clay-light-blue"/>
+        <region name"clay-green"/>
+        <region name"podzol-light-blue"/>
+        <region name"podzol-light-gray"/>
+        <region name"podzol-green"/>
+    </union>
+    <!--  Block Rules  -->
+    <apply block="no-void" message="You may not edit the void area">
+        <negative>
+            <rectangle min="-33,-33" max="34,34"/>
+        </negative>
+    </apply>
+    <apply block="deny-all" message="You may not modify the spawn areas">
+        <region name="spawns"/>
+    </apply>
+    <apply block-place="no-wool" message="You may only place the wool at the victory monument">
+       	<negative><region name="wools"/></negative>
+    </apply>
+    <apply block="deny-all" message="You may not edit the wool rooms">
+        <region name="wool-rooms-room"/>
+    </apply>
+    <!--  Entry Rules  -->
+    <apply enter="only-grass" message="You may not enter the enemy spawn">
+        <region name="grass-spawn-room"/>
+    </apply>
+    <apply enter="only-mycelium" message="You may not enter the enemy spawn">
+        <region name="mycelium-spawn-room"/>
+    </apply>
+    <apply enter="only-clay" message="You may not enter the enemy spawn">
+        <region name="clay-spawn-room"/>
+    </apply>
+    <apply enter="only-podzol" message="You may not enter the enemy spawn">
+        <region name="podzol-spawn-room"/>
+    </apply>
+    <apply enter="deny-mycelium" message="You may not enter your wool room">
+        <region name="light-blue-wool-room"/>
+    </apply>
+    <apply enter="deny-podzol" message="You may not enter your wool room">
+        <region name="brown-wool-room"/>
+    </apply>
+    <apply enter="deny-clay" message="You may not enter your wool room">
+        <region name="light-gray-wool-room"/>
+    </apply>
+    <apply enter="deny-grass" message="You may not enter your wool room">
+        <region name="green-wool-room"/>
+    </apply>
+</regions>
+<itemremove>
+    <item>stone sword</item>
+    <item>bow</item>
+    <item>iron pickaxe</item>
+    <item>iron spade</item>
+    <item>stained clay</item>
+    <item>arrow</item>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>leather leggings</item>
+    <item>leather boots</item>
+    <item>baked potato</item>
+</itemremove>
+<maxbuildheight>15</maxbuildheight>
 </map>
