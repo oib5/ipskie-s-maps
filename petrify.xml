@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<map proto="1.3.5">
+<name>Petrify</name>
+<version>1.0.0</version>
+<objective>Capture the enemy wools and secure them in the appropriate wool monument.</objective>
+<authors>
+    <author>DiamondAx</author>
+</authors>
+<contributors>
+    <contributor contribution="Minor aesthetics">EnarRikardz</contributor>
+</contributors>
+<teams>
+   <team id="red-team" color="dark red" max="10" max-overfill="16">Red Team</team>
+   <team id="blue-team" color="blue" max="10" max-overfill="16">Blue Team</team>
+</teams>
+<kits>
+    <kit name="spawn" force="true">
+        <item slot="0">iron sword</item>
+        <item slot="1">bow</item>
+        <item slot="2" enchantment="dig speed:1;durability:2">iron pickaxe</item>
+        <item slot="3">stone axe</item>
+        <item slot="4" amount="48" damage="1">wood</item>
+        <item slot="5" amount="16">nether fence</item>
+        <item slot="6" amount="16">iron fence</item>
+        <item slot="7" amount="32">cooked beed</item>
+        <item slot="8" amount="2">golden apple</item>
+        <item slot="28" amount="64"></item>
+        <item slot="19" amount="64">arrow</item>
+        <potion duration="5" amplifier="1">heal</potion>
+    </kit>
+</kits>
+<spawns>
+    <spawn team="red" kit="red" angle="-117,7.5,-412">
+        <cuboid min="-120,6,-409" max="-116,6,-413"/>
+    </spawn>
+    <spawn team="blue" kit="blue" angle="29,7.5,-559">
+        <cuboid min="33,6,-563" max="31,6,-561"/>
+    </spawn>
+    <default yaw="0">
+        <cuboid min="-44,43,-485" max="-42,43,-487"/>
+    </default>
+</spawns>
+<regions>
+    <!--
+     blue wool room protection (these are the wools blue has to get)
+    -->
+    <union name="blue-wool-rooms">
+        <rectangle name="green1-room" min="-103,-487" max="-100,-500"/>
+        <rectangle name="green2-room" min="-105,-488" max="-98,-499"/>
+        <rectangle name="green3-room" min="-106,-499" max="-97,-498"/>
+        <rectangle name="green4-room" min="-107,-491" max="-96,-496"/>
+        <rectangle name="cyan1-room" min="-96,-437" max="-100,-425"/>
+        <rectangle name="cyan2-room" min="-94,-436" max="-102,-426"/>
+        <rectangle name="cyan3-room" min="-93,-435" max="-103,-427"/>
+        <rectangle name="cyan4-room" min="-92,-433" max="-104,-429"/>
+    </union>
+    <apply block="only-blue" use="only-blue-usage">
+        <region name="blue-wool-rooms"/>
+    </apply>
+    <apply enter="only-blue" message="You may not enter your own wool room!">
+        <region name="blue-wool-rooms"/>
+    </apply>
+    <!--
+     red wool room protection (these are the wools red has to get)
+    -->
+    <union name="red-wool-rooms">
+        <rectangle name="pink1-room" min="18,-484" max="10,-474"/>
+        <rectangle name="pink2-room" min="9,-475" max="19,-483"/>
+        <rectangle name="pink3-room" min="16,-485" max="12,-473"/>
+        <rectangle name="pink4-room" min="20,-481" max="8,-477"/>
+        <rectangle name="yellow1-room" min="9,-535" max="13,-547"/>
+        <rectangle name="yellow2-room" min="7,-536" max="15,-546"/>
+        <rectangle name="yellow3-room" min="6,-537" max="16,-545"/>
+        <rectangle name="yellow4-room" min="5,-539" max="17,-543"/>
+    </union>
+    <apply block="only-red" use="only-red-usage">
+        <region name="red-wool-rooms"/>
+    </apply>
+    <apply enter="only-red" message="You may not enter your own wool room!">
+        <region name="red-wool-rooms"/>
+    </apply>
+    <apply block="no-void" world="no-void" message="You may not build over the void here!">
+        <complement>
+            <rectangle min="oo,oo" max="-oo,-oo"/>        
+            <rectangle min="-24,-467" max="-62,-505"/>
+        </complement>
+    </apply>
+</regions>
+ 
+<wools>
+    <wool team="blue" color="cyan" craftable="false">
+        <block>47.5,7,-567.5</block>
+    </wool>
+    <wool team="blue" color="green" craftable="false">
+        <block>37.5,7,-577.5</block>
+    </wool>
+    <wool team="red" color="pink" craftable="false">
+        <block>-124.5,7,-395.5</block>
+    </wool>
+    <wool team="red" color="yellow" craftable="false">
+        <block>-134.5,7,-405.5</block>
+    </wool>
+</wools>
+ 
+<filters>
+    <filter name="no-void">
+        <not>
+            <void/>
+        </not>
+    </filter>
+</filters>
+<maxbuildheight>18</maxbuildheight>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>bow</tool>
+    <tool>stone axe</tool>
+</toolrepair> 
+</map>
