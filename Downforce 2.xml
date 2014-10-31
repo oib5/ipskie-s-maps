@@ -176,18 +176,18 @@
 <maxbuildheight>18</maxbuildheight>
 <wools team="red">
     <wool color="green">
-        <block location="55.5,7.5,50.5"/>
+        <block location="52.5,6.5,20.5"/>
     </wool>
     <wool color="lime">
-        <block location="50.5,7.5,55.5"/>
+        <block location="20.5,6.5,52.5"/>
     </wool>
 </wools>
 <wools team="blue">
-    <wool color="pink">
-        <block location="-49.5,7.5,-54.5"/>
-    </wool>
     <wool color="purple">
-        <block location="-54.5,7.5,-49.5"/>
+        <block location="-51.5,6.5,-19.5"/>
+    </wool>
+    <wool color="pink">
+        <block location="-19.5,6.5,-51.5"/>
     </wool>
 </wools>
 <itemremove>
@@ -221,4 +221,9 @@
         <replace>air</replace>
     </renewable>
 </renewables>
+<tnt>
+    <instantignite>on</instantignite>
+    <fuse>2.5s</fuse>
+    <power>5</power>
+</tnt>
 </map>
