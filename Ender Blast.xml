@@ -197,7 +197,11 @@
                 <cuboid name="red-left-platform" min="-132,6,30" max="-135,9,33"/>
                 <cuboid name="red-right-platform" min="-132,6,-30" max="-135,9,-27"/>
             </union>
-            <mirror name="blue-platforms" region="red-platforms" origin="-79.5,0,0.5" normal="1,0,0"/>
+            <union name="blue-platforms">
+                <cuboid name="blue-left-platform" min="-27,6,-30" max="-24,9,-27"/>
+                <cuboid name="blue-right-platform" min="-27,6,30" max="-24,9,33"/>
+            </union>
+            
         </union>
         <union name="portals">
             <union name="red-portals">
