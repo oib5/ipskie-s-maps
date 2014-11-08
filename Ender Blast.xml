@@ -131,6 +131,7 @@
                         <block>stained glass:7</block>
                         <block>stained glass:11</block>
                         <block>stained glass:14</block>
+                        <block>stained glass pane</block>
                     </any>
                     <cause>explosion</cause>
                 </all>
@@ -194,23 +195,22 @@
         <rectangle name="main-area" min="-169,25,-45" max="10,65,48"/>
         <union name="platforms">
             <union name="red-platforms">
-                <cuboid name="red-left-platform" min="-132,6,30" max="-135,9,33"/>
-                <cuboid name="red-right-platform" min="-132,6,-30" max="-135,9,-27"/>
+                <cuboid name="red-left-platform" min="-130,0,28" max="-137,9,35"/>
+                <cuboid name="red-right-platform" min="-130,0,-30" max="-137,9,-27"/>
             </union>
             <union name="blue-platforms">
-                <cuboid name="blue-left-platform" min="-27,6,-30" max="-24,9,-27"/>
-                <cuboid name="blue-right-platform" min="-27,6,30" max="-24,9,33"/>
+                <cuboid name="blue-left-platform" min="-29,0,-30" max="-22,9,-27"/>
+                <cuboid name="blue-right-platform" min="-29,0,28" max="-22,9,35"/>
             </union>
-            
         </union>
         <union name="portals">
             <union name="red-portals">
-                <translate name="red-left" offset="0,41,0"><region name="red-left-platform"/></translate>
-                <translate name="red-right" offset="0,41,0"><region name="red-right-platform"/></translate>
+                <cuboid name="red-left-platform" min="-132,47,30" max="-135,50,33"/>
+                <cuboid name="red-right-platform" min="-132,47,-30" max="-135,50,-27"/>
             </union>
             <union name="blue-portals">
-                <translate name="blue-left" offset="0,41,0"><region name="blue-left-platform"/></translate>
-                <translate name="blue-right" offset="0,41,0"><region name="blue-right-platform"/></translate>
+                <cuboid name="blue-left-platform" min="-27,47,-30" max="-24,50,-27"/>
+                <cuboid name="blue-right-platform" min="-27,47,30" max="-24,50,33"/>
             </union>
         </union>
         <union name="cubes">
@@ -284,6 +284,12 @@
         </apply>
         <apply enter="only-red" message="You may not enter the enemy spawn">
             <region name="red-platforms"/>
+        </apply>
+        <apply enter="only-red" message="You may not enter your own wool room!">
+            <region name="red-room"/>
+        </apply>
+        <apply enter="only-blue" message="You may not enter your own wool room!">
+            <region name="blue-room"/>
         </apply>
         <apply enter="only-blue-after-broken" message="You only enter the wool room after the cube is completed">
             <region name="blue-room"/>
