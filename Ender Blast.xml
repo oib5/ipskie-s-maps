@@ -136,7 +136,7 @@
                 </all>
             </not>
         </filter>
-        <filter name="only-player-endstone-and-panes">
+        <filter name="only-player-endstone">
             <not>
                 <all>
                     <block>ender stone</block>
@@ -251,7 +251,7 @@
         <apply block-break="wool-room-materials">
             <region name="wool-rooms"/>
         </apply>
-        <apply block-break="only-player-endstone-and-panes" message="You may only break this with TNT">
+        <apply block-break="only-player-endstone" message="You may only break this with TNT">
             <region name="cubes"/>
         </apply>
         <apply block-place="no-blue-tnt">
