@@ -46,7 +46,7 @@
             <potion duration="oo">saturation</potion>
         </kit>
         <kit name="obs" parents="all" force="true">
-            <item slot="3" name="`c`lTNT Licensing `r`o- Hover to Read More" lore="`7To use `ctnt/redstone `7you need a licsence.|`7Get 5 kills `o(3 unique) `r`7or complete an objective|`7to receive a licsence.|`7You lose your licsence when you get 3 team kills.|`7To request your licsence use `a/tnt request|`7Staff cannot give you your licsence back!">tnt</item>
+            <item slot="3" name="`c`lTNT Licensing `r`o- Hover to Read More" lore="`7To use `ctnt/redstone `7you need a licence.|`7Get 5 kills `o(3 unique) `r`7or complete an objective|`7to receive a licence.|`7You lose your licence when you get 3 team kills.|`7To request your licence use `a/tnt request|`7Staff cannot give you your licence back!">tnt</item>
         </kit>
         <kit name="team" parents="all">
             <item slot="9">workbench</item>
