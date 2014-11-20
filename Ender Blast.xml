@@ -1,386 +1,367 @@
 <map proto="1.3.5">
-    <name>Ender Blast</name>
-    <version>0.4</version>
-    <objective>Destroy 75% of the enemy endstone cube to enter the wool room inside of it. Then return the wool back to your side!</objective>
-    <authors>
-        <author contribution="Original author and map layout">BeanButt_jar</author>
-        <author contribution="XML and gameplay feedback">Elijahyap</author>
-    </authors>
-    <contributors>
-        <contributor contribution="XML help and concept tweaks">ElectroidFilms</contributor>
-    </contributors>
-    <rules>
-        <rule>There are NO restrictions on spawn camping/killing</rule>
-        <rule>All quartz/stained glass blocks are fully blast resistant (and can be mined)</rule>
-    </rules>
-    <teams>
-        <team id="red" color="dark red" max="20" max-overfill="24">Red</team>
-        <team id="blue" color="blue" max="20" max-overfill="24">Blue</team>
-    </teams>
-    <wools>
-        <wool id="blue-wool" team="blue" color="blue" location="-133.5,20,1.5">
-            <region name="blue-wool"/>
-        </wool>
-        <wool id="red-wool" team="red" color="red" location="-25.5,20,1.5">
-            <region name="red-wool"/>
-        </wool>
-    </wools>
-    <destroyables name="Endstone Cube" completion="75%" materials="ender stone" show-progress="true" sparks="true">
-        <destroyable id="red-cube" owner="red"><region name="red-cube"/></destroyable>
-        <destroyable id="blue-cube" owner="blue"><region name="blue-cube"/></destroyable>
-    </destroyables>
-    <spawns>
-        <default kit="obs" yaw="180" pitch="0">
-            <point>-79.5,60,2.5</point>
-        </default>
-        <spawn team="red" kit="red" yaw="90" pitch="0">
-            <point>-103.5,48,1.5</point>
-        </spawn>
-        <spawn team="blue" kit="blue" yaw="-90" pitch="0">
-            <point>-55.5,48,1.5</point>
-        </spawn>
-    </spawns>
-    <kits>
-        <kit name="all" potion-particles="false">
-            <potion duration="oo">night vision</potion>
-            <potion duration="oo">saturation</potion>
-        </kit>
-        <kit name="obs" parents="all" force="true">
-            <item slot="3" name="`c`lTNT Licensing `r`o- Hover to Read More" lore="`7To use `ctnt/redstone `7you need a licsence.|`7Get 5 kills `o(3 unique) `r`7or complete an objective|`7to receive a licsence.|`7You lose your licsence when you get 3 team kills.|`7To request your licsence use `a/tnt request|`7Staff cannot give you your licsence back!">tnt</item>
-        </kit>
-        <kit name="team" parents="all">
-            <item slot="9">workbench</item>
-            <item slot="10">shears</item>
-            <item slot="28" amount="32">arrow</item>
-            <item slot="29" amount="64">vine</item>
-            <item slot="2" amount="64">vine</item>
-            <item slot="13" amount="16">trap door</item>
-            <item slot="22" amount="16">ladder</item>
-            <item slot="31" amount="64">step</item>
-            <item slot="4" amount="64">nether fence</item>
-            <item slot="14" amount="16">piston base</item>
-            <item slot="23" amount="16">lever</item>
-            <item slot="32" amount="16">stone plate</item>
-            <item slot="5" amount="16">stone button</item>
-            <item slot="15">water bucket</item>
-            <item slot="24">water bucket</item>
-            <item slot="33">water bucket</item>
-            <item slot="6">water bucket</item>
-            <item slot="16" amount="16">diode</item>
-            <item slot="25" amount="16">redstone torch on</item>
-            <item slot="34" amount="64">redstone</item>
-            <item slot="7" amount="16">redstone block</item>
-            <item slot="17" amount="64">tnt</item>
-            <item slot="26" amount="64">tnt</item>
-            <item slot="35" amount="64">tnt</item>
-            <item slot="8" amount="64">tnt</item>
-            <item slot="1">bow</item>
-            <item slot="0">diamond pickaxe</item>
-            <potion amplifier="5" duration="oo">damage resistance</potion>
-            <potion amplifier="10" duration="1">heal</potion>
-            <walk-speed>4</walk-speed>
-        </kit>
-        <kit name="red" parents="team">
-            <item slot="21" damage="14" amount="64">stained clay</item>
-            <item slot="30" damage="14" amount="64">stained clay</item>
-            <item slot="3" damage="14" amount="64">stained clay</item>
-            <helmet enchantment="protection explosions:3;water worker:3" damage="-3000">iron helmet</helmet>
-            <chestplate color="dd5566" damage="-3000">leather chestplate</chestplate>
-            <leggings color="dd5566" damage="-3000">leather leggings</leggings>
-            <boots color="dd5566" enchantment="protection fall:3" damage="-3000">leather boots</boots>
-        </kit>
-        <kit name="blue" parents="team">
-            <item slot="21" damage="11" amount="64">stained clay</item>
-            <item slot="30" damage="11" amount="64">stained clay</item>
-            <item slot="3" damage="11" amount="64">stained clay</item>
-            <helmet enchantment="protection explosions:3;water worker:3" damage="-3000">iron helmet</helmet>
-            <chestplate color="5e55dd" damage="-3000">leather chestplate</chestplate>
-            <leggings color="5e55dd" damage="-3000">leather leggings</leggings>
-            <boots color="5e55dd" enchantment="protection fall:3" damage="-3000">leather boots</boots>
-        </kit>
-        <kit name="remove-speed" force="true" potion-particles="false">
-            <potion amplifier="0" duration="0">damage resistance</potion>
-            <walk-speed>1</walk-speed>
-        </kit>
-    </kits>
-    <filters>
-        <filter name="only-red">
-            <team>red</team>
-        </filter>
-        <filter name="only-blue">
-            <team>blue</team>
-        </filter>
-        <filter name="only-red-after-broken">
-            <all>
-                <team>red</team>
-                <objective>blue-cube</objective>
-            </all>
-        </filter>
-        <filter name="only-blue-after-broken">
-            <all>
-                <team>blue</team>
-                <objective>red-cube</objective>
-            </all>
-        </filter>
-        <filter name="only-explosion-quartz-and-glass">
-            <not>
-                <all>
-                    <any>
-                        <block>quartz block</block>
-                        <block>quartz stairs</block>
-                        <block>stained glass:7</block>
-                        <block>stained glass:11</block>
-                        <block>stained glass:14</block>
-                    </any>
-                    <cause>explosion</cause>
-                </all>
-            </not>
-        </filter>
-        <filter name="only-player-endstone-and-panes">
-            <not>
-                <all>
-                    <block>ender stone</block>
-                    <cause>player</cause>
-                </all>
-            </not>
-        </filter>
-        <filter name="wool-room-materials">
-            <not>
-                <any>
-                    <any>
-                        <block>stained clay:9</block>
-                        <block>mob spawner</block>
-                        <block>iron block</block>
-                    </any>
-                    <all>
-                        <block>stained glass pane</block>
-                        <cause>explosion</cause>
-                    </all>
-                </any>
-            </not>
-        </filter>
-        <filter name="no-wool">
-            <deny>
-                <block>wool</block>
-            </deny>
-        </filter>
-        <filter name="no-red-tnt">
-            <deny>
-                <all>
-                    <block>tnt</block>
-                    <team>red</team>
-                </all>
-            </deny>
-        </filter>
-        <filter name="no-blue-tnt">
-            <deny>
-                <all>
-                    <block>tnt</block>
-                    <team>blue</team>
-                </all>
-            </deny>
-        </filter>
-        <filter name="no-water">
-            <deny>
-                <any>
-                    <block>water</block>
-                    <block>stationary water</block>
-                </any>
-            </deny>
-        </filter>
-    </filters>
-    <regions>
-        <!--  Region Definitions  -->
-        <rectangle name="main-area" min="-169,25,-45" max="10,65,48"/>
-        <union name="platforms">
-            <union name="red-platforms">
-                <cuboid name="red-left-platform" min="-132,6,30" max="-135,9,33"/>
-                <cuboid name="red-right-platform" min="-132,6,-30" max="-135,9,-27"/>
-            </union>
-            <union name="blue-platforms">
-                <cuboid name="blue-left-platform" min="-27,6,-30" max="-24,9,-27"/>
-                <cuboid name="blue-right-platform" min="-27,6,30" max="-24,9,33"/>
-            </union>
-            
-        </union>
-        <union name="portals">
-            <union name="red-portals">
-                <translate name="red-left" offset="0,41,0"><region name="red-left-platform"/></translate>
-                <translate name="red-right" offset="0,41,0"><region name="red-right-platform"/></translate>
-            </union>
-            <union name="blue-portals">
-                <translate name="blue-left" offset="0,41,0"><region name="blue-left-platform"/></translate>
-                <translate name="blue-right" offset="0,41,0"><region name="blue-right-platform"/></translate>
-            </union>
-        </union>
-        <union name="cubes">
-            <cuboid name="red-cube" min="-140,9,8" max="-127,37,-5"/>
-            <mirror name="blue-cube" region="red-cube" origin="-79.5,0,0.5" normal="1,0,0"/>
-        </union>
-        <union name="wool-rooms">
-            <cuboid name="blue-room" min="-137,9,-2" max="-130,34,5"/>
-            <mirror name="red-room" region="blue-room" origin="-79.5,0,0.5" normal="1,0,0"/>
-        </union>
-        <union name="around-wool-rooms">
-            <rectangle name="around-blue-room" min="-143,11" max="-124,-8"/>
-            <mirror name="around-red-room" region="around-blue-room" origin="-79.5,0,0.5" normal="1,0,0"/>
-        </union>
-        <union name="wools">
-            <block name="red-wool" location="-151.5,12.5,1.5"/>
-            <mirror name="blue-wool" region="red-wool" origin="-79.5,0,0.5" normal="1,0,0"/>
-        </union>
-        <union name="wool-monuments">
-            <cuboid name="red-monument" min="-153,11,3" max="-150,14,0"/>
-            <mirror name="blue-monument" region="red-monument" origin="-79.5,0,0.5" normal="1,0,0"/>
-        </union>
-        <!--  Block Rules  -->
-        <apply block="deny-all" message="You may not edit blocks outside of the map">
-            <negative>
-                <region name="main-area"/>
-            </negative>
-        </apply>
-        <apply block="deny-all" message="You may not modify the spawn area">
-            <region name="platforms"/>
-        </apply>
-        <apply block="deny-all" message="You may not modify the wool monument">
-            <region name="wool-monuments"/>
-        </apply>
-        <apply block-place="no-water" message="You may not place water near the cube">
-            <region name="around-wool-rooms"/>
-        </apply>
-        <apply block-break="wool-room-materials">
-            <region name="wool-rooms"/>
-        </apply>
-        <apply block-break="only-player-endstone-and-panes" message="You may only break this with TNT">
-            <region name="cubes"/>
-        </apply>
-        <apply block-place="no-blue-tnt">
-            <region name="blue-cube"/>
-        </apply>
-        <apply block-place="no-red-tnt">
-            <region name="red-cube"/>
-        </apply>
-        <apply block-break="only-explosion-quartz-and-glass">
-            <region name="main-area"/>
-        </apply>
-        <apply block-place="no-wool" message="You may only place the wool at the victory monument">
-            <complement>
-                <region name="main-area"/>
-                <region name="wools"/>
-            </complement>
-        </apply>
-        <apply block="only-red" message="You may not edit the enemy wool room">
-            <region name="red-room"/>
-        </apply>
-        <apply block="only-blue" message="You may not edit the enemy wool room">
-            <region name="blue-room"/>
-        </apply>
-        <apply block="deny-world">
-            <region name="wool-rooms"/>
-        </apply>
-        <!--  Entry Rules  -->
-        <apply enter="only-blue" message="You may not enter the enemy spawn">
-            <region name="blue-platforms"/>
-        </apply>
-        <apply enter="only-red" message="You may not enter the enemy spawn">
-            <region name="red-platforms"/>
-        </apply>
-        <apply enter="only-blue-after-broken" message="You only enter the wool room after the cube is completed">
-            <region name="blue-room"/>
-        </apply>
-        <apply enter="only-red-after-broken" message="You only enter the wool room after the cube is completed">
-            <region name="red-room"/>
-        </apply>
-        <!--  Kit Rules  -->
-        <apply kit="remove-speed">
-            <region name="portals"/>
-        </apply>
-    </regions>
-    <disabledamage>
-        <damage self="false" ally="true" enemy="false" other="false">block explosion</damage>
-    </disabledamage>
-    <portals filter="only-red" pitch="@0">
-        <portal y="-41" yaw="@180">
-            <region name="red-right"/>
-        </portal>
-        <portal y="-41" yaw="@0">
-            <region name="red-left"/>
-        </portal>
-    </portals>
-    <portals filter="only-blue">
-        <portal y="-41" yaw="@180">
-            <region name="blue-right"/>
-        </portal>
-        <portal y="-41" yaw="@0">
-            <region name="blue-left"/>
-        </portal>
-    </portals>
-    <killreward>
-        <item amount="8">arrow</item>
-        <item amount="32">tnt</item>
-        <item amount="8">ender stone</item>
-    </killreward>
-    <proximity-alarms>
-        <proximity-alarm message="There is an enemy at your wool room! `7(`9Blue Wool`7)" flare-radius="5">
-            <region>
-                <region name="blue-room"/>
-            </region>
-            <detect>
-                <team>blue</team>
-            </detect>
-        </proximity-alarm>
-        <proximity-alarm message="There is an enemy at your wool room! `7(`6Red Wool`7)" flare-radius="5">
-            <region>
-                <region name="red-room"/>
-            </region>
-            <detect>
-                <team>red</team>
-            </detect>
-        </proximity-alarm>
-    </proximity-alarms>
-    <broadcasts>
-        <tip after="1s" every="5m">The wool room is inside the enemy endstone cube.</tip>
-        <tip after="3s" every="5m">The cube can only be broken with TNT.</tip>
-        <tip after="5s" every="5m">You may only enter the wool room when the cube is destroyed.</tip>
-        <tip after="7s" every="5m">You get some endstone for every kill, use it to repair your monument.</tip>
-    </broadcasts>
-    <itemremove>
-        <item>diamond pickaxe</item>
-        <item>workbench</item>
-        <item>shears</item>
-        <item>wood sword</item>
-        <item>diamond chestplate</item>
-        <item>bow</item>
-        <item>arrow</item>
-        <item>vine</item>
-        <item>stained clay</item>
-        <item>stained glass</item>
-        <item>nether fence</item>
-        <item>step</item>
-        <item>ladder</item>
-        <item>trap door</item>
-        <item>stone plate</item>
-        <item>piston base</item>
-        <item>redstone block</item>
-        <item>redstone</item>
-        <item>stone button</item>
-        <item>lever</item>
-        <item>redstone torch on</item>
-        <item>diode</item>
-        <item>water bucket</item>
-        <item>bucket</item>
-        <item>tnt</item>
-        <item>leather helmet</item>
-        <item>leather chestplate</item>
-        <item>leather leggings</item>
-        <item>leather boots</item>
-        <item>iron helmet</item>
-        <item>iron chestplate</item>
-        <item>iron leggings</item>
-        <item>iron boots</item>
-        <item>quartz stairs</item>
-        <item>quartz block</item>
-        <item>ender stone</item>
-    </itemremove>
-    <maxbuildheight>47</maxbuildheight>
+<name>Ender Blast</name>
+<version>0.6</version>
+<objective>Destroy 75% of the enemy's endstone cube to enter the wool room inside of it, then return the wool back to your side</objective>
+<authors>
+	<author contribution="Original author and map layout">BeanButt_jar</author>
+	<author contribution="XML and gameplay feedback">Elijahyap</author>
+</authors>
+<contributors>
+	<contributor contribution="XML help and concept tweaks">ElectroidFilms</contributor>
+	<contributor contribution="inspiration from BoomBox and Scala">last_username</contributor>
+</contributors>
+<rules>
+	<rule>There are NO restrictions on spawn camping/killing</rule>
+	<rule>All quartz/stained glass blocks are fully blast resistant (and can be mined)</rule>
+</rules>
+<teams>
+	<team id="red" color="dark red" max="20" max-overfill="24">Red</team>
+	<team id="blue" color="blue" max="20" max-overfill="24">Blue</team>
+</teams>
+<wools>
+	<wool id="blue-wool" team="blue" color="blue" location="-133.5,20,1.5">
+		<region name="blue-wool"/>
+	</wool>
+	<wool id="red-wool" team="red" color="red" location="-25.5,20,1.5">
+		<region name="red-wool"/>
+	</wool>
+</wools>
+<destroyables name="Endstone Cube" completion="75%" materials="ender stone" show-progress="true" sparks="true">
+	<destroyable id="red-cube" owner="red">
+		<region name="red-cube"/>
+	</destroyable>
+	<destroyable id="blue-cube" owner="blue">
+		<region name="blue-cube"/>
+	</destroyable>
+</destroyables>
+<spawns>
+	<default kit="all" yaw="180" pitch="0">
+		<point>-79.5,60,2.5</point>
+	</default>
+	<spawn team="red" kit="red" yaw="90" pitch="0">
+		<point>-93.5,48,1.5</point>
+	</spawn>
+	<spawn team="blue" kit="blue" yaw="-90" pitch="0">
+		<point>-65.5,48,1.5</point>
+	</spawn>
+</spawns>
+<kits>
+	<kit name="all" potion-particles="false">
+		<potion duration="oo">night vision</potion>
+		<potion duration="oo">saturation</potion>
+	</kit>
+	<kit name="team" parents="all">
+		<item slot="9">workbench</item>
+		<item slot="10">shears</item>
+		<item slot="28" amount="32">arrow</item>
+		<item slot="29" amount="64">vine</item>
+		<item slot="2" amount="64">vine</item>
+		<item slot="13" amount="16">trap door</item>
+		<item slot="22" amount="16">ladder</item>
+		<item slot="31" amount="64">step</item>
+		<item slot="4" amount="64">nether fence</item>
+		<item slot="14" amount="16">piston base</item>
+		<item slot="23" amount="16">lever</item>
+		<item slot="32" amount="16">stone plate</item>
+		<item slot="5" amount="16">stone button</item>
+		<item slot="15">water bucket</item>
+		<item slot="24">water bucket</item>
+		<item slot="33">water bucket</item>
+		<item slot="6">water bucket</item>
+		<item slot="16" amount="16">diode</item>
+		<item slot="25" amount="16">redstone torch on</item>
+		<item slot="34" amount="64">redstone</item>
+		<item slot="7" amount="16">redstone block</item>
+		<item slot="17" amount="64">tnt</item>
+		<item slot="26" amount="64">tnt</item>
+		<item slot="35" amount="64">tnt</item>
+		<item slot="8" amount="64">tnt</item>
+		<item slot="1">bow</item>
+		<item slot="0">diamond pickaxe</item>
+		<potion amplifier="5" duration="oo">damage resistance</potion>
+		<potion amplifier="10" duration="1">heal</potion>
+		<walk-speed>4</walk-speed>
+	</kit>
+	<kit name="red" parents="team">
+		<item slot="12" damage="14" amount="64">stained clay</item>
+		<item slot="21" damage="14" amount="64">stained clay</item>
+		<item slot="30" damage="14" amount="64">stained clay</item>
+		<item slot="3" damage="14" amount="64">stained clay</item>
+		<helmet enchantment="protection explosions:3;water worker:3" damage="-3000">iron helmet</helmet>
+		<chestplate color="dd5566" damage="-3000">leather chestplate</chestplate>
+		<leggings color="dd5566" damage="-3000">leather leggings</leggings>
+		<boots color="dd5566" enchantment="protection fall:3" damage="-3000">leather boots</boots>
+	</kit>
+	<kit name="blue" parents="team">
+		<item slot="12" damage="11" amount="64">stained clay</item>
+		<item slot="21" damage="11" amount="64">stained clay</item>
+		<item slot="30" damage="11" amount="64">stained clay</item>
+		<item slot="3" damage="11" amount="64">stained clay</item>
+		<helmet enchantment="protection explosions:3;water worker:3" damage="-3000">iron helmet</helmet>
+		<chestplate color="5e55dd" damage="-3000">leather chestplate</chestplate>
+		<leggings color="5e55dd" damage="-3000">leather leggings</leggings>
+		<boots color="5e55dd" enchantment="protection fall:3" damage="-3000">leather boots</boots>
+	</kit>
+	<kit name="remove-speed" force="true" potion-particles="false">
+		<potion amplifier="0" duration="0">damage resistance</potion>
+		<walk-speed>1</walk-speed>
+	</kit>
+</kits>
+<filters>
+	<filter name="only-red">
+		<team>red</team>
+	</filter>
+	<filter name="only-blue">
+		<team>blue</team>
+	</filter>
+	<filter name="only-red-after-broken">
+		<all>
+			<team>red</team>
+				<objective>blue-cube</objective>
+			</all>
+		</filter>
+	<filter name="only-blue-after-broken">
+		<all>
+			<team>blue</team>
+			<objective>red-cube</objective>
+		</all>
+	</filter>
+	<filter name="only-explosion-quartz-and-glass">
+		<not>
+			<all>
+				<any>
+					<block>quartz block</block>
+					<block>quartz stairs</block>
+					<block>stained glass:7</block>
+					<block>stained glass:11</block>
+					<block>stained glass:14</block>
+				</any>
+			<cause>explosion</cause>
+			</all>
+		</not>
+	</filter>
+	<filter name="only-player-endstone-and-panes">
+		<not>
+			<all>
+				<block>ender stone</block>
+				<cause>player</cause>
+			</all>
+		</not>
+	</filter>
+	<filter name="wool-room-materials">
+		<not>
+			<any>
+				<any>
+					<block>stained clay:9</block>
+					<block>mob spawner</block>
+					<block>iron block</block>
+					<block>chest</block>
+					<block>quartz stairs</block>
+				</any>
+				<all>
+					<block>stained glass pane</block>
+					<cause>explosion</cause>
+				</all>
+			</any>
+		</not>
+	</filter>
+	<filter name="no-wool">
+		<deny>
+			<block>wool</block>
+		</deny>
+	</filter>
+	<filter name="no-water">
+		<deny>
+			<any>
+				<block>water</block>
+				<block>stationary water</block>
+			</any>
+		</deny>
+	</filter>
+</filters>
+<regions>
+	<!--   Region Definitions   -->
+	<cuboid name="main-area" min="-169,-oo,-45" max="10,44,48"/>
+	<union name="platforms">
+		<union name="red-platforms">
+			<cuboid name="red-left-platform" min="-132,6,30" max="-135,9,33"/>
+			<cuboid name="red-right-platform" min="-132,6,-30" max="-135,9,-27"/>
+		</union>
+		<union name="blue-platforms">
+			<mirror name="blue-left-platform" region="red-left-platform" origin="-79.5,0,0.5" normal="1,0,0"/>
+			<mirror name="blue-right-platform" region="red-right-platform" origin="-79.5,0,0.5" normal="1,0,0"/>
+		</union>
+	</union>
+	<union name="portals">
+		<union name="red-portals">
+			<translate name="red-left" region="red-left-platform" offset="0,41,0"/>
+			<translate name="red-right" region="red-right-platform" offset="0,41,0"/>
+		</union>
+		<union name="blue-portals">
+			<translate name="blue-left" region="blue-left-platform" offset="0,41,0"/>
+			<translate name="blue-right" region="blue-right-platform" offset="0,41,0"/>
+		</union>
+	</union>
+	<union name="cubes">
+		<cuboid name="red-cube" min="-140,9,8" max="-127,37,-5"/>
+		<mirror name="blue-cube" region="red-cube" origin="-79.5,0,0.5" normal="1,0,0"/>
+	</union>
+	<union name="wool-rooms">
+		<cuboid name="blue-room" min="-137,9,-2" max="-130,34,5"/>
+		<mirror name="red-room" region="blue-room" origin="-79.5,0,0.5" normal="1,0,0"/>
+	</union>
+	<union name="around-wool-rooms">
+		<rectangle name="around-blue-room" min="-119,16" max="-148,-13"/>
+		<mirror name="around-red-room" region="around-blue-room" origin="-79.5,0,0.5" normal="1,0,0"/>
+	</union>
+	<union name="wools">
+		<block name="red-wool" location="-151.5,12.5,1.5"/>
+		<mirror name="blue-wool" region="red-wool" origin="-79.5,0,0.5" normal="1,0,0"/>
+	</union>
+	<union name="wool-monuments">
+		<cuboid name="red-monument" min="-153,10,3" max="-150,14,0"/>
+		<mirror name="blue-monument" region="red-monument" origin="-79.5,0,0.5" normal="1,0,0"/>
+	</union>
+	<!--   Block Rules   -->
+	<apply block="deny-all" message="You may not edit blocks outside of the map">
+		<negative>
+			<region name="main-area"/>
+		</negative>
+	</apply>
+	<apply block="deny-all" message="You may not modify the spawn area">
+		<region name="platforms"/>
+	</apply>
+	<apply block="deny-all" message="You may not modify the wool monument">
+		<region name="wool-monuments"/>
+	</apply>
+	<apply block-place="no-water" message="You may not place water near the cube">
+		<region name="around-wool-rooms"/>
+	</apply>
+	<apply block-break="wool-room-materials">
+		<region name="wool-rooms"/>
+	</apply>
+	<apply block-break="only-player-endstone-and-panes" message="You may only break this with TNT">
+		<region name="cubes"/>
+	</apply>
+	<apply block-break="only-explosion-quartz-and-glass">
+		<region name="main-area"/>
+	</apply>
+	<apply block-place="no-wool" message="You may only place the wool at the victory monument">
+		<complement>
+			<region name="main-area"/>
+			<region name="wools"/>
+		</complement>
+	</apply>
+	<apply block="only-red" message="You may not edit the enemy wool room">
+		<region name="red-room"/>
+	</apply>
+	<apply block="only-blue" message="You may not edit the enemy wool room">
+		<region name="blue-room"/>
+	</apply>
+	<!--   Entry Rules   -->
+	<apply enter="only-blue" message="You may not enter the enemy spawn">
+		<region name="blue-platforms"/>
+	</apply>
+	<apply enter="only-red" message="You may not enter the enemy spawn">
+		<region name="red-platforms"/>
+	</apply>
+	<apply enter="only-blue-after-broken" message="You only enter the wool room after the cube is completed">
+		<region name="blue-room"/>
+	</apply>
+	<apply enter="only-red-after-broken" message="You only enter the wool room after the cube is completed">
+		<region name="red-room"/>
+	</apply>
+	<!--   Kit Rules   -->
+	<apply kit="remove-speed">
+		<region name="portals"/>
+	</apply>
+</regions>
+<disabledamage>
+	<damage self="false" ally="true" enemy="false" other="false">block explosion</damage>
+</disabledamage>
+<portals y="-41" pitch="@0">
+	<portals filter="only-red">
+		<portal yaw="@0">
+			<region name="red-right"/>
+		</portal>
+		<portal yaw="@180">
+			<region name="red-left"/>
+		</portal>
+	</portals>
+	<portals filter="only-blue">
+		<portal yaw="@0">
+			<region name="blue-right"/>
+		</portal>
+		<portal yaw="@180">
+			<region name="blue-left"/>
+		</portal>
+	</portals>
+</portals>
+<killreward>
+	<item amount="8">arrow</item>
+	<item amount="32">tnt</item>
+	<item amount="8">ender stone</item>
+</killreward>
+<proximity-alarms>
+	<proximity-alarm message="There is an enemy player near your cube / wool room" flare-radius="5">
+		<region>
+			<region name="around-blue-room"/>
+		</region>
+		<detect>
+			<team>blue</team>
+		</detect>
+	</proximity-alarm>
+	<proximity-alarm message="There is an enemy player near your cube / wool room" flare-radius="5">
+		<region>
+			<region name="around-red-room"/>
+		</region>
+		<detect>
+			<team>red</team>
+		</detect>
+	</proximity-alarm>
+</proximity-alarms>
+<broadcasts>
+	<tip after="20s" repeat="true">The wool room is inside the enemy endstone cube.</tip>
+	<tip after="1m" repeat="true">The cube can only be broken with TNT.</tip>
+	<tip after="3m" repeat="true">You may only enter the wool room when the cube is destroyed.</tip>
+	<tip after="5m" repeat="true">You get some endstone for every kill, use it to repair your monument.</tip>
+</broadcasts>
+<itemremove>
+	<item>diamond pickaxe</item>
+	<item>workbench</item>
+	<item>shears</item>
+	<item>wood sword</item>
+	<item>diamond chestplate</item>
+	<item>bow</item>
+	<item>arrow</item>
+	<item>vine</item>
+	<item>stained clay</item>
+	<item>stained glass</item>
+	<item>nether fence</item>
+	<item>step</item>
+	<item>ladder</item>
+	<item>trap door</item>
+	<item>stone plate</item>
+	<item>piston base</item>
+	<item>redstone block</item>
+	<item>redstone</item>
+	<item>stone button</item>
+	<item>lever</item>
+	<item>redstone torch on</item>
+	<item>diode</item>
+	<item>water bucket</item>
+	<item>bucket</item>
+	<item>tnt</item>
+	<item>leather helmet</item>
+	<item>leather chestplate</item>
+	<item>leather leggings</item>
+	<item>leather boots</item>
+	<item>iron helmet</item>
+	<item>iron chestplate</item>
+	<item>iron leggings</item>
+	<item>iron boots</item>
+	<item>quartz stairs</item>
+	<item>quartz block</item>
+	<item>ender stone</item>
+</itemremove>
 </map>
