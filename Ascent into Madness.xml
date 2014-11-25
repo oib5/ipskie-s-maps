@@ -1,0 +1,176 @@
+<map proto="1.3.6">
+<name>Ascent into Madness</name>
+<version>0.1</version>
+<objective>Outrun the lava and be the last player standing!</objective>
+<include src="blitz-global.xml"/>
+<authors>
+    <author contribution="Concept, map design, XML">Elijahyap</author>
+</authors>
+<teams>
+    <team id="white" color="white" max="1" max-overfill="1">White</team>
+    <team id="blue" color="blue" max="1" max-overfill="1">Blue</team>
+    <team id="black" color="black" max="1" max-overfill="1">Black</team>
+    <team id="yellow" color="yellow" max="1" max-overfill="1">Yellow</team>
+    <team id="red" color="red" max="1" max-overfill="1">Red</team>
+    <team id="purple" color="light purple" max="1" max-overfill="1">Purple</team>
+    <team id="orange" color="gold" max="1" max-overfill="1">Orange</team>
+    <team id="white" color="white" max="1" max-overfill="1">White</team>
+</teams>
+<blitz>
+	<time>300</time>
+	<lives>1</lives>
+	<title>LMS - Melt</title>
+</blitz>
+<friendlyfire>on</friendlyfire>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<destroyables completion="0%">
+    <destroyable name="ice" id="ice" owner="Players">
+        <region name="main-area"/>
+    </destroyable>
+    <destroyable id="blue-cube" owner="blue">
+        <region name="blue-cube"/>
+    </destroyable>
+</destroyables>
+<spawns>
+    <default kit="all" yaw="180" pitch="0">
+        <point>-79.5,60,2.5</point>
+    </default>
+    <spawn team="red" kit="red" yaw="90" pitch="0">
+        <point>-93.5,48,1.5</point>
+    </spawn>
+    <spawn team="blue" kit="blue" yaw="-90" pitch="0">
+        <point>-65.5,48,1.5</point>
+    </spawn>
+</spawns>
+<kits>
+    <kit name="team" parents="all">
+        <item slot="9">workbench</item>
+        <item slot="10">shears</item>
+        <item slot="28" amount="32">arrow</item>
+        <item slot="29" amount="64">vine</item>
+        <item slot="2" amount="64">vine</item>
+        <item slot="13" amount="16">trap door</item>
+        <item slot="22" amount="16">ladder</item>
+        <item slot="31" amount="64">step</item>
+        <item slot="4" amount="64">nether fence</item>
+        <item slot="14" amount="16">piston base</item>
+        <item slot="23" amount="16">lever</item>
+        <item slot="32" amount="16">stone plate</item>
+        <item slot="5" amount="16">stone button</item>
+        <item slot="15">water bucket</item>
+        <item slot="24">water bucket</item>
+        <item slot="33">water bucket</item>
+        <item slot="6">water bucket</item>
+        <item slot="16" amount="16">diode</item>
+        <item slot="25" amount="16">redstone torch on</item>
+        <item slot="34" amount="64">redstone</item>
+        <item slot="7" amount="16">redstone block</item>
+        <item slot="17" amount="64">tnt</item>
+        <item slot="26" amount="64">tnt</item>
+        <item slot="35" amount="64">tnt</item>
+        <item slot="8" amount="64">tnt</item>
+        <item slot="1">bow</item>
+        <item slot="0">diamond pickaxe</item>
+        <potion amplifier="5" duration="oo">damage resistance</potion>
+        <potion amplifier="10" duration="1">heal</potion>
+        <walk-speed>4</walk-speed>
+    </kit>
+    <kit name="red" parents="team">
+        <item slot="12" damage="14" amount="64">stained clay</item>
+        <item slot="21" damage="14" amount="64">stained clay</item>
+        <item slot="30" damage="14" amount="64">stained clay</item>
+        <item slot="3" damage="14" amount="64">stained clay</item>
+        <helmet enchantment="protection explosions:3;water worker:3" damage="-3000">iron helmet</helmet>
+        <chestplate color="dd5566" damage="-3000">leather chestplate</chestplate>
+        <leggings color="dd5566" damage="-3000">leather leggings</leggings>
+        <boots color="dd5566" enchantment="protection fall:3" damage="-3000">leather boots</boots>
+    </kit>
+    <kit name="blue" parents="team">
+        <item slot="12" damage="11" amount="64">stained clay</item>
+        <item slot="21" damage="11" amount="64">stained clay</item>
+        <item slot="30" damage="11" amount="64">stained clay</item>
+        <item slot="3" damage="11" amount="64">stained clay</item>
+        <helmet enchantment="protection explosions:3;water worker:3" damage="-3000">iron helmet</helmet>
+        <chestplate color="5e55dd" damage="-3000">leather chestplate</chestplate>
+        <leggings color="5e55dd" damage="-3000">leather leggings</leggings>
+        <boots color="5e55dd" enchantment="protection fall:3" damage="-3000">leather boots</boots>
+    </kit>
+    <kit name="remove-speed" force="true" potion-particles="false">
+        <potion amplifier="0" duration="0">damage resistance</potion>
+        <walk-speed>1</walk-speed>
+    </kit>
+</kits>
+<filters>
+	<!--   prevent ice, packed ice and lava from updating or being blown up   -->
+    <filter name="no-world">
+        <not>
+            <all>
+            	<any>
+            		<block>ice</block>
+            		<block>packed ice</block>
+            	</any>
+            	<filter name="allow-world"/>
+            </all>
+   		</not>
+    </filter>
+</filters>
+<regions>
+    <cuboid name="main-area" min="0,0,0" max="50,75,50"/>
+    <apply use="deny-all" message="Step on the dispenser and see what happens!">
+    	<region name="main-area"/>
+    </apply>
+    <apply block="no-world">
+    	<region name="main-area"/>
+    </apply>
+    <apply block="deny-players">
+    	<region name="main-area"/>
+    </apply>
+</regions>
+<broadcasts>
+    <tip after="1s">World ending in 3...</tip>
+    <tip after="2s">2...</tip>
+    <tip after="3s">1...</tip>
+    <tip after="4s">RUN!</tip>
+    <tip after="7s" every="5m">You get some endstone for every kill, use it to repair your monument.</tip>
+</broadcasts>
+<itemremove>
+    <item>diamond pickaxe</item>
+    <item>workbench</item>
+    <item>shears</item>
+    <item>wood sword</item>
+    <item>diamond chestplate</item>
+    <item>bow</item>
+    <item>arrow</item>
+    <item>vine</item>
+    <item>stained clay</item>
+    <item>stained glass</item>
+    <item>nether fence</item>
+    <item>step</item>
+    <item>ladder</item>
+    <item>trap door</item>
+    <item>stone plate</item>
+    <item>piston base</item>
+    <item>redstone block</item>
+    <item>redstone</item>
+    <item>stone button</item>
+    <item>lever</item>
+    <item>redstone torch on</item>
+    <item>diode</item>
+    <item>water bucket</item>
+    <item>bucket</item>
+    <item>tnt</item>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>leather leggings</item>
+    <item>leather boots</item>
+    <item>iron helmet</item>
+    <item>iron chestplate</item>
+    <item>iron leggings</item>
+    <item>iron boots</item>
+    <item>quartz stairs</item>
+    <item>quartz block</item>
+    <item>ender stone</item>
+</itemremove>
+</map>
