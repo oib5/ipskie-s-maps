@@ -1,14 +1,13 @@
 <map proto="1.3.5">
 <name>Ender Blast Christmas</name>
-<version>0.1</version>
-<objective>Destroy 75% of the enemy's endstone cube to enter the present factory inside of it, then return the presents back to your side</objective>
+<version>0.7</version>
+<objective>Destroy 75% of the enemy's endstone cuboid to enter the wool room inside of it, then return the presents back to your side</objective>
 <authors>
     <author contribution="Original author and map layout">BeanButt_jar</author>
     <author contribution="XML and gameplay feedback">Elijahyap</author>
 </authors>
 <contributors>
     <contributor contribution="XML help and concept tweaks">ElectroidFilms</contributor>
-    <contributor contribution="inspiration from BoomBox and Scala">last_username</contributor>
 </contributors>
 <rules>
     <rule>There are NO restrictions on spawn camping/killing</rule>
@@ -19,14 +18,14 @@
     <team id="green" color="green" max="20" max-overfill="24">Green Elves</team>
 </teams>
 <wools>
-    <wool id="lime-wool" team="green" color="lime" location="-25.5,20,1.5">
+    <wool id="green-wool" team="green" color="lime" location="-133.5,20,1.5">
         <region name="green-wool"/>
     </wool>
-    <wool id="red-wool" team="red" color="red" location="-133.5,20,1.5">
+    <wool id="red-wool" team="red" color="red" location="-25.5,20,1.5">
         <region name="red-wool"/>
     </wool>
 </wools>
-<destroyables name="Endstone 'Cube'" completion="75%" materials="ender stone" show-progress="true" sparks="true">
+<destroyables name="Endstone Cuboid" completion="75%" materials="ender stone" show-progress="true" sparks="true">
     <destroyable id="red-cube" owner="red">
         <region name="red-cube"/>
     </destroyable>
@@ -39,10 +38,10 @@
         <point>-79.5,60,2.5</point>
     </default>
     <spawn team="red" kit="red" yaw="90" pitch="0">
-        <point>-65.5,48,1.5</point>
+        <point>-93.5,48,1.5</point>
     </spawn>
     <spawn team="green" kit="green" yaw="-90" pitch="0">
-        <point>-93.5,48,1.5</point>
+        <point>-65.5,48,1.5</point>
     </spawn>
 </spawns>
 <modifybowprojectile>
@@ -121,9 +120,9 @@
     <filter name="only-red-after-broken">
         <all>
             <team>red</team>
-                <objective>green-cube</objective>
-            </all>
-        </filter>
+            <objective>green-cube</objective>
+        </all>
+    </filter>
     <filter name="only-green-after-broken">
         <all>
             <team>green</team>
@@ -136,11 +135,12 @@
                 <any>
                     <block>quartz block</block>
                     <block>quartz stairs</block>
-                    <block>stained glass:4</block>
+                    <block>stained glass:7</block>
+                    <block>stained glass:11</block>
                     <block>stained glass:14</block>
                     <block>ice</block>
                 </any>
-            <cause>explosion</cause>
+                <cause>explosion</cause>
             </all>
         </not>
     </filter>
@@ -185,46 +185,46 @@
 </filters>
 <regions>
     <!--   Region Definitions   -->
-    <cuboid name="main-area" min="-169,-oo,-45" max="10,44,48"/>
+    <cuboid name="main-area" min="-169,-oo,-45" max="10,50,48"/>
     <union name="platforms">
-        <union name="green-platforms">
-            <cuboid name="red-left-platform" min="-132,6,30" max="-135,9,33"/>
-            <cuboid name="red-right-platform" min="-132,6,-30" max="-135,9,-27"/>
-        </union>
         <union name="red-platforms">
+            <cuboid name="red-left-platform" min="-130,0,28" max="-137,7,35"/>
+            <cuboid name="red-right-platform" min="-130,0,-32" max="-137,7,-25"/>
+        </union>
+        <union name="green-platforms">
             <mirror name="green-left-platform" region="red-left-platform" origin="-79.5,0,0.5" normal="1,0,0"/>
             <mirror name="green-right-platform" region="red-right-platform" origin="-79.5,0,0.5" normal="1,0,0"/>
         </union>
     </union>
     <union name="portals">
-        <union name="green-portals">
-            <translate name="red-left" region="red-left-platform" offset="0,41,0"/>
-            <translate name="red-right" region="red-right-platform" offset="0,41,0"/>
-        </union>
         <union name="red-portals">
-            <translate name="green-left" region="green-left-platform" offset="0,41,0"/>
-            <translate name="green-right" region="green-right-platform" offset="0,41,0"/>
+            <cuboid name="red-left" min="-132,47,30" max="-135,50,33"/>
+            <cuboid name="red-right" min="-132,47,-30" max="-135,50,-27"/>
+        </union>
+        <union name="green-portals">
+            <mirror name="green-left" region="red-right" origin="-79.5,0,0.5" normal="1,0,0"/>
+            <mirror name="green-right" region="red-left" origin="-79.5,0,0.5" normal="1,0,0"/>
         </union>
     </union>
     <union name="cubes">
-        <cuboid name="green-cube" min="-140,9,8" max="-127,37,-5"/>
-        <mirror name="red-cube" region="red-cube" origin="-79.5,0,0.5" normal="1,0,0"/>
+        <cuboid name="red-cube" min="-140,9,8" max="-127,37,-5"/>
+        <mirror name="green-cube" region="red-cube" origin="-79.5,0,0.5" normal="1,0,0"/>
     </union>
     <union name="wool-rooms">
-        <cuboid name="red-room" min="-137,9,-2" max="-130,34,5"/>
-        <mirror name="green-room" region="green-room" origin="-79.5,0,0.5" normal="1,0,0"/>
+        <cuboid name="green-room" min="-137,9,-2" max="-130,34,5"/>
+        <mirror name="red-room" region="green-room" origin="-79.5,0,0.5" normal="1,0,0"/>
     </union>
     <union name="around-wool-rooms">
-        <rectangle name="around-red-room" min="-119,16" max="-148,-13"/>
-        <mirror name="around-green-room" region="around-green-room" origin="-79.5,0,0.5" normal="1,0,0"/>
+        <rectangle name="around-green-room" min="-119,16" max="-148,-13"/>
+        <mirror name="around-red-room" region="around-green-room" origin="-79.5,0,0.5" normal="1,0,0"/>
     </union>
     <union name="wools">
-        <block name="green-wool" location="-151.5,12.5,1.5"/>
-        <mirror name="red-wool" region="red-wool" origin="-79.5,0,0.5" normal="1,0,0"/>
+        <block name="red-wool" location="-151.5,12.5,1.5"/>
+        <mirror name="green-wool" region="red-wool" origin="-79.5,0,0.5" normal="1,0,0"/>
     </union>
     <union name="wool-monuments">
-        <cuboid name="green-monument" min="-153,10,3" max="-150,14,0"/>
-        <mirror name="red-monument" region="red-monument" origin="-79.5,0,0.5" normal="1,0,0"/>
+        <cuboid name="red-monument" min="-153,10,3" max="-150,14,0"/>
+        <mirror name="green-monument" region="red-monument" origin="-79.5,0,0.5" normal="1,0,0"/>
     </union>
     <!--   Block Rules   -->
     <apply block="deny-all" message="You may not edit blocks outside of the map">
@@ -238,7 +238,7 @@
     <apply block="deny-all" message="You may not modify the wool monument">
         <region name="wool-monuments"/>
     </apply>
-    <apply block-place="no-water" message="You may not place water near the cube">
+    <apply block-place="no-water" message="You may not place `9water`c near the cuboid">
         <region name="around-wool-rooms"/>
     </apply>
     <apply block-break="wool-room-materials">
@@ -269,10 +269,10 @@
     <apply enter="only-red" message="You may not enter the enemy spawn">
         <region name="red-platforms"/>
     </apply>
-    <apply enter="only-green-after-broken" message="You only enter the wool room after the cube is completed">
+    <apply enter="only-green-after-broken" message="You only enter the wool room once the cuboid is destroyed">
         <region name="green-room"/>
     </apply>
-    <apply enter="only-red-after-broken" message="You only enter the wool room after the cube is completed">
+    <apply enter="only-red-after-broken" message="You only enter the wool room once the cuboid is destroyed">
         <region name="red-room"/>
     </apply>
     <!--   Kit Rules   -->
@@ -307,7 +307,7 @@
     <item amount="8">ender stone</item>
 </killreward>
 <proximity-alarms>
-    <proximity-alarm message="There is an enemy player near your cube / wool room" flare-radius="5">
+    <proximity-alarm message="There is an enemy player near your cuboid / wool room" flare-radius="5">
         <region>
             <region name="around-green-room"/>
         </region>
@@ -315,7 +315,7 @@
             <team>green</team>
         </detect>
     </proximity-alarm>
-    <proximity-alarm message="There is an enemy player near your cube / wool room" flare-radius="5">
+    <proximity-alarm message="There is an enemy player near your cuboid / wool room" flare-radius="5">
         <region>
             <region name="around-red-room"/>
         </region>
@@ -325,9 +325,9 @@
     </proximity-alarm>
 </proximity-alarms>
 <broadcasts>
-    <tip after="20s" repeat="true">The wool room is inside the enemy endstone cube.</tip>
-    <tip after="1m" repeat="true">The cube can only be broken with TNT.</tip>
-    <tip after="3m" repeat="true">You may only enter the wool room when the cube is destroyed.</tip>
+    <tip after="20s" repeat="true">The wool room is inside the enemy endstone cuboid.</tip>
+    <tip after="1m" repeat="true">The cuboid can only be broken with TNT.</tip>
+    <tip after="3m" repeat="true">You may only enter the wool room when the cuboid is destroyed.</tip>
     <tip after="5m" repeat="true">You get some endstone for every kill, use it to repair your monument.</tip>
 </broadcasts>
 <itemremove>

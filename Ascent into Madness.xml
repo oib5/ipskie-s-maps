@@ -21,16 +21,12 @@
 	<lives>1</lives>
 	<title>LMS - Melt</title>
 </blitz>
-<friendlyfire>on</friendlyfire>
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<destroyables completion="0%">
-    <destroyable name="ice" id="ice" owner="Players">
+<destroyables completion="0%" owner="blue" mode>
+    <destroyable name="packed-ice" id="packed-ice" materials="11:1">
         <region name="main-area"/>
-    </destroyable>
-    <destroyable id="blue-cube" owner="blue">
-        <region name="blue-cube"/>
     </destroyable>
 </destroyables>
 <spawns>
@@ -45,7 +41,7 @@
     </spawn>
 </spawns>
 <kits>
-    <kit name="team" parents="all">
+    <kit name="team">
         <item slot="9">workbench</item>
         <item slot="10">shears</item>
         <item slot="28" amount="32">arrow</item>
@@ -67,39 +63,9 @@
         <item slot="25" amount="16">redstone torch on</item>
         <item slot="34" amount="64">redstone</item>
         <item slot="7" amount="16">redstone block</item>
-        <item slot="17" amount="64">tnt</item>
-        <item slot="26" amount="64">tnt</item>
-        <item slot="35" amount="64">tnt</item>
-        <item slot="8" amount="64">tnt</item>
         <item slot="1">bow</item>
         <item slot="0">diamond pickaxe</item>
         <potion amplifier="5" duration="oo">damage resistance</potion>
-        <potion amplifier="10" duration="1">heal</potion>
-        <walk-speed>4</walk-speed>
-    </kit>
-    <kit name="red" parents="team">
-        <item slot="12" damage="14" amount="64">stained clay</item>
-        <item slot="21" damage="14" amount="64">stained clay</item>
-        <item slot="30" damage="14" amount="64">stained clay</item>
-        <item slot="3" damage="14" amount="64">stained clay</item>
-        <helmet enchantment="protection explosions:3;water worker:3" damage="-3000">iron helmet</helmet>
-        <chestplate color="dd5566" damage="-3000">leather chestplate</chestplate>
-        <leggings color="dd5566" damage="-3000">leather leggings</leggings>
-        <boots color="dd5566" enchantment="protection fall:3" damage="-3000">leather boots</boots>
-    </kit>
-    <kit name="blue" parents="team">
-        <item slot="12" damage="11" amount="64">stained clay</item>
-        <item slot="21" damage="11" amount="64">stained clay</item>
-        <item slot="30" damage="11" amount="64">stained clay</item>
-        <item slot="3" damage="11" amount="64">stained clay</item>
-        <helmet enchantment="protection explosions:3;water worker:3" damage="-3000">iron helmet</helmet>
-        <chestplate color="5e55dd" damage="-3000">leather chestplate</chestplate>
-        <leggings color="5e55dd" damage="-3000">leather leggings</leggings>
-        <boots color="5e55dd" enchantment="protection fall:3" damage="-3000">leather boots</boots>
-    </kit>
-    <kit name="remove-speed" force="true" potion-particles="false">
-        <potion amplifier="0" duration="0">damage resistance</potion>
-        <walk-speed>1</walk-speed>
     </kit>
 </kits>
 <filters>
@@ -133,7 +99,6 @@
     <tip after="2s">2...</tip>
     <tip after="3s">1...</tip>
     <tip after="4s">RUN!</tip>
-    <tip after="7s" every="5m">You get some endstone for every kill, use it to repair your monument.</tip>
 </broadcasts>
 <itemremove>
     <item>diamond pickaxe</item>
