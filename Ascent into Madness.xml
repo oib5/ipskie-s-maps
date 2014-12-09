@@ -17,9 +17,9 @@
     <team id="white" color="white" max="1" max-overfill="1">White</team>
 </teams>
 <blitz>
-	<time>300</time>
-	<lives>1</lives>
-	<title>LMS - Melt</title>
+    <time>300</time>
+    <lives>1</lives>
+    <title>LMS - Melt</title>
 </blitz>
 <hunger>
     <depletion>off</depletion>
@@ -42,100 +42,52 @@
 </spawns>
 <kits>
     <kit name="team">
-        <item slot="9">workbench</item>
-        <item slot="10">shears</item>
-        <item slot="28" amount="32">arrow</item>
-        <item slot="29" amount="64">vine</item>
-        <item slot="2" amount="64">vine</item>
-        <item slot="13" amount="16">trap door</item>
-        <item slot="22" amount="16">ladder</item>
-        <item slot="31" amount="64">step</item>
-        <item slot="4" amount="64">nether fence</item>
-        <item slot="14" amount="16">piston base</item>
-        <item slot="23" amount="16">lever</item>
-        <item slot="32" amount="16">stone plate</item>
-        <item slot="5" amount="16">stone button</item>
-        <item slot="15">water bucket</item>
-        <item slot="24">water bucket</item>
-        <item slot="33">water bucket</item>
-        <item slot="6">water bucket</item>
-        <item slot="16" amount="16">diode</item>
-        <item slot="25" amount="16">redstone torch on</item>
-        <item slot="34" amount="64">redstone</item>
-        <item slot="7" amount="16">redstone block</item>
-        <item slot="1">bow</item>
-        <item slot="0">diamond pickaxe</item>
-        <potion amplifier="5" duration="oo">damage resistance</potion>
+        
     </kit>
 </kits>
 <filters>
-	<!--   prevent ice, packed ice and lava from updating or being blown up   -->
+    <!--   prevent ice, packed ice and lava from updating or being blown up   -->
     <filter name="no-world">
         <not>
             <all>
-            	<any>
-            		<block>ice</block>
-            		<block>packed ice</block>
-            	</any>
-            	<filter name="allow-world"/>
+                <any>
+                    <block>ice</block>
+                    <block>packed ice</block>
+                </any>
+                <filter name="allow-world"/>
             </all>
-   		</not>
+        </not>
     </filter>
 </filters>
 <regions>
     <cuboid name="main-area" min="0,0,0" max="50,75,50"/>
     <apply use="deny-all" message="Step on the dispenser and see what happens!">
-    	<region name="main-area"/>
+        <region name="main-area"/>
     </apply>
     <apply block="no-world">
-    	<region name="main-area"/>
+        <region name="main-area"/>
     </apply>
     <apply block="deny-players">
-    	<region name="main-area"/>
+        <region name="main-area"/>
     </apply>
 </regions>
-<broadcasts>
-    <tip after="1s">World ending in 3...</tip>
-    <tip after="2s">2...</tip>
-    <tip after="3s">1...</tip>
-    <tip after="4s">RUN!</tip>
-</broadcasts>
 <itemremove>
-    <item>diamond pickaxe</item>
-    <item>workbench</item>
-    <item>shears</item>
-    <item>wood sword</item>
-    <item>diamond chestplate</item>
-    <item>bow</item>
-    <item>arrow</item>
-    <item>vine</item>
-    <item>stained clay</item>
-    <item>stained glass</item>
-    <item>nether fence</item>
-    <item>step</item>
-    <item>ladder</item>
-    <item>trap door</item>
-    <item>stone plate</item>
-    <item>piston base</item>
-    <item>redstone block</item>
-    <item>redstone</item>
-    <item>stone button</item>
-    <item>lever</item>
-    <item>redstone torch on</item>
-    <item>diode</item>
-    <item>water bucket</item>
-    <item>bucket</item>
-    <item>tnt</item>
-    <item>leather helmet</item>
-    <item>leather chestplate</item>
-    <item>leather leggings</item>
-    <item>leather boots</item>
-    <item>iron helmet</item>
-    <item>iron chestplate</item>
-    <item>iron leggings</item>
-    <item>iron boots</item>
-    <item>quartz stairs</item>
-    <item>quartz block</item>
-    <item>ender stone</item>
 </itemremove>
+<renewables>
+    <renewable rate="20" grow="true" avoid-entities="false" particles="false" sound="false">
+        <region name="main-area"/>
+        <renew-filter>
+            <not>
+                <block>stained glass</block>
+            </not>
+        </renew-filter>
+        <replace-filter>
+            <any>
+                <block>air</block>
+                <block>water</block>
+                <block>stationary water</block>
+            </any>
+        </replace-filter>
+    </renewable>
+</renewables>
 </map>
