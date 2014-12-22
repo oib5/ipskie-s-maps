@@ -1,0 +1,120 @@
+<map proto="1.3.6">
+<name>Revenge TE</name>
+<version>0.1</version>
+<objective>Destroy both enemy monuments and leak their core to win!</objective>
+<authors><author contribution="XML, layout">Elijahyap</author></authors>
+<contributors><contributor contribution="Aesthetic Theme">BeanButt_jar</contributor></contributors>
+<teams>
+    <team id="red" color="dark red" max="10">Red Team</team>
+    <team id="blue" color="blue" max="10">Blue Team</team>
+</teams>
+<spawns>
+    <default yaw="-90">
+        <point>0.5,86,0.5</point>
+    </default>
+    <spawn team="red" kit="team" yaw="180">
+        <point>0.5,78,62.5</point>
+    </spawn>
+    <spawn team="blue" kit="team" yaw="0">
+        <point>0.5,78,-61.5</point>
+    </spawn>
+</spawns>
+<kits>
+    <kit name="team">
+        <item slot="0">iron sword</item>
+        <item slot="1">bow</item>
+        <item slot="2" enchantment="dig speed:3,durability:3">iron pickaxe</item>
+        <item slot="3" amount="32">log</item>
+        <item slot="4" amount="64">smooth brick</item>
+        <item slot="5" amount="64">glass</item>
+        <item slot="8" amount="64">golden carrot</item>
+        <item slot="28" amount="64">arrow</item>
+    </kit>
+</kits>
+<itemremove>
+    <item>iron sword</item>
+    <item>bow</item>
+    <item>iron pickaxe</item>
+    <item>golden carrot</item>
+    <item>emerald block</item>
+    <item>gold block</item>
+    <item>obsidian</item>
+    <item>dispenser</item>
+</itemremove>
+<filters>
+    <filter name="red-only">
+        <team>red</team>
+    </filter>
+    <filter name="blue-only">
+        <team>blue</team>
+    </filter>
+    <filter name="deny-access">
+        <not>
+            <block>beacon</block>
+            <block>dispenser</block>
+        </not>
+    </filter>
+    <filter name="no-void">
+        <deny>
+            <void/>
+        </deny>
+    </filter>
+</filters>
+<regions>
+    <rectangle name="main-area" min="-oo,-oo" max="oo,oo"/>
+    <union name="spawn-drops">
+        <cuboid name="blue-spawn-drop" min="-2,0,-59" max="3,80,-64"/>
+        <cuboid name="red-spawn-drop" min="3,80,60" max="-2,0,65"/>
+    </union>
+    <cuboid name="blue-right-monument" min="-23,37,-25" max="-28,42,-30"/>
+    <cuboid name="blue-left-monument" min="29,37,-25" max="24,42,-30"/>
+    <cuboid name="red-right-monument" min="24,37,26" max="29,42,31"/>
+    <cuboid name="red-left-monument" min="-28,37,26" max="-23,42,31"/>
+    <cuboid name="red-core" min="4,43,30" max="-3,36,37"/>
+    <cuboid name="blue-core" min="4,43,-29" max="-3,36,-36"/>
+    <!--  Applied  -->
+    <apply block="deny-all" message="You may not modify the spawns">
+        <region name="spawn-drops"/>
+    </apply>
+    <apply enter="blue-only" message="You may not enter the enemy spawn">
+        <region name="blue-spawn-drop"/>
+    </apply>
+    <apply enter="red-only" message="You may not enter the enemy spawn">
+        <region name="red-spawn-drop"/>
+    </apply>
+    <apply block="no-void" message="You may not edit outside of the map">
+        <region name="main-areas"/>
+    </apply>
+    <apply use="deny-access" message="You may not access this block">
+        <rectangle min="-oo,-oo" max="oo,oo"/>
+    </apply>
+</regions>
+<destroyables owner="red" completion="100%" materials="emerald block;beacon">
+    <destroyable name="Left Monument" id="red-left" region="red-left"/>
+    <destroyable name="Right Monument" id="red-right" region="red-right"/>
+</destroyables>
+<destroyables owner="blue" completion="100%" materials="emerald block;beacon">
+    <destroyable name="Left Monument" id="blue-left" region="blue-left"/>
+    <destroyable name="Right Monument" id="blue-right" region="blue-right"/>
+</destroyables>
+<cores material="obsidian" leak="6" mode-changes="true" name="Core">
+    <core team="red" id="red-core" region="red-core"/>
+    <core team="blue" id="blue-core" region="blue-core"/>
+</cores>
+<blockdrops>
+    <rule>
+        <region>
+            <region name="main-area"/>
+        </region>
+        <filter>
+            <block>double step:8</block>
+        </filter>
+        <drops>
+            <item>double step:8</item>
+        </drops>
+    </rule>
+</blockdrops>
+<tnt>
+    <dispenser-tnt-limit>2</dispenser-tnt-limit>
+</tnt>
+</map>

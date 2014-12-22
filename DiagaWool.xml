@@ -174,50 +174,50 @@
     <item>cooked fish</item>
 </itemremove>
 <tutorial>
-	<stage title="Capture the Wool">
-	    <message>
-	        <line>`rThis map is a `a`lCapture the Wool `r(CTW) map</line>
-	        <line>The objective is to grab the wool on the other team's side and return it to your base</line>
-	    </message>
-	    <teleport>
-	        <point yaw="45" pitch="50">43.5,44,-41.5</point>
-	    </teleport>
-	</stage>
-	<stage title="Spawn">
-	    <message>
-	        <line>This is blue team's spawn</line>
-	        <line>You will spawn here and can grab supplies from the chests</line>
-	    </message>
-	    <teleport>
-	        <point yaw="-45" pitch="50">36.5,7,36.5</point>
-	    </teleport>
-	</stage>
-	<stage title="Wool Rooms">
-	    <message>
-	        <line>This is the lime wool room</line>
-	        <line>Grab wool from the enemy team's wool rooms and return it to your spawn</line>
-	    </message>
-	    <teleport>
-	        <point yaw="-90" pitch="50">70,25,47</point>
-	    </teleport>
-	</stage>
-	<stage title="Supply Islands">
-	    <message>
-	        <line>This is a supply island. It contains some iron and the only water on the map</line>
-	        <line>The objective is to grab the wool on the other team's side and return it to your base.</line>
-	    </message>
-	    <teleport>
-	        <point yaw="-135" pitch="90">12.5,10,-10.5</point>
-	    </teleport>
-	</stage>
-	<stage title="The Hill">
-	    <message>
-	        <line>This is the hill. It and both wools must be captured to win</line>
-	        <line>Capturing the hill will give your team potion buffs when they spawn or walk through spawn</line>
-	    </message>
-	    <teleport>
-	        <point yaw="45" pitch="45">9.5,12,7.5</point>
-	    </teleport>
-	</stage>
+    <stage title="Capture the Wool">
+        <message>
+            <line>`rThis map is a `a`lCapture the Wool `r(CTW) map</line>
+            <line>The objective is to grab the wool on the other team's side and return it to your base</line>
+        </message>
+        <teleport>
+            <point yaw="45" pitch="50">43.5,44,-41.5</point>
+        </teleport>
+    </stage>
+    <stage title="Spawn">
+        <message>
+            <line>This is blue team's spawn</line>
+            <line>You will spawn here and can grab supplies from the chests</line>
+        </message>
+        <teleport>
+            <point yaw="-45" pitch="50">36.5,7,36.5</point>
+        </teleport>
+    </stage>
+    <stage title="Wool Rooms">
+        <message>
+            <line>This is the lime wool room</line>
+            <line>Grab wool from the enemy team's wool rooms and return it to your spawn</line>
+        </message>
+        <teleport>
+            <point yaw="-90" pitch="50">70,25,47</point>
+        </teleport>
+    </stage>
+    <stage title="Supply Islands">
+        <message>
+            <line>This is a supply island. It contains some iron and the only water on the map</line>
+            <line>The objective is to grab the wool on the other team's side and return it to your base.</line>
+        </message>
+        <teleport>
+            <point yaw="-135" pitch="90">12.5,10,-10.5</point>
+        </teleport>
+    </stage>
+    <stage title="The Hill">
+        <message>
+            <line>This is the hill. It and both wools must be captured to win</line>
+            <line>Capturing the hill will give your team potion buffs when they spawn or walk through spawn</line>
+        </message>
+        <teleport>
+            <point yaw="45" pitch="45">9.5,12,7.5</point>
+        </teleport>
+    </stage>
 </tutorial>
 </map>
