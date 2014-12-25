@@ -1,147 +1,131 @@
 <map proto="1.3.6">
-    <name>Detonation</name>
-    <version>0.1</version>
-    <objective>Destroy both enemy monuments and leak their core to win!</objective>
-    <authors><author>BeanButt_jar</author></authors>
-    <contributors>
-        <contributor contribution="XML,Feedback,Help,Monument Design">Elijahyap</contributor>
-    </contributors>
-    <teams>
-        <team id="red" color="dark red" max="32" max-overfill="40">Red Team</team>
-        <team id="blue" color="blue" max="32" max-overfill="40">Blue Team</team>
-    </teams>
-    <spawns>
-        <default yaw="90">
-            <point>55.5,31,0.5</point>
-        </default>
-        <spawn team="red" kit="team" yaw="180">
-            <point>0.5,65,71.5</point>
-        </spawn>
-        <spawn team="blue" kit="team" yaw="0">
-            <point>0.5,65,-70.5</point>
-        </spawn>
-    </spawns>
-    <kits>
-        <kit name="team">
-            <item slot="0">diamond sword</item>
-            <item slot="1" damage="-3000" enchantment="arrow infinite:1">bow</item>
-            <item slot="2">diamond pickaxe</item>
-            <item slot="3" amount="64" damage="1">log</item>
-            <item slot="4" amount="16">smooth brick</item>
-            <item slot="5" amount="16">glass</item>
-            <item slot="8" amount="64">golden carrot</item>
-            <item slot="28">arrow</item>
-            <item slot="29">shears</item>
-        </kit>
-    </kits>
-    <itemremove>
-        <item>diamond sword</item>
-        <item>bow</item>
-        <item>diamond pickaxe</item>
-        <item>golden carrot</item>
-        <item>arrow</item>
-        <item>shears</item>
-        <item>emerald block</item>
-        <item>obsidian</item>
-    </itemremove>
-    <filters>
-        <filter name="red-only">
-            <team>red</team>
-        </filter>
-        <filter name="blue-only">
-            <team>blue</team>
-        </filter>
-        <filter name="deny-beacon">
-            <not>
-                <block>beacon</block>
-            </not>
-        </filter>
-    </filters>
-    <regions>
-        <complement name="map-region">
-            <cuboid name="main-area" min="-39,60,-77" max="40,0,78"/>
-            <cuboid name="under-area-red" min="-39,0,37" max="40,8,78"/>
-            <cuboid name="under-area-blue" min="-39,0,-77" max="40,8,-36"/>
-        </complement>
-        <union name="spawn-tubes">
-            <cuboid name="red-tube" min="35,64,74" max="-34,69,69"/>
-            <cuboid name="blue-tube" min="35,64,-68" max="-34,69,-73"/>
+<name>Detonation</name>
+<version>0.1</version>
+<objective>Destroy both enemy monuments and leak their core to win!</objective>
+<authors><author>BeanButt_jar</author></authors>
+<contributors>
+    <contributor contribution="XML,Feedback,Help,Monument Design">Elijahyap</contributor>
+</contributors>
+<teams>
+    <team id="red" color="dark red" max="32" max-overfill="40">Red Team</team>
+    <team id="blue" color="blue" max="32" max-overfill="40">Blue Team</team>
+</teams>
+<spawns>
+    <default yaw="90">
+        <point>55.5,31,0.5</point>
+    </default>
+    <spawn team="red" kit="team" yaw="180">
+        <point>0.5,65,71.5</point>
+    </spawn>
+    <spawn team="blue" kit="team" yaw="0">
+        <point>0.5,65,-70.5</point>
+    </spawn>
+</spawns>
+<kits>
+    <kit name="team">
+        <item slot="0">diamond sword</item>
+        <item slot="1" damage="-3000" enchantment="arrow infinite:1">bow</item>
+        <item slot="2">diamond pickaxe</item>
+        <item slot="3" amount="64" damage="1">log</item>
+        <item slot="4" amount="16">smooth brick</item>
+        <item slot="5" amount="16">glass</item>
+        <item slot="8" amount="64">golden carrot</item>
+        <item slot="28">arrow</item>
+        <item slot="29">shears</item>
+    </kit>
+</kits>
+<itemremove>
+    <item>diamond sword</item>
+    <item>bow</item>
+    <item>diamond pickaxe</item>
+    <item>golden carrot</item>
+    <item>arrow</item>
+    <item>shears</item>
+    <item>emerald block</item>
+    <item>obsidian</item>
+</itemremove>
+<filters>
+    <filter name="red-only">
+        <team>red</team>
+    </filter>
+    <filter name="blue-only">
+        <team>blue</team>
+    </filter>
+    <filter name="deny-beacon">
+        <not>
+            <block>beacon</block>
+        </not>
+    </filter>
+</filters>
+<regions>
+    <complement name="map-region">
+        <cuboid name="main-area" min="-39,60,-77" max="40,0,78"/>
+        <cuboid name="under-area-red" min="-39,0,37" max="40,8,78"/>
+        <cuboid name="under-area-blue" min="-39,0,-77" max="40,8,-36"/>
+    </complement>
+    <union name="spawn-tubes">
+        <cuboid name="red-tube" min="35,64,74" max="-34,69,69"/>
+        <cuboid name="blue-tube" min="35,64,-68" max="-34,69,-73"/>
+    </union>
+    <union name="above-spawns">
+        <cuboid name="obs-spawn" min="49,30,4" max="56,40,-3"/>
+        <translate offset="0,5,0"><region name="spawn-tubes"/></translate>
+    </union>
+    <union name="spawn-falls">
+        <union name="red-spawn-falls">
+            <cuboid name="red-right-fall" min="31,11,70" max="34,64,73"/>
+            <cuboid name="red-left-fall" min="-30,11,70" max="-33,64,73"/>
         </union>
-        <union name="above-spawns">
-            <cuboid name="obs-spawn" min="49,30,4" max="56,40,-3"/>
-            <translate offset="0,5,0"><region name="spawn-tubes"/></translate>
+        <union name="blue-spawn-falls">
+            <cuboid name="blue-right-fall" min="-30,11,-72" max="-33,64,-69"/>
+            <cuboid name="blue-left-fall" min="31,11-72" max="34,64,-69"/>
         </union>
-        <union name="spawn-drops">
-            <union name="red-spawn-drops">
-                <cuboid name="red-right-drop" min="30,11,69" max="35,17,74"/>
-                <mirror name="red-left-drop" region="red-right-drop" origin="0.5,0,0.5" normal="0,0,1"/>
-            </union>
-            <mirror name="blue-spawn-drops" region="red-spawn-drops" origin="0.5,0,0.5" normal="1,0,0"/>
-        </union>
-        <union name="spawn-falls">
-            <union name="red-spawn-falls">
-                <cuboid name="red-right-fall" min="31,17,70" max="34,64,73"/>
-                <mirror name="red-left-fall" region="red-right-drop" origin="0.5,0,0.5" normal="0,0,1"/>
-            </union>
-            <mirror name="blue-spawn-falls" region="red-spawn-falls" origin="0.5,0,0.5" normal="1,0,0"/>
-        </union>
-        <cuboid name="red-right-monument" min="35,19,45" max="30,24,40"/>
-        <mirror name="red-left-monument" region="red-right-monument" origin="0.5,0,0.5" normal="0,0,1"/>
-        <mirror name="blue-left-monument" region="red-right-monument" origin="0.5,0,0.5" normal="1,0,0"/>
-        <mirror name="blue-right-monument" region="red-left-monument" origin="0.5,0,0.5" normal="1,0,0"/>
-        <cuboid name="red-core" min="3,31,57" max="-2,36,63"/>
-        <mirror name="blue-core" region="red-core" origin="0.5,0,0.5" normal="1,0,0"/>
-        <!--  Applied  -->
-        <apply block="deny-all" message="You may not modify the spawns">
-            <region name="spawn-tubes"/>
-            <region name="obs-spawn"/>
-        </apply>
-        <apply block="deny-all" message="You may not modify the spawn drops">
-            <region name="spawn-falls"/>
-            <region name="spawn-drops"/>
-        </apply>
-        <apply enter="blue-only" message="You may not enter the enemy spawn">
-            <region name="blue-spawn-falls"/>
-            <region name="blue-spawn-drops"/>
-        </apply>
-        <apply enter="red-only" message="You may not enter the enemy spawn">
-            <region name="red-spawn-falls"/>
-            <region name="red-spawn-drops"/>
-        </apply>
-        <apply enter="deny-all" message="And now you're stuck">
-            <region name="above-spawns"/>
-        </apply>
-        <apply block="deny-all" message="You may not edit outside of the map">
-            <negative>
-                <region name="map-region"/>
-            </negative>
-        </apply>
-        <apply use="deny-beacon" message="You may not use beacons">
-            <rectangle min="-oo,-oo" max="oo,oo"/>
-        </apply>
-    </regions>
-    <destroyables owner="red" completion="100%" materials="emerald block;beacon">
-        <destroyable name="Left Monument" id="red-left">
-            <region name=""/>
-        </destroyable>
-        <destroyable name="Right Monument" id="red-right">
-            <region name=""/>
-        </destroyable>
-    </destroyables>
-    <destroyables owner="blue" completion="100%" materials="emerald block;beacon">
-        <destroyable name="Left Monument" id="blue-left">
-            <region name=""/>
-        </destroyable>
-        <destroyable name="Right Monument" id="blue-right">
-            <region name=""/>
-        </destroyable>
-    </destroyables>
-    <cores material="obsidian" leak="6" mode-changes="true" name="Core">
-        <core team="red" id="red-core">
-            <region name="red-core"/>
-        </core>
-        <core team="blue" id="blue-core">
-            <region name="blue-core"/>
-        </core>
-    </cores>
+    </union>
+    <cuboid name="red-right-monument" min="35,19,45" max="30,24,40"/>
+    <cuboid name="red-left-monument" min="-34,19,45" max="-29,24,40"/>
+    <cuboid name="blue-left-monument" min="-34,19,-39" max="-29,24,-44"/>
+    <cuboid name="blue-right-monument" min="35,19,-39" max="30,24,-44"/>
+    <cuboid name="red-core" min="3,31,57" max="-2,36,63"/>
+    <cuboid name="blue-core" min="3,31,-56" max="-2,36,-62"/>
+    <!--  Applied  -->
+    <apply block="deny-all" message="You may not modify the spawns">
+        <region name="spawn-tubes"/>
+        <region name="obs-spawn"/>
+    </apply>
+    <apply enter="blue-only" message="You may not enter the enemy spawn">
+        <region name="blue-spawn-falls"/>
+        <region name="blue-spawn-drops"/>
+    </apply>
+    <apply enter="red-only" message="You may not enter the enemy spawn">
+        <region name="red-spawn-falls"/>
+        <region name="red-spawn-drops"/>
+    </apply>
+    <apply enter="deny-all" message="You may not land on top of spawns">
+        <region name="above-spawns"/>
+    </apply>
+    <apply block="deny-all" message="You may not edit outside of the map">
+        <negative>
+            <region name="map-region"/>
+        </negative>
+    </apply>
+    <apply use="deny-beacon" message="You may not use beacons">
+        <rectangle min="-oo,-oo" max="oo,oo"/>
+    </apply>
+</regions>
+<destroyables owner="red" completion="100%" materials="emerald block;beacon">
+    <destroyable name="Left Monument" id="red-left" region="red-left-monument">
+    <destroyable name="Right Monument" id="red-right" region="red-right-monument">
+</destroyable>
+<destroyables owner="blue" completion="100%" materials="emerald block;beacon">
+    <destroyable name="Left Monument" id="blue-left" region="blue-left-monument">
+    <destroyable name="Right Monument" id="blue-right" region="blue-right-monument">
+</destroyables>
+<cores material="obsidian" leak="6" mode-changes="true" name="Core">
+    <core team="red" id="red-core">
+        <region name="red-core"/>
+    </core>
+    <core team="blue" id="blue-core">
+        <region name="blue-core"/>
+    </core>
+</cores>
 </map>
