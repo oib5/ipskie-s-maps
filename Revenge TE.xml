@@ -91,17 +91,21 @@
     </apply>
 </regions>
 <destroyables owner="red" completion="100%" materials="emerald block;beacon">
-    <destroyable name="Left Monument" id="red-left" region="red-left"/>
-    <destroyable name="Right Monument" id="red-right" region="red-right"/>
+    <destroyable name="Left Monument" id="red-left" region="red-left-monument"/>
+    <destroyable name="Right Monument" id="red-right" region="red-right-monument"/>
 </destroyables>
 <destroyables owner="blue" completion="100%" materials="emerald block;beacon">
-    <destroyable name="Left Monument" id="blue-left" region="blue-left"/>
-    <destroyable name="Right Monument" id="blue-right" region="blue-right"/>
+    <destroyable name="Left Monument" id="blue-left" region="blue-left-monument"/>
+    <destroyable name="Right Monument" id="blue-right" region="blue-right-monument"/>
 </destroyables>
 <cores material="obsidian" leak="6" mode-changes="true" name="Core">
     <core team="red" id="red-core" region="red-core"/>
     <core team="blue" id="blue-core" region="blue-core"/>
 </cores>
+<modes>
+    <mode after="10m" material="gold block" name="GOLD CORE MODE"/>
+    <mode after="20m" material="packed ice" name="ICE CORE MODE"/>
+</modes>
 <blockdrops>
     <rule>
         <region>
