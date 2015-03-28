@@ -114,9 +114,9 @@
     <box value="1" filter="red-only" region="red-1"/>
     <box value="3" filter="red-only" region="red-3"/>
     <box value="5" filter="red-only" region="red-5"/>
-    <box value="1" filter="blue-only" region="red-1"/>
-    <box value="3" filter="blue-only" region="red-3"/>
-    <box value="5" filter="blue-only" region="red-5"/>
+    <box value="1" filter="blue-only" region="blue-1"/>
+    <box value="3" filter="blue-only" region="blue-3"/>
+    <box value="5" filter="blue-only" region="blue-5"/>
 </score>
 <king>
     <hills>
