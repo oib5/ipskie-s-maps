@@ -52,6 +52,9 @@
     <item>golden apple</item>
     <item>arrow</item>
 </itemremove>
+<killreward>
+    <item slot="2" damage="8229" potions="heal:1:1:false">potion</item>
+</killreward>
 <filters>
     <filter name="red-only">
         <team>red</team>
