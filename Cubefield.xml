@@ -1,6 +1,6 @@
 <map proto="1.3.6">
 <name>Cubefield</name>
-<version>1.0.3</version>
+<version>1.0.2</version>
 <objective>Score by jumping into scoreboxes; be the team with the most points after 10 minutes!</objective>
 <authors><author uuid="904bf23f-67c5-484a-ae60-61f4ec150b48"/></authors><!--  oib5  -->
 <contributors><contributor uuid="36e46b32-80ef-4fa5-b1e2-6c777736d888"/></contributors><!--  E0C  -->
@@ -9,9 +9,21 @@
     <team color="blue" max="16" max-overfill="20" id="blue">Blue Team</team>
 </teams>
 <spawns>
-    <default yaw="-90" kit="all"><cuboid min="-55,12,-34" max="-49,12,-27"/></default>
-    <spawn team="Red" kit="redKit" yaw="45"><cuboid min="36,23,-60" max="34,23,-58"/></spawn>
-    <spawn team="Blue" kit="blueKit" yaw="-135"><cuboid min="-59,23,17" max="-57,23,15"/></spawn>
+    <default yaw="-90" kit="all">
+        <regions>
+            <cuboid min="-55,12,-34" max="-49,12,-27"/>
+        </regions>
+    </default>
+    <spawn team="Red" kit="redKit">
+        <regions yaw="45">
+            <cuboid min="35,23,-59" max="33,23,-57"/>
+        </regions>
+    </spawn>
+    <spawn team="Blue" kit="blueKit">
+        <regions yaw="-135">
+            <cuboid min="-58,23,16" max="-56,23,14"/>
+        </regions>
+    </spawn>
 </spawns>
 <kits>
     <!--  kit given to everyone, including observers  -->
@@ -22,7 +34,7 @@
     <!--  kit given to both teams  -->
     <kit name="team" parents="all">
         <helmet damage="-3000">iron helmet</helmet>
-        <boots damage="-3000" enchantment="protection environment:2;protection fall:2">golden boots</boots>
+        <boots damage="-3000" enchantment="protection environmental:2;protection fall:2">gold boots</boots>
         <item slot="0" damage="-3000">stone sword</item>
         <item slot="1" damage="-3000" enchantment="arrow infinite:1;arrow knockback:1">bow</item>
         <item slot="2" damage="8229" potions="heal:1:1:false">potion</item>
@@ -43,7 +55,7 @@
 </kits>
 <itemremove>
     <item>iron helmet</item>
-    <item>golden boots</item>
+    <item>gold boots</item>
     <item>leather chestplate</item>
     <item>leather leggings</item>
     <item>stone sword</item>
@@ -57,79 +69,93 @@
 </killreward>
 <filters>
     <filter name="red-only">
-        <team>red</team>
+        <deny>
+            <team>blue</team>
+        </deny>
     </filter>
     <filter name="blue-only">
-        <team>blue</team>
+        <deny>
+            <team>red</team>
+        </deny>
     </filter>
     <filter name="has-hill">
         <objective>Hill</objective>
     </filter>
 </filters>
 <regions>
+    <union name="scoreboxes">
+        <union name="blue-scoreboxes">
+            <rectangle name="blue-1" min="-34,-56" max="-29,-51"/>
+            <rectangle name="blue-3" min="-14,-60" max="-9,-55"/>
+            <rectangle name="blue-5" min="8,-65" max="13,-60"/>
+        </union>
+        <union name="red-scoreboxes">
+            <rectangle name="red-1" min="11,13" max="6,8"/>
+            <rectangle name="red-3" min="-9,17" max="-14,12"/>
+            <rectangle name="red-5" min="-31,22" max="-36,17"/>
+        </union>
+    </union>
+
     <apply block="deny-all">
         <rectangle name="map" min="-oo,-oo" max="oo,oo"/>
     </apply>
+
     <apply velocity="6,0.1,0">
-        <cuboid min="-45,5,9" max="-43,7,7"/>
+        <!-- blue horizontal launcher -->
+        <cuboid min="-45,5,8" max="-43,7,7"/>
     </apply>
     <apply velocity="0.3,2,0">
-        <cuboid min="-17,1,0" max="-15,1,-2"/>
+        <!-- blue vertical launcher -->
+        <cuboid min="-16,1,0" max="-15,3,-2"/>
     </apply>
     <apply velocity="-6,0.1,0">
-        <cuboid min="22,5,-52" max="20,7,-50"/>
+        <!-- red horizontal launcher -->
+        <cuboid min="22,5,-51" max="20,7,-50"/>
     </apply>
     <apply velocity="-0.3,2,0">
-        <cuboid min="-6,1,-43" max="-8,1,-41"/>
+        <!-- red vertical launcher -->
+        <cuboid min="-7,1,-43" max="-8,3,-41"/>
     </apply>
+
     <apply enter="blue-only" message="You may not use the enemy team's tunnels!">
-        <cuboid min="-44,5,14" max="-42,7,15"/>
-        <cuboid min="-28,10,25" max="-26,12,26"/>
-        <cuboid min="-20,10,24" max="-3,12,26"/>
-        <cuboid min="4,11,20" max="22,13,22"/>
-        <cuboid min="23,7,-26" max="31,14,-32"/>
-        <cuboid min="2,3,-62" max="-4,6,-66"/>
-        <cuboid min="-22,3,-60" max="-24,5,-61"/>
-        <cuboid min="-41,4,-62" max="-43,6,-63"/>
+        <union>
+            <cuboid min="-44,5,14" max="-42,7,15"/>
+            <cuboid min="-28,10,25" max="-26,12,26"/>
+            <cuboid min="-20,10,24" max="-3,12,26"/>
+            <cuboid min="4,11,20" max="22,13,22"/>
+            <cuboid min="23,7,-26" max="31,14,-32"/>
+            <cuboid min="2,3,-62" max="-4,6,-66"/>
+            <cuboid min="-22,3,-60" max="-24,5,-61"/>
+            <cuboid min="-41,4,-62" max="-43,6,-63"/>
+        </union>
     </apply>
     <apply enter="red-only" message="You may not use the enemy team's tunnels!">
-        <cuboid min="-21,5,-57" max="19,7,-58"/>
-        <cuboid min="5,10,-68" max="3,12,-69"/>
-        <cuboid min="-3,10,-67" max="-20,12,-69"/>
-        <cuboid min="-26,11,-63" max="-45,13,-65"/>
-        <cuboid min="-25,3,19" max="-19,6,23"/>
-        <cuboid min="-1,3,17" max="1,5,18"/>
-        <cuboid min="18,4,19" max="20,6,20"/>
-        <cuboid min="-46,7,-17" max="-54,14,-11"/>
+        <union>
+            <cuboid min="-21,5,-57" max="19,7,-58"/>
+            <cuboid min="5,10,-68" max="3,12,-69"/>
+            <cuboid min="-3,10,-67" max="-20,12,-69"/>
+            <cuboid min="-26,11,-63" max="-45,13,-65"/>
+            <cuboid min="-25,3,19" max="-19,6,23"/>
+            <cuboid min="-1,3,17" max="1,5,18"/>
+            <cuboid min="18,4,19" max="20,6,20"/>
+            <cuboid min="-46,7,-17" max="-54,14,-11"/>
+        </union>
     </apply>
-    <apply enter="blue-only">
-        <rectangle name="blue-1-zone" min="-34,0,-56" max="-29,-51"/>
-        <rectangle name="blue-3-zone" min="-14,0,-60" max="-9,-55"/>
-        <rectangle name="blue-5-zone" min="8,0,-65" max="13,-60"/>
+
+    <apply enter="blue-only" message="You may not enter the enemy team's portal!">
+        <region name="blue-scoreboxes"/>
     </apply>
-    <apply enter="red-only">
-        <rectangle name="red-1-zone" min="11,13" max="6,8"/>
-        <rectangle name="red-3-zone" min="-9,17" max="-14,12"/>
-        <rectangle name="red-5-zone" min="-31,22" max="-36,17"/>
+    <apply enter="red-only" message="You may not enter the enemy team's portal!">
+        <region name="red-scoreboxes"/>
     </apply>
+
     <apply enter="has-hill" message="You can only score if your team holds the hill!">
-        <rectangle name="red-1-zone" min="11,13" max="6,8"/>
-        <rectangle name="red-3-zone" min="-9,17" max="-14,12"/>
-        <rectangle name="red-5-zone" min="-31,22" max="-36,17"/>
-        <rectangle name="blue-1-zone" min="-34,0,-56" max="-29,-51"/>
-        <rectangle name="blue-3-zone" min="-14,0,-60" max="-9,-55"/>
-        <rectangle name="blue-5-zone" min="8,0,-65" max="13,-60"/>
+        <region name="scoreboxes"/>
     </apply>
 </regions>
 <portals>
-    <!--  Red's Scoreboxes: 1,3,5 respectively  -->
-    <portal x="@34" y="@5" z="@-58" yaw="@0"><cuboid name="red-1" min="11,0,13" max="6,1,8"/></portal>
-    <portal x="@34" y="@5" z="@-58" yaw="@0"><cuboid name="red-3" min="-9,0,17" max="-14,1,12"/></portal>
-    <portal x="@34" y="@5" z="@-58" yaw="@0"><cuboid name="red-5" min="-31,0,22" max="-36,1,17"/></portal>
-    <!--  Blue's Scoreboxes: 1,3,5 respectively  -->
-    <portal x="@-57" y="@5" z="@15" yaw="@180"><cuboid name="blue-1" min="-34,0,-56" max="-29,1,-51"/></portal>
-    <portal x="@-57" y="@5" z="@15" yaw="@180"><cuboid name="blue-3" min="-14,0,-60" max="-9,1,-55"/></portal>
-    <portal x="@-57" y="@5" z="@15" yaw="@180"><cuboid name="blue-5" min="8,0,-65" max="13,1,-60"/></portal>
+    <portal x="@34" y="@5" z="@-58" yaw="@0" region="red-scoreboxes"/>
+    <portal x="@-57" y="@5" z="@15" yaw="@180" region="blue-scoreboxes"/>
 </portals>
 <score>
     <time>600</time>
@@ -151,10 +177,10 @@
         </hill>
     </hills>
 </king>
-<broadcasts>
-    <tip after="1s" every="1m" count="oo">Jump into scoreboxes to score points for your team! Remember: you must have control of the hill to score!</tip>>
-</broadcasts>
 <disabledamage>
     <damage>fall</damage>
 </disabledamage>
+<broadcasts>
+    <tip after="1s" every="1m" count="oo">Jump into scoreboxes to score points for your team! Remember: You must have control of the hill to score!</tip>>
+</broadcasts>
 </map>
