@@ -1,6 +1,6 @@
 <map proto="1.3.6">
 <name>Cubefield</name>
-<version>1.0.1</version>
+<version>1.0.3</version>
 <objective>Score by jumping into scoreboxes; be the team with the most points after 10 minutes!</objective>
 <authors><author uuid="904bf23f-67c5-484a-ae60-61f4ec150b48"/></authors><!--  oib5  -->
 <contributors><contributor uuid="36e46b32-80ef-4fa5-b1e2-6c777736d888"/></contributors><!--  E0C  -->
