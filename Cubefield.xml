@@ -144,7 +144,7 @@
 </score>
 <king>
     <hills>
-        <hill name="Hill" capture-time="3s" points="0" id="Hill" capture-rule="majority">
+        <hill name="Hill" capture-time="7s" points="0" id="Hill" capture-rule="majority">
             <capture><cuboid min="-6,7,-16" max="-17,9,-28"/></capture>
             <progress><cuboid min="-6,0,-16" max="-17,7,-28"/></progress>
             <captured><cuboid min="0,0,0" max="0,0,0"/></captured>
@@ -154,4 +154,7 @@
 <broadcasts>
     <tip after="1s" every="1m" count="oo">Jump into scoreboxes to score points for your team! Remember: you must have control of the hill to score!</tip>>
 </broadcasts>
+<disabledamage>
+    <damage>fall</damage>
+</disabledamage>
 </map>
